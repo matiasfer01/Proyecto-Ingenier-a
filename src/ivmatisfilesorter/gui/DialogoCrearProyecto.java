@@ -1,5 +1,6 @@
 package ivmatisfilesorter.gui;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -58,10 +59,12 @@ public class DialogoCrearProyecto extends JDialog {
 		descripcion.setWrapStyleWord(true);
 
 		guardar = new JButton("Guardar");
-		guardar.setBounds(277, 500, 100, 40);
+		guardar.setBounds(300, 465, 120, 40);
+		guardar.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/guardar.png")));
 
 		cancelar = new JButton("Cancelar");
-		cancelar.setBounds(545, 500, 100, 40);
+		cancelar.setBounds(450, 465, 125, 40);
+		cancelar.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/cancelar.png")));
 
 		/* mostras los componentes en el dialogo */
 		contenido.add(etiquetasNombre);
