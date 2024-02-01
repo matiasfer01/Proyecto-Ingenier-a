@@ -1,3 +1,14 @@
+/*
+ * Universidad del Mar campus Puerto Escondido
+ * Integrantes:
+ * 		Cortez Escamilla Isaac
+ * 	 	Hernández Pérez Ivonne Estefanía
+ * 		Matías Acevedo Luis Fernando
+ * Actividad: Primer entrega de las pantallas del sistema IvMatIs FileSorter que consiste en que un proyecto puede contener múltiples 
+ * archivos y los archivos contienen etiquetas que son las que organizan a los archivos.
+ * Fecha de elaboración: 01/02/2024
+ * 		
+ * */
 package ivmatisfilesorter.gui;
 
 import java.awt.Toolkit;
@@ -128,9 +139,9 @@ public class DialogoCrearProyecto extends JDialog {
 		accionBotonCancelar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_C));
 		cancelar.getActionMap().put("Cancelar", accionBotonCancelar);
 		cancelar.setHorizontalTextPosition(JButton.TRAILING);
-		accionBotonCancelar.putValue(Action.SHORT_DESCRIPTION, "Cancerlar el proyecto");
+		accionBotonCancelar.putValue(Action.SHORT_DESCRIPTION, "Cancelar el proyecto");
 		cancelar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-	    .put((KeyStroke) accionBotonCancelar.getValue(Action.ACCELERATOR_KEY), "Cancelar");
+				.put((KeyStroke) accionBotonCancelar.getValue(Action.ACCELERATOR_KEY), "Cancelar");
 		cancelar.setMnemonic(KeyEvent.VK_C);
 		cancelar.setBounds(450, 465, 125, 40);
 

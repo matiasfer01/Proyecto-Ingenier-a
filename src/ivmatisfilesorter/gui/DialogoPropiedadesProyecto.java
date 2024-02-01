@@ -1,3 +1,14 @@
+/*
+ * Universidad del Mar campus Puerto Escondido
+ * Integrantes:
+ * 		Cortez Escamilla Isaac
+ * 	 	Hernández Pérez Ivonne Estefanía
+ * 		Matías Acevedo Luis Fernando
+ * Actividad: Primer entrega de las pantallas del sistema IvMatIs FileSorter que consiste en que un proyecto puede contener múltiples 
+ * archivos y los archivos contienen etiquetas que son las que organizan a los archivos.
+ * Fecha de elaboración: 01/02/2024
+ * 		
+ * */
 package ivmatisfilesorter.gui;
 
 import java.awt.Toolkit;
@@ -97,14 +108,10 @@ public class DialogoPropiedadesProyecto extends JDialog {
 			private static final long serialVersionUID = 1L;
 
 			public void actionPerformed(ActionEvent e) {
-				metodoAccionEditar();
+				editarProyecto();
 
 			}
 
-			private void metodoAccionEditar() {
-				// TODO Auto-generated method stub
-
-			}
 		};
 
 		accionBotonGuardar = new AbstractAction("Guardar",
@@ -113,12 +120,7 @@ public class DialogoPropiedadesProyecto extends JDialog {
 			private static final long serialVersionUID = 1L;
 
 			public void actionPerformed(ActionEvent e) {
-				metodoAccionGuardar();
-
-			}
-
-			private void metodoAccionGuardar() {
-				// TODO Auto-generated method stub
+				guardarProyecto();
 
 			}
 
@@ -130,12 +132,7 @@ public class DialogoPropiedadesProyecto extends JDialog {
 			private static final long serialVersionUID = 1L;
 
 			public void actionPerformed(ActionEvent e) {
-				metodoAccionCancelar();
-
-			}
-
-			private void metodoAccionCancelar() {
-				// TODO Auto-generated method stub
+				cancelarProyecto();
 
 			}
 
@@ -147,12 +144,7 @@ public class DialogoPropiedadesProyecto extends JDialog {
 			private static final long serialVersionUID = 1L;
 
 			public void actionPerformed(ActionEvent e) {
-				metodoAccionNuevaEtiqueta();
-
-			}
-
-			private void metodoAccionNuevaEtiqueta() {
-				// TODO Auto-generated method stub
+				nuevaEtiqueta();
 
 			}
 

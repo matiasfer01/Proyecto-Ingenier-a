@@ -1,3 +1,14 @@
+/*
+ * Universidad del Mar campus Puerto Escondido
+ * Integrantes:
+ * 		Cortez Escamilla Isaac
+ * 	 	Hernández Pérez Ivonne Estefanía
+ * 		Matías Acevedo Luis Fernando
+ * Actividad: Primer entrega de las pantallas del sistema IvMatIs FileSorter que consiste en que un proyecto puede contener múltiples 
+ * archivos y los archivos contienen etiquetas que son las que organizan a los archivos.
+ * Fecha de elaboración: 01/02/2024
+ * 		
+ * */
 package ivmatisfilesorter.gui;
 
 import java.awt.Image;
@@ -25,12 +36,12 @@ public class VentanaPrincipal extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/* Declaracion de variables para los menus */
+	/* Declaración de variables para los menús. */
 	private JMenu proyecto;
 	private JMenu gestionDelProyecto;
 	private JMenu ayuda;
 
-	/* Declaracion de los sub menus */
+	/* Declaración de los submenús. */
 	private JMenuItem crearProyecto;
 	private JMenuItem abrirProyecto;
 	private JMenuItem propiedadesDelProyecto;
@@ -45,7 +56,6 @@ public class VentanaPrincipal extends JFrame {
 
 	private Proyecto proyectoACrear;
 
-	/* barra */
 	private JMenuBar barraMenu;
 
 	public VentanaPrincipal() {
@@ -54,59 +64,74 @@ public class VentanaPrincipal extends JFrame {
 		this.setIconImage(
 				Toolkit.getDefaultToolkit().getImage(getClass().getResource("/ivmatisfilesorter/imagenes/logo.jpg")));
 
-		/* Menus principales */
+		/******************************************************* Menús ************************************************************/
+		/* Menú Proyecto */
+
 		proyecto = new JMenu("Proyecto");
 		proyecto.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/proyecto.png")));
-		proyecto.setToolTipText("Realiza diversas operaciones relacionadas con proyectos");
+		proyecto.setToolTipText("Realizar diversas operaciones relacionadas con proyectos.");
 		proyecto.setMnemonic(KeyEvent.VK_O);
+
+		/* Menú Gestión del proyecto. */
 
 		gestionDelProyecto = new JMenu("Gestión del proyecto");
 		gestionDelProyecto
 				.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/gestion-de-proyectos.png")));
 		gestionDelProyecto
-				.setToolTipText("Engloba diversas operaciones relacionadas con el manejo de archivos y etiquetas");
+				.setToolTipText("Englobar diversas operaciones relacionadas con el manejo de archivos y etiquetas.");
 		gestionDelProyecto.setMnemonic(KeyEvent.VK_T);
 
+		/* Menú Ayuda. */
+
 		ayuda = new JMenu("Ayuda");
-		ayuda.setToolTipText("Muestra información acerca de la aplicación IvMatIs FileSorter y sus créditos");
+		ayuda.setToolTipText("Mostrar información acerca de la aplicación IvMatIs FileSorter y sus créditos");
 		ayuda.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/ayuda.png")));
 		ayuda.setMnemonic(KeyEvent.VK_Y);
 
-		/* sub menus de Proyecto */
+		/******************************************************* Submenús ************************************************************/
+
+		/***** Menú proyecto. ******/
+
+		/* Submenú Crear proyecto. */
+
 		crearProyecto = new JMenuItem("Crear proyecto");
 		crearProyecto.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/crear.png")));
-		crearProyecto.setToolTipText("Inicia la creación de un nuevo proyecto");
+		crearProyecto.setToolTipText("Crear un nuevo proyecto.");
 		crearProyecto.setMnemonic(KeyEvent.VK_C);
 		crearProyecto.setAccelerator(
 				KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
 
+		/* Submenú Abrir proyecto. */
+
 		abrirProyecto = new JMenuItem("Abrir proyecto");
 		abrirProyecto.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/abrir.png")));
-		abrirProyecto.setToolTipText("Accede a proyectos previamente guardados");
+		abrirProyecto.setToolTipText("Acceder a proyectos previamente guardados.");
 		abrirProyecto.setMnemonic(KeyEvent.VK_A);
 		abrirProyecto.setAccelerator(
 				KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
 
+		/* Submenú Propiedades del proyecto. */
+		/***** Menú proyecto. ******/
+
 		propiedadesDelProyecto = new JMenuItem("Propiedades del proyecto");
 		propiedadesDelProyecto
 				.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/propiedades.png")));
-		propiedadesDelProyecto.setToolTipText("Realiza modificaciones en la información del proyecto");
+		propiedadesDelProyecto.setToolTipText("Realizar modificaciones en la información del proyecto.");
 		propiedadesDelProyecto.setMnemonic(KeyEvent.VK_P);
 		propiedadesDelProyecto.setAccelerator(
 				KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
 
 		salir = new JMenuItem("Salir");
 		salir.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/salir.png")));
-		salir.setToolTipText("Cierra la aplicación");
+		salir.setToolTipText("Cerrar la aplicación.");
 		salir.setMnemonic(KeyEvent.VK_S);
 		salir.setAccelerator(
 				KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
 
-		/* sub menus de Gestion del proyecto */
 		gestionDeArchivos = new JMenuItem("Gestión de archivos");
 		gestionDeArchivos
 				.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/gestion-de-archivos.png")));
-		gestionDeArchivos.setToolTipText("Asigna las etiquetas seleccionadas al archivo");
+		gestionDeArchivos.setToolTipText("Controlar los archivos almacenadas en el sistema");
 		gestionDeArchivos.setMnemonic(KeyEvent.VK_G);
 		gestionDeArchivos.setAccelerator(
 				KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
@@ -114,28 +139,28 @@ public class VentanaPrincipal extends JFrame {
 		gestionDeEtiquetas = new JMenuItem("Gestión de etiquetas");
 		gestionDeEtiquetas
 				.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/gestion-de-etiquetas.png")));
-		gestionDeEtiquetas.setToolTipText("Gestiona las etiquetas almacenadas en el sistema");
+		gestionDeEtiquetas.setToolTipText("Gestionar las etiquetas almacenadas en el sistema");
 		gestionDeEtiquetas.setMnemonic(KeyEvent.VK_E);
 		gestionDeEtiquetas.setAccelerator(
 				KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
 
 		busquedaDeArchivos = new JMenuItem("Búsqueda de archivos");
 		busquedaDeArchivos.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/buscar.png")));
-		busquedaDeArchivos.setToolTipText("Busca archivos según las etiquetas seleccionadas");
+		busquedaDeArchivos.setToolTipText("Buscar archivos según las etiquetas seleccionadas");
 		busquedaDeArchivos.setMnemonic(KeyEvent.VK_B);
 		busquedaDeArchivos.setAccelerator(
 				KeyStroke.getKeyStroke(KeyEvent.VK_B, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
 
 		/* sub menus de ayuda */
 		acercaDe = new JMenuItem("Acerca de...");
-		acercaDe.setToolTipText("Ofrece ayuda relacionada con la aplicación");
+		acercaDe.setToolTipText("Ofrecer ayuda relacionada con la aplicación");
 		acercaDe.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/acercaDe.png")));
 		acercaDe.setMnemonic(KeyEvent.VK_R);
 		acercaDe.setAccelerator(
 				KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
 
 		manualDeUsuario = new JMenuItem("Manual de usuario");
-		manualDeUsuario.setToolTipText("Accede a instrucciones detalladas sobre el uso de la aplicación");
+		manualDeUsuario.setToolTipText("Acceder a instrucciones detalladas sobre el uso de la aplicación");
 		manualDeUsuario.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/manual.png")));
 		manualDeUsuario.setMnemonic(KeyEvent.VK_M);
 		manualDeUsuario.setAccelerator(
@@ -220,30 +245,39 @@ public class VentanaPrincipal extends JFrame {
 
 		private void metodoAcercaDe() {
 			ImageIcon logo = new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/logo.jpg"));
-			String mensaje = "\n Nombre de la aplicacion:\n IvMatIsFileSorter \n\n Realizado por:\n Cortez Fescamilla Isaac \n Hernandez Perez Ivonne Estefania \n Matias Acevedo  Luis Fernando  \n\n Correo electrónico: \n Ivmatis_filesorter@gmail.com \n\n Derechos reservados UMAR  2023";
+			String mensaje = "\n Nombre de la aplicación:\n IvMatIsFileSorter \n\n Realizado por:\n Cortez Escamilla Isaac \n Hernandez "
+					+ "Perez Ivonne Estefania \n Matias Acevedo  Luis Fernando  \n\n Correo electrónico: \n Ivmatis_filesorter@gmail.com \n\n Derechos reservados UMAR  2024";
 
 			JOptionPane.showMessageDialog(null, mensaje, "Acerca de... IvMatIsFileSorter",
 					JOptionPane.INFORMATION_MESSAGE, logo);
 		}
 
 	}
-	//coordina acciones iniciales para establecer el estado inicial de la interfaz de usuario. 
+
+	// coordina acciones iniciales para establecer el estado inicial de la
+	// interfaz de usuario.
 	private void inicializar() {
 
 	}
-	// realiza la acción de permitir la edición o interacción con varios componentes de la interfaz gráfica
+
+	// realiza la acción de permitir la edición o interacción con varios
+	// componentes de la interfaz gráfica
 	private void habilitarCampos() {
 
 	}
-	//La política de foco se basa en el orden en el que se añadieron los componentes al vector
+
+	// La política de foco se basa en el orden en el que se añadieron los
+	// componentes al vector
 	private void establecerPoliticaFoco() {
 
 	}
-	//realiza la acción de impedir la edición o interacción con varios componentes de la interfaz gráfica
+
+	// realiza la acción de impedir la edición o interacción con varios
+	// componentes de la interfaz gráfica
 	private void deshabilitarCampos() {
 
 	}
-	
+
 	private Proyecto getProyectoACrear() {
 		return proyectoACrear;
 	}

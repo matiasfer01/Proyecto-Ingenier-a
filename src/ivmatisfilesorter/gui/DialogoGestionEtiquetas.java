@@ -1,11 +1,27 @@
+/*
+ * Universidad del Mar campus Puerto Escondido
+ * Integrantes:
+ * 		Cortez Escamilla Isaac
+ * 	 	Hernández Pérez Ivonne Estefanía
+ * 		Matías Acevedo Luis Fernando
+ * Actividad: Primer entrega de las pantallas del sistema IvMatIs FileSorter que consiste en que un proyecto puede contener múltiples 
+ * archivos y los archivos contienen etiquetas que son las que organizan a los archivos.
+ * Fecha de elaboración: 01/02/2024
+ * 		
+ * */
 package ivmatisfilesorter.gui;
 
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,6 +29,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.KeyStroke;
 
 import ivmatisfilesorter.dominio.Etiqueta;
 
@@ -33,6 +50,11 @@ public class DialogoGestionEtiquetas extends JDialog {
 	private JButton eliminar;
 	private JButton cancelar;
 
+	private Action accionBotonNuevo;
+	private Action accionBotonGuardar;
+	private Action accionBotonModificar;
+	private Action accionBotonEliminar;
+	private Action accionBotonCancelar;
 	private DefaultListModel<String> listaEtiquetasModel = new DefaultListModel<>();
 	private Etiqueta listaEtiqueta[];
 
@@ -63,38 +85,130 @@ public class DialogoGestionEtiquetas extends JDialog {
 		scrollpaneEtiquetas.setBounds(400, 150, 250, 250);
 
 		listaEtiquetasModel = new DefaultListModel<>();
-		listaEtiquetasModel.addElement("Los hermanos");
-		listaEtiquetasModel.addElement("Bruce Wayne");
+		listaEtiquetasModel.addElement("Diversión");
+		listaEtiquetasModel.addElement("Trabajo en equipo");
+		listaEtiquetasModel.addElement("Proyecto personal");
+		listaEtiquetasModel.addElement("Vacaciones");
+		listaEtiquetasModel.addElement("Prioridad alta");
+		listaEtiquetasModel.addElement("Fiesta");
+		listaEtiquetasModel.addElement("Revisión de código");
+		listaEtiquetasModel.addElement("Metas a corto plazo");
+		listaEtiquetasModel.addElement("Investigación");
+		listaEtiquetasModel.addElement("Recomendaciones");
+		listaEtiquetasModel.addElement("Clientes");
+		listaEtiquetasModel.addElement("Deportes");
+		listaEtiquetasModel.addElement("Creatividad");
+		listaEtiquetasModel.addElement("Comida");
+		listaEtiquetasModel.addElement("Viaje de negocios");
+		listaEtiquetasModel.addElement("Música");
+		listaEtiquetasModel.addElement("Celebración");
+		listaEtiquetasModel.addElement("Investigación científica");
+		listaEtiquetasModel.addElement("Lista de deseos");
+		listaEtiquetasModel.addElement("Organización");
+		listaEtiquetasModel.addElement("Reunión familiar");
 
-		nuevo = new JButton("Nuevo");
+		/* Acciones de los botones */
+		accionBotonNuevo = new AbstractAction("Nuevo",
+				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/nuevo.png"))) {
+
+			private static final long serialVersionUID = 1L;
+
+			public void actionPerformed(ActionEvent e) {
+				nuevaEtiqueta();
+
+			}
+		};
+		accionBotonGuardar = new AbstractAction("Guardar",
+				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/guardar.png"))) {
+
+			private static final long serialVersionUID = 1L;
+
+			public void actionPerformed(ActionEvent e) {
+				guardarEtiqueta();
+				;
+			}
+		};
+		accionBotonModificar = new AbstractAction("Modificar",
+				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/editar.png"))) {
+
+			private static final long serialVersionUID = 1L;
+
+			public void actionPerformed(ActionEvent e) {
+				modificarEtiqueta();
+			}
+		};
+		accionBotonEliminar = new AbstractAction("Eliminar",
+				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/eliminar.png"))) {
+
+			private static final long serialVersionUID = 1L;
+
+			public void actionPerformed(ActionEvent e) {
+				eliminarEtiqueta();
+			}
+		};
+		accionBotonCancelar = new AbstractAction("Cancelar",
+				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/cancelar.png"))) {
+
+			private static final long serialVersionUID = 1L;
+
+			public void actionPerformed(ActionEvent e) {
+				cancelarEtiqueta();
+			}
+		};
+		nuevo = new JButton(accionBotonNuevo);
+		accionBotonNuevo.putValue(Action.ACCELERATOR_KEY,
+				KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_DOWN_MASK));
+		accionBotonNuevo.putValue(Action.SHORT_DESCRIPTION, "Permite crear una nueva etiqueta.");
+		accionBotonNuevo.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_N));
+		nuevo.getActionMap().put("Nuevo", accionBotonNuevo);
+		nuevo.setHorizontalTextPosition(JButton.TRAILING);
+		nuevo.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionBotonNuevo.getValue(Action.ACCELERATOR_KEY), "Nuevo");
 		nuevo.setBounds(140, 465, 120, 50);
-		nuevo.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/nuevo.png")));
-		nuevo.setMnemonic(KeyEvent.VK_N);
-		nuevo.setToolTipText("Permite crear una nueva etiqueta.");
 
-		guardar = new JButton("Guardar");
+		guardar = new JButton(accionBotonGuardar);
+		accionBotonGuardar.putValue(Action.ACCELERATOR_KEY,
+				KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_DOWN_MASK));
+		accionBotonGuardar.putValue(Action.SHORT_DESCRIPTION, "Guarda cambios realizados.");
+		accionBotonGuardar.putValue(Action.MNEMONIC_KEY, KeyEvent.VK_G);
+		guardar.getActionMap().put("Guardar", accionBotonGuardar);
+		guardar.setHorizontalTextPosition(JButton.TRAILING);
+		guardar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionBotonGuardar.getValue(Action.ACCELERATOR_KEY), "Guardar");
 		guardar.setBounds(270, 465, 120, 50);
-		guardar.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/guardar.png")));
-		guardar.setMnemonic(KeyEvent.VK_G);
-		guardar.setToolTipText("Guarda cambios realizados.");
 
-		modificar = new JButton("Modificar");
+		modificar = new JButton(accionBotonModificar);
+		accionBotonModificar.putValue(Action.ACCELERATOR_KEY,
+				KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.CTRL_DOWN_MASK));
+		accionBotonModificar.putValue(Action.SHORT_DESCRIPTION, "Modifica la etiqueta seleccionada.");
+		accionBotonModificar.putValue(Action.MNEMONIC_KEY, KeyEvent.VK_M);
+		modificar.getActionMap().put("Modificar", accionBotonModificar);
+		modificar.setHorizontalTextPosition(JButton.TRAILING);
+		modificar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionBotonModificar.getValue(Action.ACCELERATOR_KEY), "Modificar");
 		modificar.setBounds(400, 465, 125, 50);
-		modificar.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/editar.png")));
-		modificar.setMnemonic(KeyEvent.VK_M);
-		modificar.setToolTipText("Modifica la etiqueta seleccionada.");
 
-		eliminar = new JButton("Eliminar");
+		eliminar = new JButton(accionBotonEliminar);
+		accionBotonEliminar.putValue(Action.ACCELERATOR_KEY,
+				KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.CTRL_DOWN_MASK));
+		accionBotonEliminar.putValue(Action.SHORT_DESCRIPTION, "Elimina la etiqueta seleccionada.");
+		accionBotonEliminar.putValue(Action.MNEMONIC_KEY, KeyEvent.VK_E);
+		eliminar.getActionMap().put("Eliminar", accionBotonEliminar);
+		eliminar.setHorizontalTextPosition(JButton.TRAILING);
+		eliminar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionBotonEliminar.getValue(Action.ACCELERATOR_KEY), "Eliminar");
 		eliminar.setBounds(535, 465, 120, 50);
-		eliminar.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/eliminar.png")));
-		eliminar.setMnemonic(KeyEvent.VK_E);
-		eliminar.setToolTipText("Elimina la etiqueta seleccionada.");
 
-		cancelar = new JButton("Cancelar");
+		cancelar = new JButton(accionBotonCancelar);
+		accionBotonCancelar.putValue(Action.ACCELERATOR_KEY,
+				KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_DOWN_MASK));
+		accionBotonCancelar.putValue(Action.SHORT_DESCRIPTION, "Cancela la edición de la etiqueta.");
+		accionBotonCancelar.putValue(Action.MNEMONIC_KEY, KeyEvent.VK_C);
+		cancelar.getActionMap().put("Cancelar", accionBotonCancelar);
+		cancelar.setHorizontalTextPosition(JButton.TRAILING);
+		cancelar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionBotonCancelar.getValue(Action.ACCELERATOR_KEY), "Cancelar");
 		cancelar.setBounds(665, 465, 125, 50);
-		cancelar.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/cancelar.png")));
-		cancelar.setMnemonic(KeyEvent.VK_C);
-		cancelar.setToolTipText("Cancela la edicion de la etiqueta.");
 
 		/**/
 		contenido.add(etiquetas);
@@ -120,39 +234,52 @@ public class DialogoGestionEtiquetas extends JDialog {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 	}
-	//Permite agregar una nueva etiqueta.
+
+	// Permite agregar una nueva etiqueta.
 	private void nuevaEtiqueta() {
 
 	}
-	//Permite guargar los cambios o las etiquetas agregadas.
+
+	// Permite guargar los cambios o las etiquetas agregadas.
 	private void guardarEtiqueta() {
 
 	}
-	//Modifica la etiqueta seleccionada.
+
+	// Modifica la etiqueta seleccionada.
 	private void modificarEtiqueta() {
 
 	}
-	//Elimina la etiqueta seleccionada definitivamente.
+
+	// Elimina la etiqueta seleccionada definitivamente.
 	private void eliminarEtiqueta() {
 
 	}
-	//cancelar la creacion de una nueva etiqueta
+
+	// cancelar la creacion de una nueva etiqueta
 	private void cancelarEtiqueta() {
 
 	}
-	//coordina acciones iniciales para establecer el estado inicial de la interfaz de usuario. 
+
+	// coordina acciones iniciales para establecer el estado inicial de la
+	// interfaz de usuario.
 	private void inicializar() {
 
 	}
-	// realiza la acción de permitir la edición o interacción con varios componentes de la interfaz gráfica
+
+	// realiza la acción de permitir la edición o interacción con varios
+	// componentes de la interfaz gráfica
 	private void habilitarCampos() {
 
 	}
-	//realiza la acción de impedir la edición o interacción con varios componentes de la interfaz gráfica
+
+	// realiza la acción de impedir la edición o interacción con varios
+	// componentes de la interfaz gráfica
 	private void deshabilitarCampos() {
 
 	}
-	//La política de foco se basa en el orden en el que se añadieron los componentes al vector
+
+	// La política de foco se basa en el orden en el que se añadieron los
+	// componentes al vector
 	private void establecerPoliticaFoco() {
 
 	}
