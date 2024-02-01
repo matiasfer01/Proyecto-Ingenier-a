@@ -1,5 +1,9 @@
 package ivmatisfilesorter.gui;
 
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -23,7 +27,7 @@ public class DialogoPropiedadesProyecto extends JDialog {
 	private JDateChooser fechaDeCreacion;
 	private JTextArea descripcion;
 	/* Botones del dialogo */
-	private JButton editar; 
+	private JButton editar;
 	private JButton guardar;
 	private JButton cancelar;
 	private JButton nuevaEtiqueta;
@@ -31,6 +35,8 @@ public class DialogoPropiedadesProyecto extends JDialog {
 	public DialogoPropiedadesProyecto(JFrame parent, VentanaPrincipal ventanaPrincipal) {
 		// TODO Auto-generated constructor stub
 		super(parent, "Propiedades del proyecto", true);
+		this.setIconImage(
+				Toolkit.getDefaultToolkit().getImage(getClass().getResource("/ivmatisfilesorter/imagenes/propiedades.png")));
 
 		/* contenido del dialogo */
 		JPanel contenido = new JPanel(null);
@@ -60,21 +66,25 @@ public class DialogoPropiedadesProyecto extends JDialog {
 		descripcion.setBounds(600, 300, 300, 100);
 		descripcion.setLineWrap(true);
 		descripcion.setWrapStyleWord(true);
-		
+
 		editar = new JButton("Editar");
 		editar.setBounds(170, 465, 120, 40);
 		editar.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/editar.png")));
+		editar.setToolTipText("Editar el proyecto");
 
 		guardar = new JButton("Guardar");
 		guardar.setBounds(310, 465, 150, 40);
 		guardar.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/guardar.png")));
+		guardar.setToolTipText("Guarda los cambios");
 
 		cancelar = new JButton("Cancelar");
 		cancelar.setBounds(480, 465, 150, 40);
 		cancelar.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/cancelar.png")));
-		
+		cancelar.setToolTipText("Cansela la edición del proyecto");
+
 		nuevaEtiqueta = new JButton("Nueva etiqueta");
 		nuevaEtiqueta.setBounds(655, 465, 150, 40);
+		nuevaEtiqueta.setToolTipText("Creas una nueva etiqueta");
 
 		/* mostras los componentes en el dialogo */
 		contenido.add(etiquetasNombre);
@@ -93,6 +103,8 @@ public class DialogoPropiedadesProyecto extends JDialog {
 		contenido.add(cancelar);
 		contenido.add(nuevaEtiqueta);
 
+		nuevaEtiqueta.addActionListener(new ClaseAnonima());
+
 		this.add(contenido);
 
 		this.setSize(950, 600);
@@ -102,6 +114,19 @@ public class DialogoPropiedadesProyecto extends JDialog {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 
+	}
+
+	class ClaseAnonima implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if (e.getSource().equals(nuevaEtiqueta)) {
+				DialogoGestionEtiquetas dialogoGestionEtiquetas = new DialogoGestionEtiquetas(null, null);
+				dialogoGestionEtiquetas.setVisible(true);
+			}
+
+		}
 	}
 
 }

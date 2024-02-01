@@ -1,5 +1,7 @@
 package ivmatisfilesorter.gui;
 
+import java.awt.Toolkit;
+
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -38,6 +40,8 @@ public class DialogoGestionArchivo extends JDialog {
 
 	public DialogoGestionArchivo(JFrame parent, VentanaPrincipal ventanaPrincipal) {
 		super(parent, "Gestión de archivos", true);
+		this.setIconImage(
+				Toolkit.getDefaultToolkit().getImage(getClass().getResource("/ivmatisfilesorter/imagenes/gestion-de-archivos.png")));
 
 		/* contenido del dialogo */
 		JPanel contenido = new JPanel(null);

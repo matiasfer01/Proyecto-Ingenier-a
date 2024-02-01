@@ -1,5 +1,7 @@
 package ivmatisfilesorter.gui;
 
+import java.awt.Toolkit;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -28,6 +30,8 @@ public class DialogoCrearProyecto extends JDialog {
 	public DialogoCrearProyecto(JFrame parent, VentanaPrincipal ventanaPrincipal) {
 		// TODO Auto-generated constructor stub
 		super(parent, "Crear Proyecto", true);
+		this.setIconImage(
+				Toolkit.getDefaultToolkit().getImage(getClass().getResource("/ivmatisfilesorter/imagenes/crear.png")));
 
 		/* contenido del dialogo */
 		JPanel contenido = new JPanel(null);
@@ -61,10 +65,12 @@ public class DialogoCrearProyecto extends JDialog {
 		guardar = new JButton("Guardar");
 		guardar.setBounds(300, 465, 120, 40);
 		guardar.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/guardar.png")));
+		guardar.setToolTipText("Guarda el proyecto");
 
 		cancelar = new JButton("Cancelar");
 		cancelar.setBounds(450, 465, 125, 40);
 		cancelar.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/cancelar.png")));
+		cancelar.setToolTipText("Cancela la creación del proyecto");
 
 		/* mostras los componentes en el dialogo */
 		contenido.add(etiquetasNombre);
