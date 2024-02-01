@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import ivmatisfilesorter.dominio.Etiqueta;
+
 public class DialogoGestionEtiquetas extends JDialog {
 
 	/**
@@ -21,7 +23,7 @@ public class DialogoGestionEtiquetas extends JDialog {
 	private static final long serialVersionUID = 1L;
 
 	private JTextField etiqueta;
-	private JList<String> listaEtiquetas;
+	private JList<Etiqueta> listaEtiquetas;
 	private JScrollPane scrollpaneEtiquetas;
 
 	private JButton nuevo;
@@ -30,7 +32,8 @@ public class DialogoGestionEtiquetas extends JDialog {
 	private JButton eliminar;
 	private JButton cancelar;
 
-	private DefaultListModel<String> listaEtiquetasModel = new DefaultListModel<>();
+	private DefaultListModel<Etiqueta> listaEtiquetasModel = new DefaultListModel<>();
+	private Etiqueta listaEtiqueta[];
 
 	public DialogoGestionEtiquetas(JFrame parent, VentanaPrincipal ventanaPrincipal) {
 		super(parent, "Gestión de etiquetas", true);
@@ -48,15 +51,15 @@ public class DialogoGestionEtiquetas extends JDialog {
 		JLabel etiquetasLista = new JLabel("Lista de etiquetas: ");
 		etiquetasLista.setBounds(230, 150, 250, 30);
 
-		listaEtiquetas = new JList<String>();
+		listaEtiquetas = new JList<Etiqueta>();
 		listaEtiquetas.setBounds(400, 150, 250, 250);
 
 		scrollpaneEtiquetas = new JScrollPane(listaEtiquetas);
 		scrollpaneEtiquetas.setBounds(400, 150, 250, 250);
 
 		listaEtiquetasModel = new DefaultListModel<>();
-		listaEtiquetasModel.addElement("Los hermanos");
-		listaEtiquetasModel.addElement("Bruce Wayne");
+		// listaEtiquetasModel.removeElement("Los hermanos");
+		// listaEtiquetasModel.removeElement("Bruce Wayne");
 
 		nuevo = new JButton("Nuevo");
 		nuevo.setBounds(140, 465, 120, 50);
@@ -101,6 +104,42 @@ public class DialogoGestionEtiquetas extends JDialog {
 		/* Se destruirá cuando se cierre */
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLocationRelativeTo(null);
+	}
+
+	private void nuevaEtiqueta() {
+
+	}
+
+	private void guardarEtiqueta() {
+
+	}
+
+	private void modificarEtiqueta() {
+
+	}
+
+	private void eliminarEtiqueta() {
+
+	}
+
+	private void cancelarEtiqueta() {
+
+	}
+
+	private void inicializar() {
+
+	}
+
+	private void habilitarCampos() {
+
+	}
+
+	private void deshabilitarCampos() {
+
+	}
+
+	private void establecerPoliticaFoco() {
+
 	}
 
 }

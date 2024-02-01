@@ -13,6 +13,8 @@ import javax.swing.JTextField;
 
 import com.toedter.calendar.JDateChooser;
 
+import ivmatisfilesorter.dominio.Proyecto;
+
 public class DialogoCrearProyecto extends JDialog {
 	/**
 	 * 
@@ -20,12 +22,14 @@ public class DialogoCrearProyecto extends JDialog {
 	private static final long serialVersionUID = 1L;
 	/**/
 	private JTextField nombreProyecto;
-	private JTextField propitario;
+	private JTextField propietario;
 	private JDateChooser fechaDeCreacion;
 	private JTextArea descripcion;
 	/* Botones del dialogo */
 	private JButton guardar;
 	private JButton cancelar;
+
+	private Proyecto proyecto[];
 
 	public DialogoCrearProyecto(JFrame parent, VentanaPrincipal ventanaPrincipal) {
 		// TODO Auto-generated constructor stub
@@ -51,8 +55,8 @@ public class DialogoCrearProyecto extends JDialog {
 		JLabel etiquetaPropietario = new JLabel("Propietario: ");
 		etiquetaPropietario.setBounds(100, 240, 150, 150);
 
-		propitario = new JTextField();
-		propitario.setBounds(180, 300, 150, 30);
+		propietario = new JTextField();
+		propietario.setBounds(180, 300, 150, 30);
 
 		JLabel etiquetaDescripcion = new JLabel("Descripción: ");
 		etiquetaDescripcion.setBounds(500, 240, 150, 150);
@@ -81,7 +85,7 @@ public class DialogoCrearProyecto extends JDialog {
 		/* mostrar campos */
 		contenido.add(nombreProyecto);
 		contenido.add(fechaDeCreacion);
-		contenido.add(propitario);
+		contenido.add(propietario);
 		contenido.add(descripcion);
 		/* mostrar los botones */
 		contenido.add(guardar);
@@ -95,6 +99,36 @@ public class DialogoCrearProyecto extends JDialog {
 		/* Se destruirá cuando se cierre */
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLocationRelativeTo(null);
+	}
+
+	@SuppressWarnings("unused")
+	private void guardarProyecto() {
+
+	}
+
+	@SuppressWarnings("unused")
+	private void cancelarProyecto() {
+
+	}
+
+	@SuppressWarnings("unused")
+	private void inicializar() {
+
+	}
+
+	@SuppressWarnings("unused")
+	private void habilitarCampos() {
+
+	}
+
+	@SuppressWarnings("unused")
+	private void deshabilitarCampos() {
+
+	}
+
+	@SuppressWarnings("unused")
+	private void establecerPoliticaFoco() {
+
 	}
 
 }

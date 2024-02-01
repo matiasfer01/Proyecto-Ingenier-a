@@ -2,6 +2,7 @@ package ivmatisfilesorter.gui;
 
 import java.awt.Toolkit;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,18 +15,22 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
-public class DialogoGestionArchivo extends JDialog {
+import ivmatisfilesorter.dominio.Archivo;
+import ivmatisfilesorter.dominio.Etiqueta;
+
+public class DialogoGestionArchivos extends JDialog {
 
 	/* Componentes del dialogo */
-	private JList<String> listaDeArchivos;
+	private JList<Archivo> listaDeArchivos;
 	private JScrollPane scrollpaneArchivo;
 	private JTextField ruta;
-	private JComboBox<String> etiquetas;
-	private JList<String> listaEtiquetas;
+	private JComboBox<Etiqueta> etiquetas;
+	private JList<Etiqueta> listaEtiquetas;
 	private JScrollPane scrollpaneEtiquetas;
 	/* Modeles */
-	private DefaultListModel<String> archivoListModel = new DefaultListModel<>();
-	private DefaultListModel<String> etiquetasListModel = new DefaultListModel<>();
+	private DefaultListModel<Archivo> archivoListModel = new DefaultListModel<>();
+	private DefaultListModel<Etiqueta> etiquetasListModel = new DefaultListModel<>();
+	private DefaultComboBoxModel<Etiqueta> etiquetasComboBoxModel = new DefaultComboBoxModel<>();
 
 	/* Botones del dialogo */
 	private JButton selecccionarArchivo;
@@ -36,12 +41,14 @@ public class DialogoGestionArchivo extends JDialog {
 	private JButton eliminar;
 	private JButton cancelar;
 
+	private Archivo listaArchivo[];
+
 	private static final long serialVersionUID = 1L;
 
-	public DialogoGestionArchivo(JFrame parent, VentanaPrincipal ventanaPrincipal) {
+	public DialogoGestionArchivos(JFrame parent, VentanaPrincipal ventanaPrincipal) {
 		super(parent, "Gestión de archivos", true);
-		this.setIconImage(
-				Toolkit.getDefaultToolkit().getImage(getClass().getResource("/ivmatisfilesorter/imagenes/gestion-de-archivos.png")));
+		this.setIconImage(Toolkit.getDefaultToolkit()
+				.getImage(getClass().getResource("/ivmatisfilesorter/imagenes/gestion-de-archivos.png")));
 
 		/* contenido del dialogo */
 		JPanel contenido = new JPanel(null);
@@ -49,15 +56,15 @@ public class DialogoGestionArchivo extends JDialog {
 		JLabel etiquetaListaArchivo = new JLabel("Lista de archivos: ");
 		etiquetaListaArchivo.setBounds(70, 10, 120, 50);
 
-		listaDeArchivos = new JList<String>();
+		listaDeArchivos = new JList<Archivo>();
 		listaDeArchivos.setBounds(200, 30, 600, 80);
 
 		scrollpaneArchivo = new JScrollPane(listaDeArchivos);
 		scrollpaneArchivo.setBounds(200, 30, 600, 80);
 
 		archivoListModel = new DefaultListModel<>();
-		archivoListModel.addElement("Mario Bros");
-		archivoListModel.addElement("Super Mario Bros");
+		// archivoListModel.removeElement("Mario Bros");
+		// archivoListModel.removeElement("Super Mario Bros");
 
 		JLabel etiquetaRuta = new JLabel("Ruta: ");
 		etiquetaRuta.setBounds(150, 130, 100, 100);
@@ -74,19 +81,20 @@ public class DialogoGestionArchivo extends JDialog {
 		JLabel campoEtiqueta = new JLabel("Campo etiqueta: ");
 		campoEtiqueta.setBounds(150, 260, 150, 100);
 
-		listaEtiquetas = new JList<String>();
+		listaEtiquetas = new JList<Etiqueta>();
 		listaEtiquetas.setBounds(280, 305, 480, 130);
 
 		scrollpaneEtiquetas = new JScrollPane(listaEtiquetas);
 		scrollpaneEtiquetas.setBounds(280, 305, 480, 130);
 
 		etiquetasListModel = new DefaultListModel<>();
-		etiquetasListModel.addElement("Los hermanos");
-		etiquetasListModel.addElement("Bruce wayne");
+		// etiquetasListModel.removeElement("Los hermanos");
+		// etiquetasListModel.removeElement("Bruce wayne");
 
 		selecccionarArchivo = new JButton("Seleccionar Archivo");
 		selecccionarArchivo.setBounds(600, 160, 190, 50);
-		selecccionarArchivo.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/seleccione.png")));
+		selecccionarArchivo
+				.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/seleccione.png")));
 
 		agregar = new JButton("Agregar");
 		agregar.setBounds(490, 230, 120, 50);
@@ -109,7 +117,7 @@ public class DialogoGestionArchivo extends JDialog {
 		eliminar.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/eliminar.png")));
 
 		cancelar = new JButton("Cancelar");
-		cancelar.setBounds(630, 465,125, 50);
+		cancelar.setBounds(630, 465, 125, 50);
 		cancelar.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/cancelar.png")));
 
 		/* mostras los componentes en el dialogo */
@@ -143,6 +151,61 @@ public class DialogoGestionArchivo extends JDialog {
 		/* Se destruirá cuando se cierre */
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLocationRelativeTo(null);
+
+	}
+
+	@SuppressWarnings("unused")
+	private void seleccionarArchivo() {
+
+	}
+
+	@SuppressWarnings("unused")
+	private void agregarEtiqueta() {
+
+	}
+
+	@SuppressWarnings("unused")
+	private void quitarEtiqueta() {
+
+	}
+
+	@SuppressWarnings("unused")
+	private void aplicarArchivo() {
+
+	}
+
+	@SuppressWarnings("unused")
+	private void modificarArchivo() {
+
+	}
+
+	@SuppressWarnings("unused")
+	private void eliminarArchivo() {
+
+	}
+
+	@SuppressWarnings("unused")
+	private void cancelarArchivo() {
+
+	}
+
+	@SuppressWarnings("unused")
+	private void inicializar() {
+
+	}
+
+	@SuppressWarnings("unused")
+	private void habilitarCampos() {
+
+	}
+
+	@SuppressWarnings("unused")
+	private void deshabilitarCampos() {
+
+	}
+
+	@SuppressWarnings("unused")
+	private void establecerPoliticaFoco() {
 
 	}
 

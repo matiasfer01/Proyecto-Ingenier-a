@@ -9,6 +9,10 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ListModel;
+
+import ivmatisfilesorter.dominio.Archivo;
+import ivmatisfilesorter.dominio.Etiqueta;
 
 public class DialogoBusquedaArchivos extends JDialog {
 	/**
@@ -16,21 +20,23 @@ public class DialogoBusquedaArchivos extends JDialog {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private JList<String> etiquetas;
-	private JList<String> etiquetasSeleccionadas;
-	private JList<String> archivos;
+	private JList<Etiqueta> etiquetas;
+	private JList<Etiqueta> etiquetasSeleccionadas;
+	private JList<Archivo> archivos;
 	private JScrollPane scrollpaneEtiquetas;
 	private JScrollPane scrollpaneEtiquetasSeleccionadas;
 	private JScrollPane scrollpaneArchivos;
-	private DefaultListModel<String> listaEtiquetasModel = new DefaultListModel<>();
-	private DefaultListModel<String> listaEtiquetasSeleccionadasModel = new DefaultListModel<>();
-	private DefaultListModel<String> listaArchivosModel = new DefaultListModel<>();
+	private ListModel<Etiqueta> listaEtiquetasModel = new DefaultListModel<>();
+	private ListModel<Etiqueta> listaEtiquetasSeleccionadasModel = new DefaultListModel<>();
+	private ListModel<Archivo> listaArchivosModel = new DefaultListModel<>();
 	private JButton agregar;
 	private JButton buscar;
 	private JButton quitar;
 	private JButton abrirArchivo;
 	private JButton aceptar;
 	private JButton exportar;
+	
+	private Archivo listaArchivos[];
 
 	public DialogoBusquedaArchivos(JFrame parent, VentanaPrincipal ventanaPrincipal) {
 		super(parent, "Búsqueda de archivos", true);
@@ -40,41 +46,41 @@ public class DialogoBusquedaArchivos extends JDialog {
 		JLabel etiquetasDisponibles = new JLabel("Listado de etiquetas disponibles: ");
 		etiquetasDisponibles.setBounds(30, 20, 200, 60);
 
-		etiquetas = new JList<String>();
+		etiquetas = new JList<Etiqueta>();
 		etiquetas.setBounds(220, 30, 150, 200);
 
 		scrollpaneEtiquetas = new JScrollPane(etiquetas);
 		scrollpaneEtiquetas.setBounds(220, 30, 150, 200);
 
 		listaEtiquetasModel = new DefaultListModel<>();
-		listaEtiquetasModel.addElement("Los hermanos");
-		listaEtiquetasModel.addElement("Bruce Wayne");
+		//listaEtiquetasModel.addElement("Los hermanos");
+		//listaEtiquetasModel.addElement("Bruce Wayne");
 
 		JLabel seleccionadas = new JLabel("Listado de etiquetas seleccionadas: ");
 		seleccionadas.setBounds(425, 20, 220, 60);
 
-		etiquetasSeleccionadas = new JList<String>();
+		etiquetasSeleccionadas = new JList<Etiqueta>();
 		etiquetasSeleccionadas.setBounds(635, 30, 150, 200);
 
 		scrollpaneEtiquetasSeleccionadas = new JScrollPane(etiquetasSeleccionadas);
 		scrollpaneEtiquetasSeleccionadas.setBounds(635, 30, 150, 200);
 
 		listaEtiquetasSeleccionadasModel = new DefaultListModel<>();
-		listaEtiquetasSeleccionadasModel.addElement("Los hermanos");
-		listaEtiquetasSeleccionadasModel.addElement("Bruce Wayne");
+		//listaEtiquetasModel.addElement("Los hermanos");
+		//listaEtiquetasModel.addElement("Bruce Wayne");
 
 		JLabel listaArchivos = new JLabel("Lista de archivos: ");
 		listaArchivos.setBounds(220, 200, 220, 150);
 
-		archivos = new JList<String>();
+		archivos = new JList<Archivo>();
 		archivos.setBounds(350, 260, 350, 150);
 
 		scrollpaneArchivos = new JScrollPane(archivos);
 		scrollpaneArchivos.setBounds(350, 260, 350, 150);
 
 		listaArchivosModel = new DefaultListModel<>();
-		listaArchivosModel.addElement("Los hermanos");
-		listaArchivosModel.addElement("Bruce Wayne");
+		//listaArchivosModel.addElement("Los hermanos");
+		//listaArchivosModel.addElement("Bruce Wayne");
 
 		agregar = new JButton("Agregar");
 		agregar.setBounds(450, 120, 125, 40);
@@ -125,6 +131,48 @@ public class DialogoBusquedaArchivos extends JDialog {
 		/* Se destruirá cuando se cierre */
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLocationRelativeTo(null);
+	}
+	
+	
+
+	private void agregarEtiqueta() {
+
+	}
+
+	private void buscarEtiqueta() {
+
+	}
+
+	private void quitarEtiqueta() {
+
+	}
+
+	private void abrirArchivo() {
+
+	}
+
+	private void aceptarArchivo() {
+
+	}
+
+	private void exportarArchivo() {
+
+	}
+
+	private void inicializar() {
+
+	}
+
+	private void habilitarCampos() {
+
+	}
+
+	private void establecerPoliticaFoco() {
+
+	}
+
+	private void deshabilitarCampos() {
+
 	}
 
 }

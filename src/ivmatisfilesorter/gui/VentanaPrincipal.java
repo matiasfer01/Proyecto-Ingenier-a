@@ -14,6 +14,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
+import ivmatisfilesorter.dominio.Proyecto;
+
 public class VentanaPrincipal extends JFrame {
 
 	/**
@@ -38,6 +40,8 @@ public class VentanaPrincipal extends JFrame {
 
 	private JMenuItem acercaDe;
 	private JMenuItem manualDeUsuario;
+
+	private Proyecto proyectoACrear;
 
 	/* barra */
 	private JMenuBar barraMenu;
@@ -175,7 +179,7 @@ public class VentanaPrincipal extends JFrame {
 						null);
 				dialogoPropiedades.setVisible(true);
 			} else if (e.getSource().equals(gestionDeArchivos)) {
-				DialogoGestionArchivo dialogoGestionArchivos = new DialogoGestionArchivo(VentanaPrincipal.this, null);
+				DialogoGestionArchivos dialogoGestionArchivos = new DialogoGestionArchivos(VentanaPrincipal.this, null);
 				dialogoGestionArchivos.setVisible(true);
 			} else if (e.getSource().equals(gestionDeEtiquetas)) {
 				DialogoGestionEtiquetas dialogoGestionEtiquetas = new DialogoGestionEtiquetas(VentanaPrincipal.this,
@@ -199,6 +203,30 @@ public class VentanaPrincipal extends JFrame {
 					JOptionPane.INFORMATION_MESSAGE, logo);
 		}
 
+	}
+
+	private void inicializar() {
+
+	}
+
+	private void habilitarCampos() {
+
+	}
+
+	private void establecerPoliticaFoco() {
+
+	}
+
+	private void deshabilitarCampos() {
+
+	}
+
+	private Proyecto getProyectoACrear() {
+		return proyectoACrear;
+	}
+
+	private void setProyectoACrear(Proyecto proyectoACrear) {
+		this.proyectoACrear = proyectoACrear;
 	}
 
 }

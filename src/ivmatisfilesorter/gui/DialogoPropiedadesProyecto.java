@@ -15,6 +15,8 @@ import javax.swing.JTextField;
 
 import com.toedter.calendar.JDateChooser;
 
+import ivmatisfilesorter.dominio.Proyecto;
+
 public class DialogoPropiedadesProyecto extends JDialog {
 
 	/**
@@ -23,7 +25,7 @@ public class DialogoPropiedadesProyecto extends JDialog {
 	private static final long serialVersionUID = 1L;
 
 	private JTextField nombreProyecto;
-	private JTextField propitario;
+	private JTextField propietario;
 	private JDateChooser fechaDeCreacion;
 	private JTextArea descripcion;
 	/* Botones del dialogo */
@@ -32,11 +34,13 @@ public class DialogoPropiedadesProyecto extends JDialog {
 	private JButton cancelar;
 	private JButton nuevaEtiqueta;
 
+	private Proyecto proyecto[];
+
 	public DialogoPropiedadesProyecto(JFrame parent, VentanaPrincipal ventanaPrincipal) {
 		// TODO Auto-generated constructor stub
 		super(parent, "Propiedades del proyecto", true);
-		this.setIconImage(
-				Toolkit.getDefaultToolkit().getImage(getClass().getResource("/ivmatisfilesorter/imagenes/propiedades.png")));
+		this.setIconImage(Toolkit.getDefaultToolkit()
+				.getImage(getClass().getResource("/ivmatisfilesorter/imagenes/propiedades.png")));
 
 		/* contenido del dialogo */
 		JPanel contenido = new JPanel(null);
@@ -56,8 +60,8 @@ public class DialogoPropiedadesProyecto extends JDialog {
 		JLabel etiquetaPropietario = new JLabel("Propietario: ");
 		etiquetaPropietario.setBounds(100, 240, 150, 150);
 
-		propitario = new JTextField();
-		propitario.setBounds(180, 300, 150, 30);
+		propietario = new JTextField();
+		propietario.setBounds(180, 300, 150, 30);
 
 		JLabel etiquetaDescripcion = new JLabel("Descripción: ");
 		etiquetaDescripcion.setBounds(500, 240, 150, 150);
@@ -95,7 +99,7 @@ public class DialogoPropiedadesProyecto extends JDialog {
 		/* mostrar campos */
 		contenido.add(nombreProyecto);
 		contenido.add(fechaDeCreacion);
-		contenido.add(propitario);
+		contenido.add(propietario);
 		contenido.add(descripcion);
 		/* mostrar los botones */
 		contenido.add(editar);
@@ -127,6 +131,38 @@ public class DialogoPropiedadesProyecto extends JDialog {
 			}
 
 		}
+	}
+
+	private void editarProyecto() {
+
+	}
+
+	private void guardarProyecto() {
+
+	}
+
+	private void cancelarProyecto() {
+
+	}
+
+	private void nuevaEtiqueta() {
+
+	}
+
+	private void inicializar() {
+
+	}
+
+	private void habilitarCampos() {
+
+	}
+
+	private void deshabilitarCampos(){
+		
+	}
+
+	private void establecerPoliticaFoco() {
+
 	}
 
 }
