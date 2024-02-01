@@ -163,7 +163,7 @@ public class DialogoGestionArchivos extends JDialog {
 
 		/* Accion de Modificar */
 		accionBotonModificar = new AbstractAction("Modificar",
-				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/modificar.png"))) {
+				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/editar.png"))) {
 
 			private static final long serialVersionUID = 1L;
 
@@ -189,7 +189,7 @@ public class DialogoGestionArchivos extends JDialog {
 		
 		/* Accion de Modificar */
 		accionBotonCancelar = new AbstractAction("Cancelar",
-				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/modificar.png"))) {
+				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/cancelar.png"))) {
 
 			private static final long serialVersionUID = 1L;
 
