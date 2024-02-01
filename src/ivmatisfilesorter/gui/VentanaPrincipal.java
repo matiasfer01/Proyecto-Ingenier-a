@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
@@ -13,6 +14,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 
 import ivmatisfilesorter.dominio.Proyecto;
 
@@ -56,38 +58,49 @@ public class VentanaPrincipal extends JFrame {
 		proyecto = new JMenu("Proyecto");
 		proyecto.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/proyecto.png")));
 		proyecto.setToolTipText("Realiza diversas operaciones relacionadas con proyectos");
+		proyecto.setMnemonic(KeyEvent.VK_O);
 
 		gestionDelProyecto = new JMenu("Gestión del proyecto");
 		gestionDelProyecto
 				.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/gestion-de-proyectos.png")));
 		gestionDelProyecto
 				.setToolTipText("Engloba diversas operaciones relacionadas con el manejo de archivos y etiquetas");
+		gestionDelProyecto.setMnemonic(KeyEvent.VK_T);
 
 		ayuda = new JMenu("Ayuda");
 		ayuda.setToolTipText("Muestra información acerca de la aplicación IvMatIs FileSorter y sus créditos");
 		ayuda.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/ayuda.png")));
+		ayuda.setMnemonic(KeyEvent.VK_Y);
 
 		/* sub menus de Proyecto */
 		crearProyecto = new JMenuItem("Crear proyecto");
 		crearProyecto.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/crear.png")));
 		crearProyecto.setToolTipText("Inicia la creación de un nuevo proyecto");
 		crearProyecto.setMnemonic(KeyEvent.VK_C);
+		crearProyecto.setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
 
 		abrirProyecto = new JMenuItem("Abrir proyecto");
 		abrirProyecto.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/abrir.png")));
 		abrirProyecto.setToolTipText("Accede a proyectos previamente guardados");
 		abrirProyecto.setMnemonic(KeyEvent.VK_A);
+		abrirProyecto.setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
 
 		propiedadesDelProyecto = new JMenuItem("Propiedades del proyecto");
 		propiedadesDelProyecto
 				.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/propiedades.png")));
 		propiedadesDelProyecto.setToolTipText("Realiza modificaciones en la información del proyecto");
 		propiedadesDelProyecto.setMnemonic(KeyEvent.VK_P);
+		propiedadesDelProyecto.setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
 
 		salir = new JMenuItem("Salir");
 		salir.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/salir.png")));
 		salir.setToolTipText("Cierra la aplicación");
 		salir.setMnemonic(KeyEvent.VK_S);
+		salir.setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
 
 		/* sub menus de Gestion del proyecto */
 		gestionDeArchivos = new JMenuItem("Gestión de archivos");
@@ -95,28 +108,38 @@ public class VentanaPrincipal extends JFrame {
 				.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/gestion-de-archivos.png")));
 		gestionDeArchivos.setToolTipText("Asigna las etiquetas seleccionadas al archivo");
 		gestionDeArchivos.setMnemonic(KeyEvent.VK_G);
+		gestionDeArchivos.setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
 
 		gestionDeEtiquetas = new JMenuItem("Gestión de etiquetas");
 		gestionDeEtiquetas
 				.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/gestion-de-etiquetas.png")));
 		gestionDeEtiquetas.setToolTipText("Gestiona las etiquetas almacenadas en el sistema");
 		gestionDeEtiquetas.setMnemonic(KeyEvent.VK_E);
+		gestionDeEtiquetas.setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
 
 		busquedaDeArchivos = new JMenuItem("Búsqueda de archivos");
 		busquedaDeArchivos.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/buscar.png")));
 		busquedaDeArchivos.setToolTipText("Busca archivos según las etiquetas seleccionadas");
 		busquedaDeArchivos.setMnemonic(KeyEvent.VK_B);
+		busquedaDeArchivos.setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_B, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
 
 		/* sub menus de ayuda */
 		acercaDe = new JMenuItem("Acerca de...");
 		acercaDe.setToolTipText("Ofrece ayuda relacionada con la aplicación");
 		acercaDe.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/acercaDe.png")));
-		acercaDe.setMnemonic(KeyEvent.VK_A);
+		acercaDe.setMnemonic(KeyEvent.VK_R);
+		acercaDe.setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
 
 		manualDeUsuario = new JMenuItem("Manual de usuario");
 		manualDeUsuario.setToolTipText("Accede a instrucciones detalladas sobre el uso de la aplicación");
 		manualDeUsuario.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/manual.png")));
 		manualDeUsuario.setMnemonic(KeyEvent.VK_M);
+		manualDeUsuario.setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
 
 		/* Se agregan los JMenuItem a los Menus */
 
@@ -204,23 +227,23 @@ public class VentanaPrincipal extends JFrame {
 		}
 
 	}
-
+	//coordina acciones iniciales para establecer el estado inicial de la interfaz de usuario. 
 	private void inicializar() {
 
 	}
-
+	// realiza la acción de permitir la edición o interacción con varios componentes de la interfaz gráfica
 	private void habilitarCampos() {
 
 	}
-
+	//La política de foco se basa en el orden en el que se añadieron los componentes al vector
 	private void establecerPoliticaFoco() {
 
 	}
-
+	//realiza la acción de impedir la edición o interacción con varios componentes de la interfaz gráfica
 	private void deshabilitarCampos() {
 
 	}
-
+	
 	private Proyecto getProyectoACrear() {
 		return proyectoACrear;
 	}
