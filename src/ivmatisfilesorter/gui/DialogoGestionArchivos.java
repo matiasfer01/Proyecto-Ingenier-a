@@ -6,7 +6,7 @@
  * 		Matías Acevedo Luis Fernando
  * Actividad: Primer entrega de las pantallas del sistema IvMatIs FileSorter que consiste en que un proyecto puede contener múltiples 
  * archivos y los archivos contienen etiquetas que son las que organizan a los archivos.
- * Fecha de elaboración: 01/02/2024
+ * Fecha de elaboración: 01/02/2024.
  * 		
  * */
 package ivmatisfilesorter.gui;
@@ -38,19 +38,15 @@ import ivmatisfilesorter.dominio.Etiqueta;
 
 public class DialogoGestionArchivos extends JDialog {
 
-	/* Componentes del dialogo */
 	private JList<String> listaDeArchivos;
 	private JScrollPane scrollpaneArchivo;
 	private JTextField ruta;
 	private JComboBox<String> etiquetas;
 	private JList<String> listaEtiquetas;
 	private JScrollPane scrollpaneEtiquetas;
-	/* Modeles */
 	private DefaultListModel<String> archivoListModel = new DefaultListModel<>();
 	private DefaultListModel<String> etiquetasListModel = new DefaultListModel<>();
 	private DefaultComboBoxModel<String> etiquetasComboBoxModel = new DefaultComboBoxModel<>();
-
-	/* Botones del dialogo */
 	private JButton selecccionarArchivo;
 	private JButton agregar;
 	private JButton quitar;
@@ -58,8 +54,7 @@ public class DialogoGestionArchivos extends JDialog {
 	private JButton modificar;
 	private JButton eliminar;
 	private JButton cancelar;
-
-	/* Acciones para los botones */
+	/* Acción de los botones que se están utilizando en la ventana. */
 	private Action accionBotonSeleccionar;
 	private Action accionBotonAgregar;
 	private Action accionBotonQuitar;
@@ -77,7 +72,6 @@ public class DialogoGestionArchivos extends JDialog {
 		this.setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(getClass().getResource("/ivmatisfilesorter/imagenes/gestion-de-archivos.png")));
 
-		/* contenido del dialogo */
 		JPanel contenido = new JPanel(null);
 
 		JLabel etiquetaListaArchivo = new JLabel("Lista de archivos: ");
@@ -86,7 +80,7 @@ public class DialogoGestionArchivos extends JDialog {
 
 		listaDeArchivos = new JList<String>();
 		listaDeArchivos.setBounds(200, 30, 600, 80);
-		listaDeArchivos.setToolTipText("Lista de archivos existentes");
+		listaDeArchivos.setToolTipText("Seleccionar el archivo de la lista de archivos.");
 
 		scrollpaneArchivo = new JScrollPane(listaDeArchivos);
 		scrollpaneArchivo.setBounds(200, 30, 600, 80);
@@ -113,7 +107,7 @@ public class DialogoGestionArchivos extends JDialog {
 
 		ruta = new JTextField();
 		ruta.setBounds(200, 170, 350, 30);
-		ruta.setToolTipText("Direccion del archivo");
+		ruta.setToolTipText("Mostrar la dirección del archivo.");
 		ruta.setEditable(false);
 
 		JLabel etiquetaEtiquetas = new JLabel("Etiquetas");
@@ -122,7 +116,7 @@ public class DialogoGestionArchivos extends JDialog {
 
 		etiquetas = new JComboBox<>();
 		etiquetas.setBounds(250, 240, 200, 30);
-		etiquetas.setToolTipText("Lista de etiquetas");
+		etiquetas.setToolTipText("Seleccionar la etiqueta.");
 
 		JLabel campoEtiqueta = new JLabel("Campo etiqueta: ");
 		campoEtiqueta.setBounds(150, 260, 150, 100);
@@ -130,7 +124,7 @@ public class DialogoGestionArchivos extends JDialog {
 
 		listaEtiquetas = new JList<String>();
 		listaEtiquetas.setBounds(280, 305, 480, 130);
-		listaEtiquetas.setToolTipText("Etiquetas seleccionadas");
+		listaEtiquetas.setToolTipText("Mostrar las etiquetas que han sido seleccionadas.");
 
 		scrollpaneEtiquetas = new JScrollPane(listaEtiquetas);
 		scrollpaneEtiquetas.setBounds(280, 305, 480, 130);
@@ -147,7 +141,10 @@ public class DialogoGestionArchivos extends JDialog {
 		etiquetasListModel.addElement("Barry Allen");
 		etiquetasListModel.addElement("Thor Odinson");
 
-		/* Accione de seleccionar */
+		/*
+		 * La accionBotonSeleccionar está asociada al botón. Cuando se ejecuta
+		 * se manda a llamar al método seleccionarArchivo().
+		 */
 		accionBotonSeleccionar = new AbstractAction("Seleccionar archivo",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/seleccione.png"))) {
 
@@ -159,19 +156,25 @@ public class DialogoGestionArchivos extends JDialog {
 			}
 		};
 
-		/* Accion de agregar */
+		/*
+		 * La accionBotonAgregar está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método agregarEtiqueta().
+		 */
 		accionBotonAgregar = new AbstractAction("Agregar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/agregar.png"))) {
 
 			private static final long serialVersionUID = 1L;
 
 			public void actionPerformed(ActionEvent e) {
-				seleccionarArchivo();
+				agregarEtiqueta();
 
 			}
 		};
 
-		/* Accion de quitar */
+		/*
+		 * La accionBotonQuitar está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método quitarEtiqueta().
+		 */
 		accionBotonQuitar = new AbstractAction("Quitar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/quitar.png"))) {
 
@@ -183,7 +186,10 @@ public class DialogoGestionArchivos extends JDialog {
 			}
 		};
 
-		/* Accion de Guardar */
+		/*
+		 * La accionBotonGuardar está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método guardarArchivo().
+		 */
 		accionBotonGuardar = new AbstractAction("Guardar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/guardar.png"))) {
 
@@ -209,7 +215,10 @@ public class DialogoGestionArchivos extends JDialog {
 
 		};
 
-		/* Accion de Eliminar */
+		/*
+		 * La accionBotonEliminar está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método eliminarArchivo().
+		 */
 		accionBotonEliminar = new AbstractAction("Eliminar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/eliminar.png"))) {
 
@@ -222,7 +231,10 @@ public class DialogoGestionArchivos extends JDialog {
 
 		};
 
-		/* Accion de cancelar */
+		/*
+		 * La accionBotonCancelar está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método modificarArchivo().
+		 */
 		accionBotonCancelar = new AbstractAction("Cancelar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/cancelar.png"))) {
 
@@ -238,7 +250,7 @@ public class DialogoGestionArchivos extends JDialog {
 		selecccionarArchivo = new JButton(accionBotonSeleccionar);
 		accionBotonSeleccionar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_DOWN_MASK));
-		accionBotonSeleccionar.putValue(Action.SHORT_DESCRIPTION, "Permite seleccionar un archivo");
+		accionBotonSeleccionar.putValue(Action.SHORT_DESCRIPTION, "Seleccionar un archivo.");
 		accionBotonSeleccionar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_S));
 		selecccionarArchivo.getActionMap().put("Seleccionar archivo", accionBotonSeleccionar);
 		selecccionarArchivo.setHorizontalTextPosition(JButton.TRAILING);
@@ -250,7 +262,7 @@ public class DialogoGestionArchivos extends JDialog {
 		agregar = new JButton(accionBotonAgregar);
 		accionBotonAgregar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_DOWN_MASK));
-		accionBotonAgregar.putValue(Action.SHORT_DESCRIPTION, "Agrega la etiqueta");
+		accionBotonAgregar.putValue(Action.SHORT_DESCRIPTION, "Agregar la etiqueta.");
 		accionBotonAgregar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_A));
 		agregar.getActionMap().put("Agregar", accionBotonAgregar);
 		agregar.setHorizontalTextPosition(JButton.TRAILING);
@@ -274,7 +286,7 @@ public class DialogoGestionArchivos extends JDialog {
 		guardar = new JButton(accionBotonGuardar);
 		accionBotonGuardar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_DOWN_MASK));
-		accionBotonGuardar.putValue(Action.SHORT_DESCRIPTION, "Guarda el archivo");
+		accionBotonGuardar.putValue(Action.SHORT_DESCRIPTION, "Guardar el archivo con las etiquetas seleccionadas.");
 		accionBotonGuardar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_G));
 		guardar.getActionMap().put("Guardar", accionBotonGuardar);
 		guardar.setHorizontalTextPosition(JButton.TRAILING);
@@ -286,7 +298,7 @@ public class DialogoGestionArchivos extends JDialog {
 		modificar = new JButton(accionBotonModificar);
 		accionBotonModificar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.CTRL_DOWN_MASK));
-		accionBotonModificar.putValue(Action.SHORT_DESCRIPTION, "Modificar el proyecto");
+		accionBotonModificar.putValue(Action.SHORT_DESCRIPTION, "Modificar el proyecto de acuerdo a las etiquetas.");
 		accionBotonModificar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_M));
 		modificar.getActionMap().put("Editar", accionBotonGuardar);
 		modificar.setHorizontalTextPosition(JButton.TRAILING);
@@ -298,7 +310,8 @@ public class DialogoGestionArchivos extends JDialog {
 		eliminar = new JButton(accionBotonEliminar);
 		accionBotonEliminar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_I, InputEvent.CTRL_DOWN_MASK));
-		accionBotonEliminar.putValue(Action.SHORT_DESCRIPTION, "Eliminar el archivo");
+		accionBotonEliminar.putValue(Action.SHORT_DESCRIPTION,
+				"Eliminar la asignación de las etiquetas al archivo seleccionado");
 		accionBotonEliminar.putValue(Action.MNEMONIC_KEY, KeyEvent.VK_I);
 		eliminar.getActionMap().put("Eliminar", accionBotonEliminar);
 		eliminar.setHorizontalTextPosition(JButton.TRAILING);
@@ -310,7 +323,7 @@ public class DialogoGestionArchivos extends JDialog {
 		cancelar = new JButton(accionBotonCancelar);
 		accionBotonCancelar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_DOWN_MASK));
-		accionBotonCancelar.putValue(Action.SHORT_DESCRIPTION, "Cancelar la edición del archivo");
+		accionBotonCancelar.putValue(Action.SHORT_DESCRIPTION, "Cancelar la edición del archivo.");
 		accionBotonCancelar.putValue(Action.MNEMONIC_KEY, KeyEvent.VK_N);
 		cancelar.getActionMap().put("Cancelar", accionBotonCancelar);
 		cancelar.setHorizontalTextPosition(JButton.TRAILING);
@@ -319,21 +332,17 @@ public class DialogoGestionArchivos extends JDialog {
 		cancelar.setMnemonic(KeyEvent.VK_N);
 		cancelar.setBounds(630, 465, 125, 50);
 
-		/* mostras los componentes en el dialogo */
+		/* Los componentes han sido agregados a la ventana. */
 		contenido.add(etiquetaListaArchivo);
 		contenido.add(scrollpaneArchivo);
 		contenido.add(etiquetaRuta);
 		contenido.add(etiquetaEtiquetas);
 		listaDeArchivos.setModel(archivoListModel);
 		contenido.add(campoEtiqueta);
-
-		/* mostrar campos */
-
 		contenido.add(ruta);
 		contenido.add(etiquetas);
 		listaEtiquetas.setModel(etiquetasListModel);
 		contenido.add(scrollpaneEtiquetas);
-		/* Botones */
 		contenido.add(selecccionarArchivo);
 		contenido.add(agregar);
 		contenido.add(quitar);
@@ -353,72 +362,59 @@ public class DialogoGestionArchivos extends JDialog {
 
 	}
 
-	@SuppressWarnings("unused")
-	// permite seleccionar un archivo
+	// Selecciona un archivo de la lista de archivos.
 	private void seleccionarArchivo() {
 
 	}
 
-	@SuppressWarnings("unused")
-	// agrega la etiqueta al panel
+	// Agrega la etiqueta al campo etiqueta y se agrega a la lista etiquetas.
 	private void agregarEtiqueta() {
 
 	}
 
-	@SuppressWarnings("unused")
-	// Remover la etiqueta.
+	// Elimina la etiqueta de la lista etiquetas y también del campo etiquetas.
 	private void quitarEtiqueta() {
 
 	}
 
-	@SuppressWarnings("unused")
-	// Guardar el el archivo con las etiquetas seleccionadas
+	// Guarda el archivo con las etiquetas seleccionadas.
 	private void guardarArchivo() {
 
 	}
 
-	@SuppressWarnings("unused")
-	// Permite la modificación del archivo
+	// Modifica las etiquetas del archivo.
 	private void modificarArchivo() {
 
 	}
 
-	@SuppressWarnings("unused")
-	// Eliminar el archivo definitivamente.
+	// Elimina las etiquetas que han sido seleccionados para el archivo.
 	private void eliminarArchivo() {
 
 	}
 
-	@SuppressWarnings("unused")
-	// Cansela la edicion del archivo
+	// Cancela los cambios de las etiquetas que se han realizado en el archivo.
 	private void cancelarArchivo() {
 
 	}
 
-	@SuppressWarnings("unused")
-	// coordina acciones iniciales para establecer el estado inicial de la
-	// interfaz de usuario.
+	// Agrega los valores por defecto a los componentes que lo requieran.
 	private void inicializar() {
 
 	}
 
-	@SuppressWarnings("unused")
-	// realiza la acción de permitir la edición o interacción con varios
-	// componentes de la interfaz gráfica.
+	// Realiza la acción de permitir la edición o interacción con varios
+	// componentes.
 	private void habilitarCampos() {
 
 	}
 
-	@SuppressWarnings("unused")
-	// realiza la acción de impedir la edición o interacción con varios
-	// componentes de la interfaz gráfica.
+	// Realiza la acción de impedir la edición o interacción con varios
+	// componentes.
 	private void deshabilitarCampos() {
 
 	}
 
-	@SuppressWarnings("unused")
-	// La política de foco se basa en el orden en el que se añadieron los
-	// componentes al vector.
+	// Añade los componentes en orden al vector.
 	private void establecerPoliticaFoco() {
 
 	}

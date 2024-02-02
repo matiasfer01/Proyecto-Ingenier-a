@@ -10,8 +10,6 @@
  * 		
  * */
 
-
-
 package ivmatisfilesorter.gui;
 
 import java.awt.Toolkit;
@@ -32,15 +30,13 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.KeyStroke;
-import javax.swing.ListModel;
 
 import ivmatisfilesorter.dominio.Archivo;
 import ivmatisfilesorter.dominio.Etiqueta;
 
+/*Está clase se encargará de mostrar un archivo o más archivos que se clasificarán por etiquetas seleccionadas de las etiquetas que se encuentran almacenadas o guardadas.*/
 public class DialogoBusquedaArchivos extends JDialog {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
 	private JList<String> etiquetas;
@@ -57,7 +53,7 @@ public class DialogoBusquedaArchivos extends JDialog {
 	private JButton quitar;
 	private JButton abrirArchivo;
 	private JButton exportar;
-	/* Acción de los botones */
+	/* Acción de los botones que se están utilizando en la ventana. */
 	private Action accionBotonAgregar;
 	private Action accionBotonQuitar;
 	private Action accionBotonBuscar;
@@ -70,7 +66,7 @@ public class DialogoBusquedaArchivos extends JDialog {
 
 		this.setIconImage(
 				Toolkit.getDefaultToolkit().getImage(getClass().getResource("/ivmatisfilesorter/imagenes/buscar.png")));
-		
+
 		JPanel contenido = new JPanel(null);
 
 		JLabel etiquetasDisponibles = new JLabel("Listado de etiquetas disponibles: ");
@@ -79,7 +75,7 @@ public class DialogoBusquedaArchivos extends JDialog {
 
 		etiquetas = new JList<String>();
 		etiquetas.setBounds(220, 30, 180, 200);
-		etiquetas.setToolTipText("Lista de etiquetas");
+		etiquetas.setToolTipText("Seleccionar la etiqueta o etiquetas que se encuentren almacenadas.");
 
 		scrollpaneEtiquetas = new JScrollPane(etiquetas);
 		scrollpaneEtiquetas.setBounds(220, 30, 180, 200);
@@ -118,7 +114,7 @@ public class DialogoBusquedaArchivos extends JDialog {
 
 		etiquetasSeleccionadas = new JList<String>();
 		etiquetasSeleccionadas.setBounds(635, 30, 180, 200);
-		etiquetasSeleccionadas.setToolTipText("Etiquetas seleccionadas");
+		etiquetasSeleccionadas.setToolTipText("Mostrar las etiquetas que han sido seleccionadas.");
 
 		scrollpaneEtiquetasSeleccionadas = new JScrollPane(etiquetasSeleccionadas);
 		scrollpaneEtiquetasSeleccionadas.setBounds(635, 30, 180, 200);
@@ -126,13 +122,13 @@ public class DialogoBusquedaArchivos extends JDialog {
 		listaEtiquetasSeleccionadasModel = new DefaultListModel<>();
 		listaEtiquetasSeleccionadasModel.addElement("Trabajo");
 		listaEtiquetasSeleccionadasModel.addElement("Personal");
-		listaEtiquetasSeleccionadasModel.addElement("Proyecto Importante");
+		listaEtiquetasSeleccionadasModel.addElement("Proyecto importante");
 		listaEtiquetasSeleccionadasModel.addElement("Recordatorio");
 		listaEtiquetasSeleccionadasModel.addElement("Reunión");
 		listaEtiquetasSeleccionadasModel.addElement("Urgente");
 		listaEtiquetasSeleccionadasModel.addElement("Compra");
 		listaEtiquetasSeleccionadasModel.addElement("Aniversario");
-		listaEtiquetasSeleccionadasModel.addElement("Evento Social");
+		listaEtiquetasSeleccionadasModel.addElement("Evento social");
 		listaEtiquetasSeleccionadasModel.addElement("Estudio");
 		listaEtiquetasSeleccionadasModel.addElement("Familia");
 		listaEtiquetasSeleccionadasModel.addElement("Ocio");
@@ -144,7 +140,8 @@ public class DialogoBusquedaArchivos extends JDialog {
 
 		archivos = new JList<String>();
 		archivos.setBounds(350, 260, 350, 150);
-		archivos.setToolTipText("Lista de archivos encontrados");
+		archivos.setToolTipText(
+				"Mostrar la lista de archivos dependiendo de las etiquetas que han sido seleccionadas.");
 
 		scrollpaneArchivos = new JScrollPane(archivos);
 		scrollpaneArchivos.setBounds(350, 260, 350, 150);
@@ -165,6 +162,10 @@ public class DialogoBusquedaArchivos extends JDialog {
 		listaArchivosModel.addElement("Aniversario_Video");
 		listaArchivosModel.addElement("Ocio_Playlist");
 
+		/*
+		 * La accionBotonAgregar está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método agregarEtiqueta().
+		 */
 		accionBotonAgregar = new AbstractAction("Agregar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/agregar.png"))) {
 
@@ -175,6 +176,10 @@ public class DialogoBusquedaArchivos extends JDialog {
 
 			}
 		};
+		/*
+		 * La accionBotonQuitar está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método quitarEtiqueta().
+		 */
 		accionBotonQuitar = new AbstractAction("Quitar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/quitar.png"))) {
 
@@ -185,6 +190,10 @@ public class DialogoBusquedaArchivos extends JDialog {
 
 			}
 		};
+		/*
+		 * La accionBotonBuscar está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método buscarEtiqueta().
+		 */
 		accionBotonBuscar = new AbstractAction("Buscar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/buscar.png"))) {
 
@@ -195,6 +204,10 @@ public class DialogoBusquedaArchivos extends JDialog {
 
 			}
 		};
+		/*
+		 * La accionBotonAbrirArchivo está asociada al botón. Cuando se ejecuta
+		 * se manda a llamar al método abrirArchivo().
+		 */
 		accionBotonAbrirArchivo = new AbstractAction("Abrir archivo",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/abrir.png"))) {
 
@@ -205,6 +218,10 @@ public class DialogoBusquedaArchivos extends JDialog {
 
 			}
 		};
+		/*
+		 * La accionBotonExportar está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método exportarArchivo().
+		 */
 		accionBotonExportar = new AbstractAction("Exportar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/exportar.png"))) {
 
@@ -218,7 +235,7 @@ public class DialogoBusquedaArchivos extends JDialog {
 		agregar = new JButton(accionBotonAgregar);
 		accionBotonAgregar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_DOWN_MASK));
-		accionBotonAgregar.putValue(Action.SHORT_DESCRIPTION, "Agrega la etiqueta seleccionada");
+		accionBotonAgregar.putValue(Action.SHORT_DESCRIPTION, "Agregar las etiquetas que han sido seleccionadas.");
 		accionBotonAgregar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_G));
 		agregar.getActionMap().put("Agregar", accionBotonAgregar);
 		agregar.setHorizontalTextPosition(JButton.TRAILING);
@@ -229,7 +246,7 @@ public class DialogoBusquedaArchivos extends JDialog {
 		quitar = new JButton(accionBotonQuitar);
 		accionBotonQuitar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_DOWN_MASK));
-		accionBotonQuitar.putValue(Action.SHORT_DESCRIPTION, "Elimina la etiqueta seleccionada");
+		accionBotonQuitar.putValue(Action.SHORT_DESCRIPTION, "Eliminar las etiquetas que han sido seleccionadas.");
 		accionBotonQuitar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_Q));
 		quitar.getActionMap().put("Quitar", accionBotonQuitar);
 		quitar.setHorizontalTextPosition(JButton.TRAILING);
@@ -240,7 +257,7 @@ public class DialogoBusquedaArchivos extends JDialog {
 		buscar = new JButton(accionBotonBuscar);
 		accionBotonBuscar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_B, InputEvent.CTRL_DOWN_MASK));
-		accionBotonBuscar.putValue(Action.SHORT_DESCRIPTION, "Busca los archivos con las etiquetas seleccionadas");
+		accionBotonBuscar.putValue(Action.SHORT_DESCRIPTION, "Encontrar los archivos con las etiquetas seleccionadas.");
 		accionBotonBuscar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_B));
 		buscar.getActionMap().put("Buscar", accionBotonBuscar);
 		buscar.setHorizontalTextPosition(JButton.TRAILING);
@@ -251,7 +268,7 @@ public class DialogoBusquedaArchivos extends JDialog {
 		abrirArchivo = new JButton(accionBotonAbrirArchivo);
 		accionBotonAbrirArchivo.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_DOWN_MASK));
-		accionBotonAbrirArchivo.putValue(Action.SHORT_DESCRIPTION, "Abre el archivos selecionados");
+		accionBotonAbrirArchivo.putValue(Action.SHORT_DESCRIPTION, "Acceder al archivo seleccionado.");
 		accionBotonAbrirArchivo.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_R));
 		abrirArchivo.getActionMap().put("Abrir archivo", accionBotonAbrirArchivo);
 		abrirArchivo.setHorizontalTextPosition(JButton.TRAILING);
@@ -262,7 +279,7 @@ public class DialogoBusquedaArchivos extends JDialog {
 		exportar = new JButton(accionBotonExportar);
 		accionBotonExportar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_X, InputEvent.CTRL_DOWN_MASK));
-		accionBotonExportar.putValue(Action.SHORT_DESCRIPTION, "Mueve los archivos a una carpeta");
+		accionBotonExportar.putValue(Action.SHORT_DESCRIPTION, "Transferir el archivo seleccionado a una carpeta.");
 		accionBotonExportar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_X));
 		exportar.getActionMap().put("Exportar", accionBotonExportar);
 		exportar.setHorizontalTextPosition(JButton.TRAILING);
@@ -270,7 +287,7 @@ public class DialogoBusquedaArchivos extends JDialog {
 				.put((KeyStroke) accionBotonExportar.getValue(Action.ACCELERATOR_KEY), "Exportar");
 		exportar.setBounds(600, 465, 120, 40);
 
-		/* mostras los componentes en el dialogo */
+		/* Los componentes han sido agregados a la ventana. */
 		contenido.add(etiquetasDisponibles);
 		etiquetas.setModel(listaEtiquetasModel);
 		contenido.add(scrollpaneEtiquetas);
@@ -289,66 +306,58 @@ public class DialogoBusquedaArchivos extends JDialog {
 		this.add(contenido);
 
 		this.setSize(950, 600);
-		/* No se puede redimensionar */
+		/* No se puede redimensionar. */
 		this.setResizable(false);
-		/* Se destruirá cuando se cierre */
+		/* Se destruirá cuando se cierre. */
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 	}
 
-	// Agregar etiqueta al campo de etiquetas seleccionadas
+	// Agrega etiqueta a la lista de etiquetas seleccionadas.
 	private void agregarEtiqueta() {
 
 	}
 
-	// Buscar aquellos archivos con las etiquetas seleccionadas
+	// Busca los archivos dependiendo de las etiquetas que han sido
+	// seleccionadas.
 	private void buscarEtiqueta() {
 
 	}
 
-	// Remover etiqueta selecionada
+	// Elimina la etiqueta que han sido seleccionadas.
 	private void quitarEtiqueta() {
 
 	}
 
-	// Abrir archivos seleccionados
+	// Abre el archivo que se ha seleccionado, dependiendo de las etiquetas
+	// seleccionadas.
 	private void abrirArchivo() {
 
 	}
 
-	// Aceptación de archivos específicos.
-	private void aceptarArchivo() {
-
-	}
-
-	// exportar los archivos a una carpeta
+	// Envía el archivo seleccionado a un ruta o carpeta.
 	private void exportarArchivo() {
 
 	}
 
-	// coordina acciones iniciales para establecer el estado inicial de la
-	// interfaz de usuario.
+	// Agrega los valores por defecto a los componentes que lo requieran.
 	private void inicializar() {
 
 	}
 
-	
-	// realiza la acción de permitir la edición o interacción con varios
-	// componentes de la interfaz gráfica
+	// Realiza la acción de permitir la edición o interacción con varios
+	// componentes.
 	private void habilitarCampos() {
 
 	}
 
-
-	// realiza la acción de impedir la edición o interacción con varios
-	// componentes de la interfaz gráfica
+	// Realiza la acción de impedir la edición o interacción con varios
+	// componentes.
 	private void deshabilitarCampos() {
 
 	}
 
-
-	// La política de foco se basa en el orden en el que se añadieron los
-	// componentes al vector
+	// Añade los componentes en orden al vector.
 	private void establecerPoliticaFoco() {
 
 	}

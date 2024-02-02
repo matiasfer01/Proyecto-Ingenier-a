@@ -35,21 +35,16 @@ import ivmatisfilesorter.dominio.Etiqueta;
 
 public class DialogoGestionEtiquetas extends JDialog {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private JTextField etiqueta;
 	private JList<String> listaEtiquetas;
 	private JScrollPane scrollpaneEtiquetas;
-
 	private JButton nuevo;
 	private JButton guardar;
 	private JButton modificar;
 	private JButton eliminar;
 	private JButton cancelar;
-
 	private Action accionBotonNuevo;
 	private Action accionBotonGuardar;
 	private Action accionBotonModificar;
@@ -107,7 +102,10 @@ public class DialogoGestionEtiquetas extends JDialog {
 		listaEtiquetasModel.addElement("Organización");
 		listaEtiquetasModel.addElement("Reunión familiar");
 
-		/* Acciones de los botones */
+		/*
+		 * La accionBotonNuevo está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método nuevaEtiqueta().
+		 */
 		accionBotonNuevo = new AbstractAction("Nuevo",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/nuevo.png"))) {
 
@@ -118,6 +116,10 @@ public class DialogoGestionEtiquetas extends JDialog {
 
 			}
 		};
+		/*
+		 * La accionBotonGuardar está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método guardarEtiqueta().
+		 */
 		accionBotonGuardar = new AbstractAction("Guardar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/guardar.png"))) {
 
@@ -125,9 +127,13 @@ public class DialogoGestionEtiquetas extends JDialog {
 
 			public void actionPerformed(ActionEvent e) {
 				guardarEtiqueta();
-				;
+
 			}
 		};
+		/*
+		 * La accionBotonModificar está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método modificarEtiqueta().
+		 */
 		accionBotonModificar = new AbstractAction("Modificar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/editar.png"))) {
 
@@ -137,6 +143,10 @@ public class DialogoGestionEtiquetas extends JDialog {
 				modificarEtiqueta();
 			}
 		};
+		/*
+		 * La accionBotonEliminar está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método eliminarEtiqueta().
+		 */
 		accionBotonEliminar = new AbstractAction("Eliminar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/eliminar.png"))) {
 
@@ -146,6 +156,10 @@ public class DialogoGestionEtiquetas extends JDialog {
 				eliminarEtiqueta();
 			}
 		};
+		/*
+		 * La accionBotonCancelar está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método cancelarEtiqueta().
+		 */
 		accionBotonCancelar = new AbstractAction("Cancelar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/cancelar.png"))) {
 
@@ -210,15 +224,12 @@ public class DialogoGestionEtiquetas extends JDialog {
 				.put((KeyStroke) accionBotonCancelar.getValue(Action.ACCELERATOR_KEY), "Cancelar");
 		cancelar.setBounds(665, 465, 125, 50);
 
-		/**/
+		/* Los componentes han sido agregados a la ventana. */
 		contenido.add(etiquetas);
 		contenido.add(etiquetasLista);
-
-		/**/
 		contenido.add(etiqueta);
 		listaEtiquetas.setModel(listaEtiquetasModel);
 		contenido.add(scrollpaneEtiquetas);
-
 		contenido.add(nuevo);
 		contenido.add(guardar);
 		contenido.add(modificar);
@@ -255,31 +266,29 @@ public class DialogoGestionEtiquetas extends JDialog {
 
 	}
 
-	// cancelar la creacion de una nueva etiqueta
+	// Cancela los cambios efectuados.
 	private void cancelarEtiqueta() {
 
 	}
 
-	// coordina acciones iniciales para establecer el estado inicial de la
-	// interfaz de usuario.
+	// Agrega los valores por defecto a los componentes que lo requieran.
 	private void inicializar() {
 
 	}
 
-	// realiza la acción de permitir la edición o interacción con varios
-	// componentes de la interfaz gráfica
+	// Realiza la acción de permitir la edición o interacción con varios
+	// componentes.
 	private void habilitarCampos() {
 
 	}
 
-	// realiza la acción de impedir la edición o interacción con varios
-	// componentes de la interfaz gráfica
+	// Realiza la acción de impedir la edición o interacción con varios
+	// componentes.
 	private void deshabilitarCampos() {
 
 	}
 
-	// La política de foco se basa en el orden en el que se añadieron los
-	// componentes al vector
+	// Añade los componentes en orden al vector.
 	private void establecerPoliticaFoco() {
 
 	}

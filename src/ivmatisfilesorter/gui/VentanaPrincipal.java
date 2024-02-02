@@ -111,7 +111,6 @@ public class VentanaPrincipal extends JFrame {
 				KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
 
 		/* Submenú Propiedades del proyecto. */
-		/***** Menú proyecto. ******/
 
 		propiedadesDelProyecto = new JMenuItem("Propiedades del proyecto");
 		propiedadesDelProyecto
@@ -121,12 +120,17 @@ public class VentanaPrincipal extends JFrame {
 		propiedadesDelProyecto.setAccelerator(
 				KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
 
+		/* Submenú Salir. */
 		salir = new JMenuItem("Salir");
 		salir.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/salir.png")));
 		salir.setToolTipText("Cerrar la aplicación.");
 		salir.setMnemonic(KeyEvent.VK_S);
 		salir.setAccelerator(
 				KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
+
+		/***** Menú Gestión de proyectos. ******/
+
+		/* Submenú Gestión de archivos. */
 
 		gestionDeArchivos = new JMenuItem("Gestión de archivos");
 		gestionDeArchivos
@@ -136,6 +140,8 @@ public class VentanaPrincipal extends JFrame {
 		gestionDeArchivos.setAccelerator(
 				KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
 
+		/* Submenú Gestión de etiquetas. */
+
 		gestionDeEtiquetas = new JMenuItem("Gestión de etiquetas");
 		gestionDeEtiquetas
 				.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/gestion-de-etiquetas.png")));
@@ -144,6 +150,8 @@ public class VentanaPrincipal extends JFrame {
 		gestionDeEtiquetas.setAccelerator(
 				KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
 
+		/* Submenú Búsqueda de archivos. */
+
 		busquedaDeArchivos = new JMenuItem("Búsqueda de archivos");
 		busquedaDeArchivos.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/buscar.png")));
 		busquedaDeArchivos.setToolTipText("Buscar archivos según las etiquetas seleccionadas");
@@ -151,7 +159,10 @@ public class VentanaPrincipal extends JFrame {
 		busquedaDeArchivos.setAccelerator(
 				KeyStroke.getKeyStroke(KeyEvent.VK_B, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
 
-		/* sub menus de ayuda */
+		/***** Menú Ayuda. ******/
+
+		/* Submenú Acerca de. */
+
 		acercaDe = new JMenuItem("Acerca de...");
 		acercaDe.setToolTipText("Ofrecer ayuda relacionada con la aplicación");
 		acercaDe.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/acercaDe.png")));
@@ -159,6 +170,7 @@ public class VentanaPrincipal extends JFrame {
 		acercaDe.setAccelerator(
 				KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
 
+		/* Submenú Manual de usuario. */
 		manualDeUsuario = new JMenuItem("Manual de usuario");
 		manualDeUsuario.setToolTipText("Acceder a instrucciones detalladas sobre el uso de la aplicación");
 		manualDeUsuario.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/manual.png")));
@@ -166,7 +178,7 @@ public class VentanaPrincipal extends JFrame {
 		manualDeUsuario.setAccelerator(
 				KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
 
-		/* Se agregan los JMenuItem a los Menus */
+		// Se agregan los submenús.
 
 		proyecto.add(crearProyecto);
 		proyecto.add(abrirProyecto);
@@ -181,7 +193,6 @@ public class VentanaPrincipal extends JFrame {
 		ayuda.add(acercaDe);
 		ayuda.add(manualDeUsuario);
 
-		/* Se agraga el ActionListener */
 		crearProyecto.addActionListener(new ClaseAnonima());
 		abrirProyecto.addActionListener(new ClaseAnonima());
 		propiedadesDelProyecto.addActionListener(new ClaseAnonima());
@@ -245,8 +256,8 @@ public class VentanaPrincipal extends JFrame {
 
 		private void metodoAcercaDe() {
 			ImageIcon logo = new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/logo.jpg"));
-			String mensaje = "\n Nombre de la aplicación:\n IvMatIsFileSorter \n\n Realizado por:\n Cortez Escamilla Isaac \n Hernandez "
-					+ "Perez Ivonne Estefania \n Matias Acevedo  Luis Fernando  \n\n Correo electrónico: \n Ivmatis_filesorter@gmail.com \n\n Derechos reservados UMAR  2024";
+			String mensaje = "\n Nombre de la aplicación:\n IvMatIsFileSorter \n\n Realizado por:\n Cortez Escamilla Isaac \n Hernández "
+					+ "Pérez Ivonne Estefanéa \n Matías Acevedo  Luis Fernando  \n\n Correo electrónico: \n Ivmatis_filesorter@gmail.com \n\n Derechos reservados UMAR  2024";
 
 			JOptionPane.showMessageDialog(null, mensaje, "Acerca de... IvMatIsFileSorter",
 					JOptionPane.INFORMATION_MESSAGE, logo);
@@ -254,27 +265,25 @@ public class VentanaPrincipal extends JFrame {
 
 	}
 
-	// coordina acciones iniciales para establecer el estado inicial de la
-	// interfaz de usuario.
+	// Agrega los valores por defecto a los componentes que lo requieran.
 	private void inicializar() {
 
 	}
 
-	// realiza la acción de permitir la edición o interacción con varios
-	// componentes de la interfaz gráfica
+	// Realiza la acción de permitir la edición o interacción con varios
+	// componentes.
 	private void habilitarCampos() {
 
 	}
 
-	// La política de foco se basa en el orden en el que se añadieron los
-	// componentes al vector
-	private void establecerPoliticaFoco() {
+	// Realiza la acción de impedir la edición o interacción con varios
+	// componentes.
+	private void deshabilitarCampos() {
 
 	}
 
-	// realiza la acción de impedir la edición o interacción con varios
-	// componentes de la interfaz gráfica
-	private void deshabilitarCampos() {
+	// Añade los componentes en orden al vector.
+	private void establecerPoliticaFoco() {
 
 	}
 

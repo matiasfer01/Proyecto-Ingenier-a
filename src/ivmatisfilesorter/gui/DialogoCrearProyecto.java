@@ -44,11 +44,10 @@ public class DialogoCrearProyecto extends JDialog {
 	private JTextField propietario;
 	private JDateChooser fechaDeCreacion;
 	private JTextArea descripcion;
-	/* Botones del dialogo */
 	private JButton guardar;
 	private JButton cancelar;
 
-	/* Acciones de los botones */
+	/* Acción de los botones que se están utilizando en la ventana. */
 	private Action accionBotonGuardar;
 	private Action accionBotonCancelar;
 
@@ -60,7 +59,6 @@ public class DialogoCrearProyecto extends JDialog {
 		this.setIconImage(
 				Toolkit.getDefaultToolkit().getImage(getClass().getResource("/ivmatisfilesorter/imagenes/crear.png")));
 
-		/* contenido del dialogo */
 		JPanel contenido = new JPanel(null);
 
 		JLabel etiquetasNombre = new JLabel("Nombre del proyecto: ");
@@ -69,9 +67,9 @@ public class DialogoCrearProyecto extends JDialog {
 
 		nombreProyecto = new JTextField();
 		nombreProyecto.setBounds(180, 92, 150, 30);
-		nombreProyecto.setToolTipText("Nombre de tú proyecto");
+		nombreProyecto.setToolTipText("Ingresar el nombre del proyecto.");
 
-		JLabel etiquetaFecha = new JLabel("Fecha de creación : ");
+		JLabel etiquetaFecha = new JLabel("Fecha de creación: ");
 		etiquetaFecha.setBounds(500, 92, 150, 30);
 		etiquetaFecha.setDisplayedMnemonic(KeyEvent.VK_F);
 
@@ -84,7 +82,7 @@ public class DialogoCrearProyecto extends JDialog {
 
 		propietario = new JTextField();
 		propietario.setBounds(180, 300, 150, 30);
-		propietario.setToolTipText("Nombre del propietario");
+		propietario.setToolTipText("Ingresar el nombre del propietario del proyecto.");
 
 		JLabel etiquetaDescripcion = new JLabel("Descripción: ");
 		etiquetaDescripcion.setBounds(500, 240, 150, 150);
@@ -94,10 +92,12 @@ public class DialogoCrearProyecto extends JDialog {
 		descripcion.setBounds(600, 300, 300, 100);
 		descripcion.setLineWrap(true);
 		descripcion.setWrapStyleWord(true);
-		descripcion.setToolTipText("Recordatorio corto");
+		descripcion.setToolTipText("Agregar una breve descripción del proyecto. ");
 
-		/* Acciones de los botones */
-
+		/*
+		 * La accionBotonGuardar está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método guardarProyecto().
+		 */
 		accionBotonGuardar = new AbstractAction("Guardar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/guardar.png"))) {
 
@@ -111,6 +111,10 @@ public class DialogoCrearProyecto extends JDialog {
 
 		};
 
+		/*
+		 * La accionBotonCancelar está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método cancelarProyecto().
+		 */
 		accionBotonCancelar = new AbstractAction("Cancelar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/cancelar.png"))) {
 			private static final long serialVersionUID = 1L;
@@ -145,18 +149,15 @@ public class DialogoCrearProyecto extends JDialog {
 		cancelar.setMnemonic(KeyEvent.VK_C);
 		cancelar.setBounds(450, 465, 125, 40);
 
-		/* mostras los componentes en el dialogo */
+		/* Los componentes han sido agregados a la ventana. */
 		contenido.add(etiquetasNombre);
 		contenido.add(etiquetaFecha);
 		contenido.add(etiquetaPropietario);
 		contenido.add(etiquetaDescripcion);
-
-		/* mostrar campos */
 		contenido.add(nombreProyecto);
 		contenido.add(fechaDeCreacion);
 		contenido.add(propietario);
 		contenido.add(descripcion);
-		/* mostrar los botones */
 		contenido.add(guardar);
 		contenido.add(cancelar);
 
@@ -170,42 +171,34 @@ public class DialogoCrearProyecto extends JDialog {
 		this.setLocationRelativeTo(null);
 	}
 
-	@SuppressWarnings("unused")
-	// Guarda el proyecto realizado
+	// Guarda el proyecto con los componentes agregados.
 	private void guardarProyecto() {
 
 	}
 
-	@SuppressWarnings("unused")
-	// Cancela la creación del proyecto
+	// Cancela los cambios del proyecto.
 	private void cancelarProyecto() {
 
 	}
 
-	@SuppressWarnings("unused")
-	// coordina acciones iniciales para establecer el estado inicial de la
-	// interfaz de usuario.
+	// Agrega los valores por defecto a los componentes que lo requieran.
 	private void inicializar() {
 
 	}
 
-	@SuppressWarnings("unused")
-	// realiza la acción de permitir la edición o interacción con varios
-	// componentes de la interfaz gráfica
+	// Realiza la acción de permitir la edición o interacción con varios
+	// componentes.
 	private void habilitarCampos() {
 
 	}
 
-	@SuppressWarnings("unused")
-	// realiza la acción de impedir la edición o interacción con varios
-	// componentes de la interfaz gráfica
+	// Realiza la acción de impedir la edición o interacción con varios
+	// componentes.
 	private void deshabilitarCampos() {
 
 	}
 
-	@SuppressWarnings("unused")
-	// La política de foco se basa en el orden en el que se añadieron los
-	// componentes al vector
+	// Añade los componentes en orden al vector.
 	private void establecerPoliticaFoco() {
 
 	}

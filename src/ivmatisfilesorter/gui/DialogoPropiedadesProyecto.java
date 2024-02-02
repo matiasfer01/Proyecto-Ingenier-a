@@ -45,13 +45,10 @@ public class DialogoPropiedadesProyecto extends JDialog {
 	private JTextField propietario;
 	private JDateChooser fechaDeCreacion;
 	private JTextArea descripcion;
-	/* Botones del dialogo */
 	private JButton editar;
 	private JButton guardar;
 	private JButton cancelar;
 	private JButton nuevaEtiqueta;
-
-	/* Accion de los botones */
 	private Action accionBotonEditar;
 	private Action accionBotonGuardar;
 	private Action accionBotonCancelar;
@@ -65,7 +62,6 @@ public class DialogoPropiedadesProyecto extends JDialog {
 		this.setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(getClass().getResource("/ivmatisfilesorter/imagenes/propiedades.png")));
 
-		/* contenido del dialogo */
 		JPanel contenido = new JPanel(null);
 
 		JLabel etiquetasNombre = new JLabel("Nombre del proyecto: ");
@@ -101,7 +97,10 @@ public class DialogoPropiedadesProyecto extends JDialog {
 		descripcion.setWrapStyleWord(true);
 		descripcion.setToolTipText("Recordatorio corto");
 
-		/* Acciones de los botones */
+		/*
+		 * La accionBotonEditar está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método editarProyecto().
+		 */
 		accionBotonEditar = new AbstractAction("Editar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/editar.png"))) {
 
@@ -114,6 +113,10 @@ public class DialogoPropiedadesProyecto extends JDialog {
 
 		};
 
+		/*
+		 * La accionBotonGuardar está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método guardarProyecto().
+		 */
 		accionBotonGuardar = new AbstractAction("Guardar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/guardar.png"))) {
 
@@ -126,6 +129,10 @@ public class DialogoPropiedadesProyecto extends JDialog {
 
 		};
 
+		/*
+		 * La accionBotonCancelar está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método cancelarProyecto().
+		 */
 		accionBotonCancelar = new AbstractAction("Cancelar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/cancelar.png"))) {
 
@@ -137,6 +144,10 @@ public class DialogoPropiedadesProyecto extends JDialog {
 			}
 
 		};
+		/*
+		 * La accionBotonNuevaEtiqueta está asociada al botón. Cuando se ejecuta
+		 * se manda a llamar al método nuevaEtiqueta().
+		 */
 
 		accionBotonNuevaEtiqueta = new AbstractAction("Nueva etiqueta",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/agregar.png"))) {
@@ -149,7 +160,6 @@ public class DialogoPropiedadesProyecto extends JDialog {
 			}
 
 		};
-		/* Valores de Editar */
 
 		editar = new JButton(accionBotonEditar);
 		accionBotonEditar.putValue(Action.ACCELERATOR_KEY,
@@ -162,8 +172,6 @@ public class DialogoPropiedadesProyecto extends JDialog {
 				.put((KeyStroke) accionBotonEditar.getValue(Action.ACCELERATOR_KEY), "Editar");
 		editar.setBounds(170, 465, 120, 40);
 
-		/* Valores de Guardar */
-
 		accionBotonGuardar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_DOWN_MASK));
 		accionBotonGuardar.putValue(Action.SHORT_DESCRIPTION, "Guarda los cambios");
@@ -174,7 +182,6 @@ public class DialogoPropiedadesProyecto extends JDialog {
 				.put((KeyStroke) accionBotonGuardar.getValue(Action.ACCELERATOR_KEY), "Guardar");
 		guardar.setBounds(310, 465, 150, 40);
 
-		/* Valores de Cancelar */
 		accionBotonCancelar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_DOWN_MASK));
 		accionBotonCancelar.putValue(Action.SHORT_DESCRIPTION, "Cansela la edición del proyecto");
@@ -185,7 +192,6 @@ public class DialogoPropiedadesProyecto extends JDialog {
 				.put((KeyStroke) accionBotonCancelar.getValue(Action.ACCELERATOR_KEY), "Cancelar");
 		cancelar.setBounds(480, 465, 150, 40);
 
-		/* valores de Nuevo Etiqueta */
 		accionBotonNuevaEtiqueta.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_U, InputEvent.CTRL_DOWN_MASK));
 		accionBotonNuevaEtiqueta.putValue(Action.SHORT_DESCRIPTION, "Creas una nueva etiqueta");
@@ -196,18 +202,15 @@ public class DialogoPropiedadesProyecto extends JDialog {
 				.put((KeyStroke) accionBotonNuevaEtiqueta.getValue(Action.ACCELERATOR_KEY), "Nueva etiqueta");
 		nuevaEtiqueta.setBounds(655, 465, 180, 40);
 
-		/* mostras los componentes en el dialogo */
+		/* Los componentes han sido agregados a la ventana. */
 		contenido.add(etiquetasNombre);
 		contenido.add(etiquetaFecha);
 		contenido.add(etiquetaPropietario);
 		contenido.add(etiquetaDescripcion);
-
-		/* mostrar campos */
 		contenido.add(nombreProyecto);
 		contenido.add(fechaDeCreacion);
 		contenido.add(propietario);
 		contenido.add(descripcion);
-		/* mostrar los botones */
 		contenido.add(editar);
 		contenido.add(guardar);
 		contenido.add(cancelar);
@@ -240,46 +243,45 @@ public class DialogoPropiedadesProyecto extends JDialog {
 		}
 	}
 
-	// Permite editar el proyecto
+	// Permite editar el proyecto de acuerdo a los elementos guardados.
 	private void editarProyecto() {
 
 	}
 
-	// Guarda la edicion del proyecto
+	// Guarda los elementos del proyecto.
 	private void guardarProyecto() {
 
 	}
 
-	// cansela la edicion del proyecto
+	// Cancela el ingreso de datos del proyecto.
 	private void cancelarProyecto() {
 
 	}
 
-	// permite crear una nueva etiqueta
+	// Crea una nueva etiqueta, este método se enlaza hasta la clase
+	// DialogoGestionEtiquetas.
 	private void nuevaEtiqueta() {
 
 	}
 
-	// coordina acciones iniciales para establecer el estado inicial de la
-	// interfaz de usuario.
+	// Agrega los valores por defecto a los componentes que lo requieran.
 	private void inicializar() {
 
 	}
 
-	// realiza la acción de permitir la edición o interacción con varios
-	// componentes de la interfaz gráfica
+	// Realiza la acción de permitir la edición o interacción con varios
+	// componentes.
 	private void habilitarCampos() {
 
 	}
 
-	// realiza la acción de impedir la edición o interacción con varios
-	// componentes de la interfaz gráfica
+	// Realiza la acción de impedir la edición o interacción con varios
+	// componentes.
 	private void deshabilitarCampos() {
 
 	}
 
-	// La política de foco se basa en el orden en el que se añadieron los
-	// componentes al vector
+	// Añade los componentes en orden al vector.
 	private void establecerPoliticaFoco() {
 
 	}
