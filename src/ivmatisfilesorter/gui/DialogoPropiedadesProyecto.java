@@ -4,7 +4,7 @@
  * 		Cortez Escamilla Isaac
  * 	 	Hernández Pérez Ivonne Estefanía
  * 		Matías Acevedo Luis Fernando
- * Actividad: Primer entrega de las pantallas del sistema IvMatIs FileSorter que consiste en que un proyecto puede contener múltiples 
+ * Actividad: Primera entrega de las pantallas del sistema IvMatIs FileSorter que consiste en que un proyecto puede contener múltiples 
  * archivos y los archivos contienen etiquetas que son las que organizan a los archivos.
  * Fecha de elaboración: 01/02/2024
  * 		
@@ -26,6 +26,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
@@ -45,6 +46,7 @@ public class DialogoPropiedadesProyecto extends JDialog {
 	private JTextField propietario;
 	private JDateChooser fechaDeCreacion;
 	private JTextArea descripcion;
+	private JScrollPane scrollpaneDescripcion;
 	private JButton editar;
 	private JButton guardar;
 	private JButton cancelar;
@@ -64,30 +66,30 @@ public class DialogoPropiedadesProyecto extends JDialog {
 
 		JPanel contenido = new JPanel(null);
 
-		JLabel etiquetasNombre = new JLabel("Nombre del proyecto: ");
+		JLabel etiquetasNombre = new JLabel("*Nombre del proyecto*: ");
 		etiquetasNombre.setBounds(50, 30, 150, 150);
 		etiquetasNombre.setDisplayedMnemonic(KeyEvent.VK_N);
 
 		nombreProyecto = new JTextField();
 		nombreProyecto.setBounds(180, 92, 150, 30);
-		nombreProyecto.setToolTipText("Nombre de tú proyecto");
+		nombreProyecto.setToolTipText("Ingresar el nombre del proyecto");
 
-		JLabel etiquetaFecha = new JLabel("Fecha de creación : ");
+		JLabel etiquetaFecha = new JLabel("*Fecha de creación: ");
 		etiquetaFecha.setBounds(500, 92, 150, 30);
 		etiquetaFecha.setDisplayedMnemonic(KeyEvent.VK_F);
 
 		fechaDeCreacion = new JDateChooser();
 		fechaDeCreacion.setBounds(650, 92, 150, 30);
 
-		JLabel etiquetaPropietario = new JLabel("Propietario: ");
+		JLabel etiquetaPropietario = new JLabel("*Propietario: ");
 		etiquetaPropietario.setBounds(100, 240, 150, 150);
 		etiquetaPropietario.setDisplayedMnemonic(KeyEvent.VK_P);
 
 		propietario = new JTextField();
 		propietario.setBounds(180, 300, 150, 30);
-		propietario.setToolTipText("Nombre del propietario");
+		propietario.setToolTipText("Ingresar el nombre del propietario del proyecto.");
 
-		JLabel etiquetaDescripcion = new JLabel("Descripción: ");
+		JLabel etiquetaDescripcion = new JLabel("*Descripción: ");
 		etiquetaDescripcion.setBounds(500, 240, 150, 150);
 		etiquetaDescripcion.setDisplayedMnemonic(KeyEvent.VK_D);
 
@@ -95,7 +97,10 @@ public class DialogoPropiedadesProyecto extends JDialog {
 		descripcion.setBounds(600, 300, 300, 100);
 		descripcion.setLineWrap(true);
 		descripcion.setWrapStyleWord(true);
-		descripcion.setToolTipText("Recordatorio corto");
+		descripcion.setToolTipText("Agregar una breve descripción del proyecto. ");
+
+		scrollpaneDescripcion = new JScrollPane(descripcion);
+		scrollpaneDescripcion.setBounds(600, 300, 300, 100);
 
 		/*
 		 * La accionBotonEditar está asociada al botón. Cuando se ejecuta se
@@ -174,7 +179,7 @@ public class DialogoPropiedadesProyecto extends JDialog {
 
 		accionBotonGuardar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_DOWN_MASK));
-		accionBotonGuardar.putValue(Action.SHORT_DESCRIPTION, "Guarda los cambios");
+		accionBotonGuardar.putValue(Action.SHORT_DESCRIPTION, "Guardar los cambios");
 		accionBotonGuardar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_G));
 		guardar = new JButton(accionBotonGuardar);
 		guardar.setHorizontalTextPosition(JButton.TRAILING);
@@ -184,7 +189,7 @@ public class DialogoPropiedadesProyecto extends JDialog {
 
 		accionBotonCancelar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_DOWN_MASK));
-		accionBotonCancelar.putValue(Action.SHORT_DESCRIPTION, "Cansela la edición del proyecto");
+		accionBotonCancelar.putValue(Action.SHORT_DESCRIPTION, "Cancelar la edición del proyecto");
 		accionBotonCancelar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_C));
 		cancelar = new JButton(accionBotonCancelar);
 		cancelar.setHorizontalTextPosition(JButton.TRAILING);
@@ -194,13 +199,13 @@ public class DialogoPropiedadesProyecto extends JDialog {
 
 		accionBotonNuevaEtiqueta.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_U, InputEvent.CTRL_DOWN_MASK));
-		accionBotonNuevaEtiqueta.putValue(Action.SHORT_DESCRIPTION, "Creas una nueva etiqueta");
+		accionBotonNuevaEtiqueta.putValue(Action.SHORT_DESCRIPTION, "Crear una nueva etiqueta");
 		accionBotonNuevaEtiqueta.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_U));
 		nuevaEtiqueta = new JButton(accionBotonNuevaEtiqueta);
 		nuevaEtiqueta.setHorizontalTextPosition(JButton.TRAILING);
 		nuevaEtiqueta.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
 				.put((KeyStroke) accionBotonNuevaEtiqueta.getValue(Action.ACCELERATOR_KEY), "Nueva etiqueta");
-		nuevaEtiqueta.setBounds(655, 465, 180, 40);
+		nuevaEtiqueta.setBounds(650, 465, 155, 40);
 
 		/* Los componentes han sido agregados a la ventana. */
 		contenido.add(etiquetasNombre);
@@ -210,7 +215,8 @@ public class DialogoPropiedadesProyecto extends JDialog {
 		contenido.add(nombreProyecto);
 		contenido.add(fechaDeCreacion);
 		contenido.add(propietario);
-		contenido.add(descripcion);
+		// contenido.add(descripcion);
+		contenido.add(scrollpaneDescripcion);
 		contenido.add(editar);
 		contenido.add(guardar);
 		contenido.add(cancelar);

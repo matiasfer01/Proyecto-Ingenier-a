@@ -135,7 +135,7 @@ public class VentanaPrincipal extends JFrame {
 		gestionDeArchivos = new JMenuItem("Gestión de archivos");
 		gestionDeArchivos
 				.setIcon(new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/gestion-de-archivos.png")));
-		gestionDeArchivos.setToolTipText("Controlar los archivos almacenadas en el sistema");
+		gestionDeArchivos.setToolTipText("Gestionar los archivos almacenados en el sistema");
 		gestionDeArchivos.setMnemonic(KeyEvent.VK_G);
 		gestionDeArchivos.setAccelerator(
 				KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
@@ -257,7 +257,7 @@ public class VentanaPrincipal extends JFrame {
 		private void metodoAcercaDe() {
 			ImageIcon logo = new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/logo.jpg"));
 			String mensaje = "\n Nombre de la aplicación:\n IvMatIsFileSorter \n\n Realizado por:\n Cortez Escamilla Isaac \n Hernández "
-					+ "Pérez Ivonne Estefanéa \n Matías Acevedo  Luis Fernando  \n\n Correo electrónico: \n Ivmatis_filesorter@gmail.com \n\n Derechos reservados UMAR  2024";
+					+ "Pérez Ivonne Estafanía \n Matías Acevedo  Luis Fernando  \n\n Correo electrónico: \n Ivmatis_filesorter@gmail.com \n\n Derechos reservados UMAR  2024";
 
 			JOptionPane.showMessageDialog(null, mensaje, "Acerca de... IvMatIsFileSorter",
 					JOptionPane.INFORMATION_MESSAGE, logo);

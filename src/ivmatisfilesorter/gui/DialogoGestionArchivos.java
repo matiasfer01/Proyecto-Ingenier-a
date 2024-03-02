@@ -50,6 +50,7 @@ public class DialogoGestionArchivos extends JDialog {
 	private JButton selecccionarArchivo;
 	private JButton agregar;
 	private JButton quitar;
+	private JButton nuevo;
 	private JButton guardar;
 	private JButton modificar;
 	private JButton eliminar;
@@ -58,6 +59,7 @@ public class DialogoGestionArchivos extends JDialog {
 	private Action accionBotonSeleccionar;
 	private Action accionBotonAgregar;
 	private Action accionBotonQuitar;
+	private Action accionBotonNuevo;
 	private Action accionBotonGuardar;
 	private Action accionBotonModificar;
 	private Action accionBotonEliminar;
@@ -74,16 +76,25 @@ public class DialogoGestionArchivos extends JDialog {
 
 		JPanel contenido = new JPanel(null);
 
+		JLabel etiquetaRuta = new JLabel("Ruta: ");
+		etiquetaRuta.setBounds(150, 10, 100, 100);
+		etiquetaRuta.setDisplayedMnemonic(KeyEvent.VK_R);
+
+		ruta = new JTextField();
+		ruta.setBounds(200, 45, 350, 30);
+		ruta.setToolTipText("Mostrar la dirección del archivo.");
+		ruta.setEditable(false);
+		
 		JLabel etiquetaListaArchivo = new JLabel("Lista de archivos: ");
-		etiquetaListaArchivo.setBounds(70, 10, 120, 50);
+		etiquetaListaArchivo.setBounds(70, 120, 120, 50);
 		etiquetaListaArchivo.setDisplayedMnemonic(KeyEvent.VK_L);
 
 		listaDeArchivos = new JList<String>();
-		listaDeArchivos.setBounds(200, 30, 600, 80);
+		listaDeArchivos.setBounds(200, 130, 600, 80);
 		listaDeArchivos.setToolTipText("Seleccionar el archivo de la lista de archivos.");
 
 		scrollpaneArchivo = new JScrollPane(listaDeArchivos);
-		scrollpaneArchivo.setBounds(200, 30, 600, 80);
+		scrollpaneArchivo.setBounds(200, 130, 600, 80);
 
 		archivoListModel = new DefaultListModel<>();
 		archivoListModel.addElement("The Legend of Zelda");
@@ -100,15 +111,6 @@ public class DialogoGestionArchivos extends JDialog {
 		archivoListModel.addElement("Bloodborne");
 		archivoListModel.addElement("God of War");
 		archivoListModel.addElement("FIFA 22");
-
-		JLabel etiquetaRuta = new JLabel("Ruta: ");
-		etiquetaRuta.setBounds(150, 130, 100, 100);
-		etiquetaRuta.setDisplayedMnemonic(KeyEvent.VK_R);
-
-		ruta = new JTextField();
-		ruta.setBounds(200, 170, 350, 30);
-		ruta.setToolTipText("Mostrar la dirección del archivo.");
-		ruta.setEditable(false);
 
 		JLabel etiquetaEtiquetas = new JLabel("Etiquetas");
 		etiquetaEtiquetas.setBounds(150, 200, 100, 100);
@@ -189,7 +191,19 @@ public class DialogoGestionArchivos extends JDialog {
 		/*
 		 * La accionBotonGuardar está asociada al botón. Cuando se ejecuta se
 		 * manda a llamar al método guardarArchivo().
+		 * 
 		 */
+
+		accionBotonNuevo = new AbstractAction("Nuevo",
+				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/nuevo.png"))) {
+
+			private static final long serialVersionUID = 1L;
+
+			public void actionPerformed(ActionEvent e) {
+				nuevoArchivo();
+			}
+		};
+
 		accionBotonGuardar = new AbstractAction("Guardar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/guardar.png"))) {
 
@@ -257,7 +271,7 @@ public class DialogoGestionArchivos extends JDialog {
 		selecccionarArchivo.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
 				.put((KeyStroke) accionBotonSeleccionar.getValue(Action.ACCELERATOR_KEY), "Seleccionar Archivo");
 		selecccionarArchivo.setMnemonic(KeyEvent.VK_S);
-		selecccionarArchivo.setBounds(600, 160, 190, 50);
+		selecccionarArchivo.setBounds(600, 30, 190, 50);
 
 		agregar = new JButton(accionBotonAgregar);
 		accionBotonAgregar.putValue(Action.ACCELERATOR_KEY,
@@ -283,6 +297,17 @@ public class DialogoGestionArchivos extends JDialog {
 		quitar.setMnemonic(KeyEvent.VK_Q);
 		quitar.setBounds(650, 230, 120, 50);
 
+		nuevo = new JButton(accionBotonNuevo);
+		accionBotonNuevo.putValue(Action.ACCELERATOR_KEY,
+				KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_DOWN_MASK));
+		accionBotonNuevo.putValue(Action.SHORT_DESCRIPTION, "Permite agregar un nuevo Farchivo.");
+		accionBotonNuevo.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_N));
+		nuevo.getActionMap().put("Nuevo", accionBotonNuevo);
+		nuevo.setHorizontalTextPosition(JButton.TRAILING);
+		nuevo.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionBotonNuevo.getValue(Action.ACCELERATOR_KEY), "Nuevo");
+		nuevo.setBounds(140, 465, 120, 50);
+
 		guardar = new JButton(accionBotonGuardar);
 		accionBotonGuardar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_DOWN_MASK));
@@ -293,7 +318,7 @@ public class DialogoGestionArchivos extends JDialog {
 		guardar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
 				.put((KeyStroke) accionBotonGuardar.getValue(Action.ACCELERATOR_KEY), "Guardar");
 		guardar.setMnemonic(KeyEvent.VK_G);
-		guardar.setBounds(205, 465, 120, 50);
+		guardar.setBounds(270, 465, 120, 50);
 
 		modificar = new JButton(accionBotonModificar);
 		accionBotonModificar.putValue(Action.ACCELERATOR_KEY,
@@ -305,7 +330,7 @@ public class DialogoGestionArchivos extends JDialog {
 		modificar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
 				.put((KeyStroke) accionBotonModificar.getValue(Action.ACCELERATOR_KEY), "Modificar");
 		modificar.setMnemonic(KeyEvent.VK_M);
-		modificar.setBounds(345, 465, 125, 50);
+		modificar.setBounds(400, 465, 125, 50);
 
 		eliminar = new JButton(accionBotonEliminar);
 		accionBotonEliminar.putValue(Action.ACCELERATOR_KEY,
@@ -318,7 +343,7 @@ public class DialogoGestionArchivos extends JDialog {
 		eliminar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
 				.put((KeyStroke) accionBotonEliminar.getValue(Action.ACCELERATOR_KEY), "Eliminar");
 		eliminar.setMnemonic(KeyEvent.VK_I);
-		eliminar.setBounds(490, 465, 120, 50);
+		eliminar.setBounds(535, 465, 120, 50);
 
 		cancelar = new JButton(accionBotonCancelar);
 		accionBotonCancelar.putValue(Action.ACCELERATOR_KEY,
@@ -330,7 +355,7 @@ public class DialogoGestionArchivos extends JDialog {
 		cancelar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
 				.put((KeyStroke) accionBotonCancelar.getValue(Action.ACCELERATOR_KEY), "Cancelar");
 		cancelar.setMnemonic(KeyEvent.VK_N);
-		cancelar.setBounds(630, 465, 125, 50);
+		cancelar.setBounds(665, 465, 125, 50);
 
 		/* Los componentes han sido agregados a la ventana. */
 		contenido.add(etiquetaListaArchivo);
@@ -345,6 +370,7 @@ public class DialogoGestionArchivos extends JDialog {
 		contenido.add(scrollpaneEtiquetas);
 		contenido.add(selecccionarArchivo);
 		contenido.add(agregar);
+		contenido.add(nuevo);
 		contenido.add(quitar);
 		contenido.add(guardar);
 		contenido.add(modificar);
@@ -374,6 +400,11 @@ public class DialogoGestionArchivos extends JDialog {
 
 	// Elimina la etiqueta de la lista etiquetas y también del campo etiquetas.
 	private void quitarEtiqueta() {
+
+	}
+
+	// Permite agregar un nuevo archivo
+	private void nuevoArchivo() {
 
 	}
 
