@@ -63,7 +63,7 @@ public class DialogoCrearProyecto extends JDialog {
 
 		JPanel contenido = new JPanel(null);
 
-		JLabel etiquetasNombre = new JLabel("*Nombre del proyecto: ");
+		JLabel etiquetasNombre = new JLabel("Nombre del proyecto: ");
 		etiquetasNombre.setBounds(50, 30, 150, 150);
 		etiquetasNombre.setDisplayedMnemonic(KeyEvent.VK_N);
 
@@ -116,6 +116,18 @@ public class DialogoCrearProyecto extends JDialog {
 
 		};
 
+		guardar = new JButton(accionBotonGuardar);
+		accionBotonGuardar.putValue(Action.ACCELERATOR_KEY,
+				KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_DOWN_MASK));
+		accionBotonGuardar.putValue(Action.SHORT_DESCRIPTION, "Guardar el proyecto");
+		accionBotonGuardar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_G));
+		guardar.getActionMap().put("Guardar", accionBotonGuardar);
+		guardar.setHorizontalTextPosition(JButton.TRAILING);
+		guardar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionBotonGuardar.getValue(Action.ACCELERATOR_KEY), "Guardar");
+		guardar.setMnemonic(KeyEvent.VK_G);
+		guardar.setBounds(300, 465, 120, 40);
+
 		/*
 		 * La accionBotonCancelar está asociada al botón. Cuando se ejecuta se
 		 * manda a llamar al método cancelarProyecto().
@@ -130,25 +142,13 @@ public class DialogoCrearProyecto extends JDialog {
 			}
 		};
 
-		guardar = new JButton(accionBotonGuardar);
-		accionBotonGuardar.putValue(Action.ACCELERATOR_KEY,
-				KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_DOWN_MASK));
-		accionBotonGuardar.putValue(Action.SHORT_DESCRIPTION, "Guardar el proyecto");
-		accionBotonGuardar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_G));
-		guardar.getActionMap().put("Editar", accionBotonGuardar);
-		guardar.setHorizontalTextPosition(JButton.TRAILING);
-		guardar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonGuardar.getValue(Action.ACCELERATOR_KEY), "Guardar");
-		guardar.setMnemonic(KeyEvent.VK_G);
-		guardar.setBounds(300, 465, 120, 40);
-
 		cancelar = new JButton(accionBotonCancelar);
 		accionBotonCancelar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_DOWN_MASK));
+		accionBotonCancelar.putValue(Action.SHORT_DESCRIPTION, "Cancelar el proyecto");
 		accionBotonCancelar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_C));
 		cancelar.getActionMap().put("Cancelar", accionBotonCancelar);
 		cancelar.setHorizontalTextPosition(JButton.TRAILING);
-		accionBotonCancelar.putValue(Action.SHORT_DESCRIPTION, "Cancelar el proyecto");
 		cancelar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
 				.put((KeyStroke) accionBotonCancelar.getValue(Action.ACCELERATOR_KEY), "Cancelar");
 		cancelar.setMnemonic(KeyEvent.VK_C);
