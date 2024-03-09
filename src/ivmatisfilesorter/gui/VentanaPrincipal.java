@@ -11,12 +11,15 @@
  * */
 package ivmatisfilesorter.gui;
 
+import java.awt.Desktop;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -200,6 +203,7 @@ public class VentanaPrincipal extends JFrame {
 		gestionDeEtiquetas.addActionListener(new ClaseAnonima());
 		busquedaDeArchivos.addActionListener(new ClaseAnonima());
 		acercaDe.addActionListener(new ClaseAnonima());
+		manualDeUsuario.addActionListener(new ClaseAnonima());
 		salir.addActionListener(new ClaseAnonima());
 
 		/* configurar la barra */
@@ -250,6 +254,8 @@ public class VentanaPrincipal extends JFrame {
 				dialogoBusquedaArchivos.setVisible(true);
 			} else if (e.getSource().equals(acercaDe)) {
 				metodoAcercaDe();
+			} else if (e.getSource().equals(manualDeUsuario)) {
+				metodoManualDeUsuario();
 			}
 
 		}
@@ -263,6 +269,23 @@ public class VentanaPrincipal extends JFrame {
 					JOptionPane.INFORMATION_MESSAGE, logo);
 		}
 
+	}
+
+	private void metodoManualDeUsuario() {
+		File archivo = new File("IvMatisFileSorte.pdf");
+		if (archivo.exists()) {
+			try {
+				Desktop.getDesktop().open(archivo);
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(this,
+						"El sistema no pudo abrir el manual, favor de contactar con soporte técnico",
+						"Error al abrir el manual", JOptionPane.ERROR_MESSAGE);
+			}
+		} else {
+			JOptionPane.showMessageDialog(this,
+					"El sistema no pudo encontrar el manual, favor de contactar con soporte técnico",
+					"Error al encontrar el manual", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 	// Agrega los valores por defecto a los componentes que lo requieran.

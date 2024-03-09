@@ -75,7 +75,7 @@ public class DialogoBusquedaArchivos extends JDialog {
 
 		etiquetas = new JList<String>();
 		etiquetas.setBounds(220, 30, 180, 200);
-		etiquetas.setToolTipText("Seleccionar la etiqueta o etiquetas que se encuentren almacenadas.");
+		etiquetas.setToolTipText("Catálogo de etiquetas:.");
 
 		scrollpaneEtiquetas = new JScrollPane(etiquetas);
 		scrollpaneEtiquetas.setBounds(220, 30, 180, 200);
@@ -114,7 +114,7 @@ public class DialogoBusquedaArchivos extends JDialog {
 
 		etiquetasSeleccionadas = new JList<String>();
 		etiquetasSeleccionadas.setBounds(635, 30, 180, 200);
-		etiquetasSeleccionadas.setToolTipText("Mostrar las etiquetas que han sido seleccionadas.");
+		etiquetasSeleccionadas.setToolTipText("Lista de etiquetas elegidas.");
 
 		scrollpaneEtiquetasSeleccionadas = new JScrollPane(etiquetasSeleccionadas);
 		scrollpaneEtiquetasSeleccionadas.setBounds(635, 30, 180, 200);
@@ -140,8 +140,7 @@ public class DialogoBusquedaArchivos extends JDialog {
 
 		archivos = new JList<String>();
 		archivos.setBounds(350, 260, 350, 150);
-		archivos.setToolTipText(
-				"Mostrar la lista de archivos dependiendo de las etiquetas que han sido seleccionadas.");
+		archivos.setToolTipText("Lista de archivos encontrados.");
 
 		scrollpaneArchivos = new JScrollPane(archivos);
 		scrollpaneArchivos.setBounds(350, 260, 350, 150);
@@ -176,6 +175,17 @@ public class DialogoBusquedaArchivos extends JDialog {
 
 			}
 		};
+		agregar = new JButton(accionBotonAgregar);
+		accionBotonAgregar.putValue(Action.ACCELERATOR_KEY,
+				KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_DOWN_MASK));
+		accionBotonAgregar.putValue(Action.SHORT_DESCRIPTION,
+				"Incluir la etiqueta seleccionada de las opciones disponibles en las etiquetas seleccionadas.");
+		accionBotonAgregar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_G));
+		agregar.getActionMap().put("Agregar", accionBotonAgregar);
+		agregar.setHorizontalTextPosition(JButton.TRAILING);
+		agregar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionBotonAgregar.getValue(Action.ACCELERATOR_KEY), "Agregar");
+		agregar.setBounds(450, 80, 125, 40);
 		/*
 		 * La accionBotonQuitar está asociada al botón. Cuando se ejecuta se
 		 * manda a llamar al método quitarEtiqueta().
@@ -190,6 +200,17 @@ public class DialogoBusquedaArchivos extends JDialog {
 
 			}
 		};
+		quitar = new JButton(accionBotonQuitar);
+		accionBotonQuitar.putValue(Action.ACCELERATOR_KEY,
+				KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_DOWN_MASK));
+		accionBotonQuitar.putValue(Action.SHORT_DESCRIPTION,
+				"Remover la etiqueta seleccionada de la lista de etiquetas seleccionadas.");
+		accionBotonQuitar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_Q));
+		quitar.getActionMap().put("Quitar", accionBotonQuitar);
+		quitar.setHorizontalTextPosition(JButton.TRAILING);
+		quitar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionBotonQuitar.getValue(Action.ACCELERATOR_KEY), "Quitar");
+		quitar.setBounds(450, 150, 120, 40);
 		/*
 		 * La accionBotonBuscar está asociada al botón. Cuando se ejecuta se
 		 * manda a llamar al método buscarEtiqueta().
@@ -204,6 +225,16 @@ public class DialogoBusquedaArchivos extends JDialog {
 
 			}
 		};
+		buscar = new JButton(accionBotonBuscar);
+		accionBotonBuscar.putValue(Action.ACCELERATOR_KEY,
+				KeyStroke.getKeyStroke(KeyEvent.VK_B, InputEvent.CTRL_DOWN_MASK));
+		accionBotonBuscar.putValue(Action.SHORT_DESCRIPTION, "Encontrar los archivos con las etiquetas seleccionadas.");
+		accionBotonBuscar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_B));
+		buscar.getActionMap().put("Buscar", accionBotonBuscar);
+		buscar.setHorizontalTextPosition(JButton.TRAILING);
+		buscar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionBotonBuscar.getValue(Action.ACCELERATOR_KEY), "Buscar");
+		buscar.setBounds(275, 465, 120, 40);
 		/*
 		 * La accionBotonAbrirArchivo está asociada al botón. Cuando se ejecuta
 		 * se manda a llamar al método abrirArchivo().
@@ -218,6 +249,17 @@ public class DialogoBusquedaArchivos extends JDialog {
 
 			}
 		};
+		abrirArchivo = new JButton(accionBotonAbrirArchivo);
+		accionBotonAbrirArchivo.putValue(Action.ACCELERATOR_KEY,
+				KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_DOWN_MASK));
+		accionBotonAbrirArchivo.putValue(Action.SHORT_DESCRIPTION, "Acceder al archivo seleccionado.");
+		accionBotonAbrirArchivo.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_R));
+		abrirArchivo.getActionMap().put("Abrir archivo", accionBotonAbrirArchivo);
+		abrirArchivo.setHorizontalTextPosition(JButton.TRAILING);
+		abrirArchivo.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionBotonAbrirArchivo.getValue(Action.ACCELERATOR_KEY), "Abrir archivo");
+		abrirArchivo.setBounds(425, 465, 145, 40);
+
 		/*
 		 * La accionBotonExportar está asociada al botón. Cuando se ejecuta se
 		 * manda a llamar al método exportarArchivo().
@@ -232,54 +274,12 @@ public class DialogoBusquedaArchivos extends JDialog {
 
 			}
 		};
-		agregar = new JButton(accionBotonAgregar);
-		accionBotonAgregar.putValue(Action.ACCELERATOR_KEY,
-				KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_DOWN_MASK));
-		accionBotonAgregar.putValue(Action.SHORT_DESCRIPTION, "Agregar las etiquetas que han sido seleccionadas.");
-		accionBotonAgregar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_G));
-		agregar.getActionMap().put("Agregar", accionBotonAgregar);
-		agregar.setHorizontalTextPosition(JButton.TRAILING);
-		agregar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonAgregar.getValue(Action.ACCELERATOR_KEY), "Agregar");
-		agregar.setBounds(450, 80, 125, 40);
-
-		quitar = new JButton(accionBotonQuitar);
-		accionBotonQuitar.putValue(Action.ACCELERATOR_KEY,
-				KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_DOWN_MASK));
-		accionBotonQuitar.putValue(Action.SHORT_DESCRIPTION, "Eliminar las etiquetas que han sido seleccionadas.");
-		accionBotonQuitar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_Q));
-		quitar.getActionMap().put("Quitar", accionBotonQuitar);
-		quitar.setHorizontalTextPosition(JButton.TRAILING);
-		quitar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonQuitar.getValue(Action.ACCELERATOR_KEY), "Quitar");
-		quitar.setBounds(450, 150, 120, 40);
-
-		buscar = new JButton(accionBotonBuscar);
-		accionBotonBuscar.putValue(Action.ACCELERATOR_KEY,
-				KeyStroke.getKeyStroke(KeyEvent.VK_B, InputEvent.CTRL_DOWN_MASK));
-		accionBotonBuscar.putValue(Action.SHORT_DESCRIPTION, "Encontrar los archivos con las etiquetas seleccionadas.");
-		accionBotonBuscar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_B));
-		buscar.getActionMap().put("Buscar", accionBotonBuscar);
-		buscar.setHorizontalTextPosition(JButton.TRAILING);
-		buscar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonBuscar.getValue(Action.ACCELERATOR_KEY), "Buscar");
-		buscar.setBounds(275, 465, 120, 40);
-
-		abrirArchivo = new JButton(accionBotonAbrirArchivo);
-		accionBotonAbrirArchivo.putValue(Action.ACCELERATOR_KEY,
-				KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_DOWN_MASK));
-		accionBotonAbrirArchivo.putValue(Action.SHORT_DESCRIPTION, "Acceder al archivo seleccionado.");
-		accionBotonAbrirArchivo.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_R));
-		abrirArchivo.getActionMap().put("Abrir archivo", accionBotonAbrirArchivo);
-		abrirArchivo.setHorizontalTextPosition(JButton.TRAILING);
-		abrirArchivo.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonAbrirArchivo.getValue(Action.ACCELERATOR_KEY), "Abrir archivo");
-		abrirArchivo.setBounds(425, 465, 145, 40);
 
 		exportar = new JButton(accionBotonExportar);
 		accionBotonExportar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_X, InputEvent.CTRL_DOWN_MASK));
-		accionBotonExportar.putValue(Action.SHORT_DESCRIPTION, "Transferir el archivo seleccionado a una carpeta.");
+		accionBotonExportar.putValue(Action.SHORT_DESCRIPTION,
+				"Transferir los archivos de la lista de archivos a una carpeta.");
 		accionBotonExportar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_X));
 		exportar.getActionMap().put("Exportar", accionBotonExportar);
 		exportar.setHorizontalTextPosition(JButton.TRAILING);
@@ -315,29 +315,29 @@ public class DialogoBusquedaArchivos extends JDialog {
 
 	// Agrega etiqueta a la lista de etiquetas seleccionadas.
 	private void agregarEtiqueta() {
-
+		
 	}
 
 	// Busca los archivos dependiendo de las etiquetas que han sido
 	// seleccionadas.
 	private void buscarEtiqueta() {
-
+		
 	}
 
 	// Elimina la etiqueta que han sido seleccionadas.
 	private void quitarEtiqueta() {
-
+		
 	}
 
 	// Abre el archivo que se ha seleccionado, dependiendo de las etiquetas
 	// seleccionadas.
 	private void abrirArchivo() {
-
+		
 	}
 
 	// Envía el archivo seleccionado a un ruta o carpeta.
 	private void exportarArchivo() {
-
+		
 	}
 
 	// Agrega los valores por defecto a los componentes que lo requieran.

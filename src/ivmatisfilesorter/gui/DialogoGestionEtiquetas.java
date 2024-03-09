@@ -66,7 +66,7 @@ public class DialogoGestionEtiquetas extends JDialog {
 
 		etiqueta = new JTextField();
 		etiqueta.setBounds(400, 30, 250, 30);
-		etiqueta.setToolTipText("Nombre de la etiqueta");
+		etiqueta.setToolTipText("Identificador de la etiqueta");
 
 		JLabel etiquetasLista = new JLabel("Lista de etiquetas: ");
 		etiquetasLista.setBounds(230, 150, 250, 30);
@@ -74,7 +74,7 @@ public class DialogoGestionEtiquetas extends JDialog {
 
 		listaEtiquetas = new JList<String>();
 		listaEtiquetas.setBounds(400, 150, 250, 250);
-		listaEtiquetas.setToolTipText("Lista de etiquetas existentes");
+		listaEtiquetas.setToolTipText("Catálogo de etiquetas");
 
 		scrollpaneEtiquetas = new JScrollPane(listaEtiquetas);
 		scrollpaneEtiquetas.setBounds(400, 150, 250, 250);
@@ -106,6 +106,7 @@ public class DialogoGestionEtiquetas extends JDialog {
 		 * La accionBotonNuevo está asociada al botón. Cuando se ejecuta se
 		 * manda a llamar al método nuevaEtiqueta().
 		 */
+		
 		accionBotonNuevo = new AbstractAction("Nuevo",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/nuevo.png"))) {
 
@@ -116,10 +117,23 @@ public class DialogoGestionEtiquetas extends JDialog {
 
 			}
 		};
+		
+		nuevo = new JButton(accionBotonNuevo);
+		accionBotonNuevo.putValue(Action.ACCELERATOR_KEY,
+				KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_DOWN_MASK));
+		accionBotonNuevo.putValue(Action.SHORT_DESCRIPTION, "Habilitar la creación de una nueva etiqueta");
+		accionBotonNuevo.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_N));
+		nuevo.getActionMap().put("Nuevo", accionBotonNuevo);
+		nuevo.setHorizontalTextPosition(JButton.TRAILING);
+		nuevo.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionBotonNuevo.getValue(Action.ACCELERATOR_KEY), "Nuevo");
+		nuevo.setBounds(140, 465, 120, 50);
+		
 		/*
 		 * La accionBotonGuardar está asociada al botón. Cuando se ejecuta se
 		 * manda a llamar al método guardarEtiqueta().
 		 */
+		
 		accionBotonGuardar = new AbstractAction("Guardar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/guardar.png"))) {
 
@@ -130,10 +144,23 @@ public class DialogoGestionEtiquetas extends JDialog {
 
 			}
 		};
+		
+		guardar = new JButton(accionBotonGuardar);
+		accionBotonGuardar.putValue(Action.ACCELERATOR_KEY,
+				KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_DOWN_MASK));
+		accionBotonGuardar.putValue(Action.SHORT_DESCRIPTION, "Guardar Modificaciones.");
+		accionBotonGuardar.putValue(Action.MNEMONIC_KEY, KeyEvent.VK_G);
+		guardar.getActionMap().put("Guardar", accionBotonGuardar);
+		guardar.setHorizontalTextPosition(JButton.TRAILING);
+		guardar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionBotonGuardar.getValue(Action.ACCELERATOR_KEY), "Guardar");
+		guardar.setBounds(270, 465, 120, 50);
+		
 		/*
 		 * La accionBotonModificar está asociada al botón. Cuando se ejecuta se
 		 * manda a llamar al método modificarEtiqueta().
 		 */
+		
 		accionBotonModificar = new AbstractAction("Modificar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/editar.png"))) {
 
@@ -143,10 +170,23 @@ public class DialogoGestionEtiquetas extends JDialog {
 				modificarEtiqueta();
 			}
 		};
+		
+		modificar = new JButton(accionBotonModificar);
+		accionBotonModificar.putValue(Action.ACCELERATOR_KEY,
+				KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.CTRL_DOWN_MASK));
+		accionBotonModificar.putValue(Action.SHORT_DESCRIPTION, "Editar la etiqueta seleccionada.");
+		accionBotonModificar.putValue(Action.MNEMONIC_KEY, KeyEvent.VK_M);
+		modificar.getActionMap().put("Modificar", accionBotonModificar);
+		modificar.setHorizontalTextPosition(JButton.TRAILING);
+		modificar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionBotonModificar.getValue(Action.ACCELERATOR_KEY), "Modificar");
+		modificar.setBounds(400, 465, 125, 50);
+
 		/*
 		 * La accionBotonEliminar está asociada al botón. Cuando se ejecuta se
 		 * manda a llamar al método eliminarEtiqueta().
 		 */
+
 		accionBotonEliminar = new AbstractAction("Eliminar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/eliminar.png"))) {
 
@@ -156,10 +196,23 @@ public class DialogoGestionEtiquetas extends JDialog {
 				eliminarEtiqueta();
 			}
 		};
+
+		eliminar = new JButton(accionBotonEliminar);
+		accionBotonEliminar.putValue(Action.ACCELERATOR_KEY,
+				KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.CTRL_DOWN_MASK));
+		accionBotonEliminar.putValue(Action.SHORT_DESCRIPTION, "Eliminar la etiqueta seleccionada.");
+		accionBotonEliminar.putValue(Action.MNEMONIC_KEY, KeyEvent.VK_E);
+		eliminar.getActionMap().put("Eliminar", accionBotonEliminar);
+		eliminar.setHorizontalTextPosition(JButton.TRAILING);
+		eliminar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionBotonEliminar.getValue(Action.ACCELERATOR_KEY), "Eliminar");
+		eliminar.setBounds(535, 465, 120, 50);
+
 		/*
 		 * La accionBotonCancelar está asociada al botón. Cuando se ejecuta se
 		 * manda a llamar al método cancelarEtiqueta().
 		 */
+
 		accionBotonCancelar = new AbstractAction("Cancelar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/cancelar.png"))) {
 
@@ -169,54 +222,11 @@ public class DialogoGestionEtiquetas extends JDialog {
 				cancelarEtiqueta();
 			}
 		};
-		nuevo = new JButton(accionBotonNuevo);
-		accionBotonNuevo.putValue(Action.ACCELERATOR_KEY,
-				KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_DOWN_MASK));
-		accionBotonNuevo.putValue(Action.SHORT_DESCRIPTION, "Permite crear una nueva etiqueta.");
-		accionBotonNuevo.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_N));
-		nuevo.getActionMap().put("Nuevo", accionBotonNuevo);
-		nuevo.setHorizontalTextPosition(JButton.TRAILING);
-		nuevo.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonNuevo.getValue(Action.ACCELERATOR_KEY), "Nuevo");
-		nuevo.setBounds(140, 465, 120, 50);
-
-		guardar = new JButton(accionBotonGuardar);
-		accionBotonGuardar.putValue(Action.ACCELERATOR_KEY,
-				KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_DOWN_MASK));
-		accionBotonGuardar.putValue(Action.SHORT_DESCRIPTION, "Guarda cambios realizados.");
-		accionBotonGuardar.putValue(Action.MNEMONIC_KEY, KeyEvent.VK_G);
-		guardar.getActionMap().put("Guardar", accionBotonGuardar);
-		guardar.setHorizontalTextPosition(JButton.TRAILING);
-		guardar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonGuardar.getValue(Action.ACCELERATOR_KEY), "Guardar");
-		guardar.setBounds(270, 465, 120, 50);
-
-		modificar = new JButton(accionBotonModificar);
-		accionBotonModificar.putValue(Action.ACCELERATOR_KEY,
-				KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.CTRL_DOWN_MASK));
-		accionBotonModificar.putValue(Action.SHORT_DESCRIPTION, "Modifica la etiqueta seleccionada.");
-		accionBotonModificar.putValue(Action.MNEMONIC_KEY, KeyEvent.VK_M);
-		modificar.getActionMap().put("Modificar", accionBotonModificar);
-		modificar.setHorizontalTextPosition(JButton.TRAILING);
-		modificar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonModificar.getValue(Action.ACCELERATOR_KEY), "Modificar");
-		modificar.setBounds(400, 465, 125, 50);
-
-		eliminar = new JButton(accionBotonEliminar);
-		accionBotonEliminar.putValue(Action.ACCELERATOR_KEY,
-				KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.CTRL_DOWN_MASK));
-		accionBotonEliminar.putValue(Action.SHORT_DESCRIPTION, "Elimina la etiqueta seleccionada.");
-		accionBotonEliminar.putValue(Action.MNEMONIC_KEY, KeyEvent.VK_E);
-		eliminar.getActionMap().put("Eliminar", accionBotonEliminar);
-		eliminar.setHorizontalTextPosition(JButton.TRAILING);
-		eliminar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonEliminar.getValue(Action.ACCELERATOR_KEY), "Eliminar");
-		eliminar.setBounds(535, 465, 120, 50);
 
 		cancelar = new JButton(accionBotonCancelar);
 		accionBotonCancelar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_DOWN_MASK));
-		accionBotonCancelar.putValue(Action.SHORT_DESCRIPTION, "Cancela la edición de la etiqueta.");
+		accionBotonCancelar.putValue(Action.SHORT_DESCRIPTION, "Cancelar la edición de la etiqueta.");
 		accionBotonCancelar.putValue(Action.MNEMONIC_KEY, KeyEvent.VK_C);
 		cancelar.getActionMap().put("Cancelar", accionBotonCancelar);
 		cancelar.setHorizontalTextPosition(JButton.TRAILING);
@@ -248,27 +258,27 @@ public class DialogoGestionEtiquetas extends JDialog {
 
 	// Permite agregar una nueva etiqueta.
 	private void nuevaEtiqueta() {
-
+		
 	}
 
 	// Permite guargar los cambios o las etiquetas agregadas.
 	private void guardarEtiqueta() {
-
+		
 	}
 
 	// Modifica la etiqueta seleccionada.
 	private void modificarEtiqueta() {
-
+		
 	}
 
 	// Elimina la etiqueta seleccionada definitivamente.
 	private void eliminarEtiqueta() {
-
+		
 	}
 
 	// Cancela los cambios efectuados.
 	private void cancelarEtiqueta() {
-
+	
 	}
 
 	// Agrega los valores por defecto a los componentes que lo requieran.
