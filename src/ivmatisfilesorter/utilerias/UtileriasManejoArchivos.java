@@ -2,8 +2,9 @@ package ivmatisfilesorter.utilerias;
 
 import ivmatisfilesorter.dominio.Archivo;
 
-public class ManejoArchivos {
+public class UtileriasManejoArchivos {
 	Archivo archivo = new Archivo();
+
 	public static void crearArchivo() {
 
 	}

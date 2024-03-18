@@ -1,22 +1,21 @@
 package ivmatisfilesorter.dominio;
 
-import ivmatisfilesorter.exception.EtiquetaException;
+import ivmatisfilesorter.exception.ExceptionEtiqueta;
 
 public class Etiqueta extends Exception {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private String etiqueta;
-	private Archivo archivo;
-	
+	private Archivo listaArchivosArchivo;
 
 	public String getEtiqueta() {
 		return etiqueta;
 	}
 
-	public void setEtiqueta(String etiqueta) throws EtiquetaException {
+	public void setEtiqueta(String etiqueta) throws ExceptionEtiqueta {
 		this.etiqueta = etiqueta;
 	}
 
@@ -38,8 +37,7 @@ public class Etiqueta extends Exception {
 
 	@Override
 	public String toString() {
-		return "Etiqueta [etiqueta=" + etiqueta + ", archivo=" + archivo + ", proyecto=" + "]";
+		return "Etiqueta [etiqueta=" + etiqueta + ", archivo=" + listaArchivosArchivo + ", proyecto=" + "]";
 	}
-	
 
 }

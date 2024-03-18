@@ -1,12 +1,12 @@
 package ivmatisfilesorter;
 
-import ivmatisfilesorter.gui.VentanaPrincipal;
+import ivmatisfilesorter.gui.DialogoVentanaPrincipal;
 
 public class IvMatisFileSorter {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		new VentanaPrincipal();
+		new DialogoVentanaPrincipal();
 
 	}
 

@@ -1,4 +1,5 @@
 package ivmatisfilesorter.basedatos;
+
 // Un objeto TableModel que proporciona los datos de un objeto ResultSet a un objeto JTable.
 import java.sql.*;
 import javax.swing.table.*;
@@ -23,19 +24,20 @@ public class ResultSetTableModel extends AbstractTableModel {
 
 	// inicializar conjuntoResultados y obtener su objeto de meta datos;
 	// determinar el n�mero de filas
-	public ResultSetTableModel(String controlador, String url, String consulta) throws SQLException, ClassNotFoundException {         
+	public ResultSetTableModel(String controlador, String url, String consulta)
+			throws SQLException, ClassNotFoundException {
 		// cargar clase de controlador de base de datos
 		Class.forName(controlador);
 
 		// conectarse a la base de datos
 		conexion = DriverManager.getConnection(url);
-		
+
 		// crear objeto Statement para consultar la base de datos
 		instruccion = conexion.createStatement();
-		
+
 		// actualizar estado de conexi�n a la base de datos
 		conectadoALaBaseDeDatos = true;
-		
+
 		// establecer consulta y ejecutarla
 		establecerConsulta(consulta);
 	}
@@ -44,7 +46,7 @@ public class ResultSetTableModel extends AbstractTableModel {
 	public Class<?> getColumnClass(int columna) throws IllegalStateException {
 		// asegurar que la conexi�n a la base de datos est� disponible
 		if (!conectadoALaBaseDeDatos) {
-			throw new IllegalStateException("No hay conexion a la base de datos"); 
+			throw new IllegalStateException("No hay conexion a la base de datos");
 		}
 
 		// determinar la clase de Java de columna
@@ -57,23 +59,23 @@ public class ResultSetTableModel extends AbstractTableModel {
 
 		// atrapar excepciones SQLException y ClassNotFoundException
 		catch (Exception excepcion) {
-			//excepcion.printStackTrace();
+			// excepcion.printStackTrace();
 		}
 		// si ocurren problemas arriba, suponer que es tipo Object
 		return Object.class;
 	}
 
 	// obtener el n�mero de columnas en el objeto ResultSet
-	public int getColumnCount() throws IllegalStateException {   
+	public int getColumnCount() throws IllegalStateException {
 
 		// asegurar que la conexi�n a la base de datos est� disponible
 		if (!conectadoALaBaseDeDatos) {
-			throw new IllegalStateException("No hay conexion a la base de datos"); 
+			throw new IllegalStateException("No hay conexion a la base de datos");
 		}
 
 		// determinar el n�mero de columnas
 		try {
-			return metaDatos.getColumnCount(); 
+			return metaDatos.getColumnCount();
 		}
 
 		// atrapar excepciones SQLException e imprimir mensaje de error
@@ -86,16 +88,16 @@ public class ResultSetTableModel extends AbstractTableModel {
 	}
 
 	// obtener el nombre de una columna espec�fica en el objeto ResultSet
-	public String getColumnName(int columna) throws IllegalStateException {    
+	public String getColumnName(int columna) throws IllegalStateException {
 
 		// asegurar que la conexi�n a la base de datos est� disponible
 		if (!conectadoALaBaseDeDatos) {
-			throw new IllegalStateException("No hay conexion a la base de datos"); 
+			throw new IllegalStateException("No hay conexion a la base de datos");
 		}
 
 		// determinar el nombre de la columna
 		try {
-			return metaDatos.getColumnName(columna + 1);  
+			return metaDatos.getColumnName(columna + 1);
 		}
 
 		// atrapar excepciones SQLException e imprimir mensaje de error
@@ -112,7 +114,7 @@ public class ResultSetTableModel extends AbstractTableModel {
 
 		// asegurar que la conexi�n a la base de datos est� disponible
 		if (!conectadoALaBaseDeDatos) {
-			throw new IllegalStateException( "No hay conexion a la base de datos" ); 
+			throw new IllegalStateException("No hay conexion a la base de datos");
 		}
 		return numeroDeFilas;
 	}
@@ -122,12 +124,12 @@ public class ResultSetTableModel extends AbstractTableModel {
 
 		// asegurar que la conexi�n a la base de datos est� disponible
 		if (!conectadoALaBaseDeDatos) {
-			throw new IllegalStateException( "No hay conexion a la base de datos" ); 
+			throw new IllegalStateException("No hay conexion a la base de datos");
 		}
 
 		// obtener un valor en una fila y columna espec�ficas del objeto ResultSet
 		try {
-			//conjuntoResultados.absolute(fila + 1);
+			// conjuntoResultados.absolute(fila + 1);
 			conjuntoResultados = instruccion.executeQuery(consulta);
 			int contador = 0;
 			while (contador < fila + 1) {
@@ -151,22 +153,22 @@ public class ResultSetTableModel extends AbstractTableModel {
 
 		// asegurar que la conexi�n a la base de datos est� disponible
 		if (!conectadoALaBaseDeDatos) {
-			throw new IllegalStateException( "No hay conexion a la base de datos" ); 
+			throw new IllegalStateException("No hay conexion a la base de datos");
 		}
 
 		// especificar consulta y ejecutarla
 		this.consulta = consulta;
 		conjuntoResultados = instruccion.executeQuery(consulta);
-		
+
 		// obtener meta datos para el objeto ResultSet
 		metaDatos = conjuntoResultados.getMetaData();
-		
+
 		// determinar el n�mero de filas en el objeto ResultSet
-		//conjuntoResultados.last();                   // mover a la �ltima fila
-		//numeroDeFilas = conjuntoResultados.getRow();  // obtener n�mero de fila
+		// conjuntoResultados.last(); // mover a la �ltima fila
+		// numeroDeFilas = conjuntoResultados.getRow(); // obtener n�mero de fila
 		numeroDeFilas = 0;
 		while (conjuntoResultados.next()) {
-			numeroDeFilas ++;
+			numeroDeFilas++;
 		}
 		conjuntoResultados = instruccion.executeQuery(consulta);
 		// notificar al objeto JTable que el modelo ha cambiado
@@ -174,7 +176,7 @@ public class ResultSetTableModel extends AbstractTableModel {
 
 		return conjuntoResultados;
 	}
-  
+
 	// cerrar objetos Statement y Connection
 	public void desconectar() {
 		// cerrar objetos Statement y Connection
@@ -185,32 +187,26 @@ public class ResultSetTableModel extends AbstractTableModel {
 
 		// atrapar excepciones SQLException e imprimir mensaje de error
 		catch (SQLException excepcionSQL) {
-			throw new IllegalStateException( "No hay conexion a la base de datos" );
+			throw new IllegalStateException("No hay conexion a la base de datos");
 		}
 
 		// actualizar estado de conexi�n a la base de datos
-		finally { 
-			conectadoALaBaseDeDatos = false; 
+		finally {
+			conectadoALaBaseDeDatos = false;
 		}
 	}
 
-}  // fin de la clase ResultSetTableModel
-
-
-
+} // fin de la clase ResultSetTableModel
 
 /**************************************************************************
- * (C) Copyright 1992-2003 by Deitel & Associates, Inc. and               *
- * Prentice Hall. All Rights Reserved.                                    *
- *                                                                        *
- * DISCLAIMER: The authors and publisher of this book have used their     *
- * best efforts in preparing the book. These efforts include the          *
- * development, research, and testing of the theories and programs        *
- * to determine their effectiveness. The authors and publisher make       *
- * no warranty of any kind, expressed or implied, with regard to these    *
- * programs or to the documentation contained in these books. The authors *
- * and publisher shall not be liable in any event for incidental or       *
- * consequential damages in connection with, or arising out of, the       *
- * furnishing, performance, or use of these programs.                     *
+ * (C) Copyright 1992-2003 by Deitel & Associates, Inc. and * Prentice Hall. All
+ * Rights Reserved. * * DISCLAIMER: The authors and publisher of this book have
+ * used their * best efforts in preparing the book. These efforts include the *
+ * development, research, and testing of the theories and programs * to
+ * determine their effectiveness. The authors and publisher make * no warranty
+ * of any kind, expressed or implied, with regard to these * programs or to the
+ * documentation contained in these books. The authors * and publisher shall not
+ * be liable in any event for incidental or * consequential damages in
+ * connection with, or arising out of, the * furnishing, performance, or use of
+ * these programs. *
  *************************************************************************/
- 

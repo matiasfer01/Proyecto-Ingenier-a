@@ -39,30 +39,30 @@ public class DialogoBusquedaArchivos extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 
-	private JList<String> etiquetas;
-	private JList<String> etiquetasSeleccionadas;
-	private JList<String> archivos;
-	private JScrollPane scrollpaneEtiquetas;
-	private JScrollPane scrollpaneEtiquetasSeleccionadas;
-	private JScrollPane scrollpaneArchivos;
-	private DefaultListModel<String> listaEtiquetasModel = new DefaultListModel<>();
-	private DefaultListModel<String> listaEtiquetasSeleccionadasModel = new DefaultListModel<>();
-	private DefaultListModel<String> listaArchivosModel = new DefaultListModel<>();
-	private JButton agregar;
-	private JButton buscar;
-	private JButton quitar;
-	private JButton abrirArchivo;
-	private JButton exportar;
+	private JList<String> listaEtiquetas;
+	private JList<String> listaEtiquetasSeleccionadas;
+	private JList<String> listaArchivosDisponibles;
+	private JScrollPane desplazamientoEtiquetas;
+	private JScrollPane desplazamientoEtiquetasSeleccionadas;
+	private JScrollPane desplazamientoArchivos;
+	private DefaultListModel<String> listaModeloEtiquetas = new DefaultListModel<>();
+	private DefaultListModel<String> listaModeloEtiquetasSeleccionadas = new DefaultListModel<>();
+	private DefaultListModel<String> listaModeloArchivos = new DefaultListModel<>();
+	private JButton botonAgregar;
+	private JButton botonBuscar;
+	private JButton botonQuitar;
+	private JButton botonAbrirArchivo;
+	private JButton botonExportar;
 	/* Acción de los botones que se están utilizando en la ventana. */
-	private Action accionBotonAgregar;
-	private Action accionBotonQuitar;
-	private Action accionBotonBuscar;
-	private Action accionBotonAbrirArchivo;
-	private Action accionBotonExportar;
-	
-	private Archivo listaArchivos[];
+	private Action accionAgregarBoton;
+	private Action accionQuitarBoton;
+	private Action accionBuscarBoton;
+	private Action accionAbrirArchivoBoton;
+	private Action accionExportarBoton;
 
-	public DialogoBusquedaArchivos(JFrame parent, VentanaPrincipal ventanaPrincipal) {
+	private Archivo listaArchivosArchivo[];
+
+	public DialogoBusquedaArchivos(JFrame parent, DialogoVentanaPrincipal ventanaPrincipal) {
 		super(parent, "Búsqueda de archivos", true);
 
 		this.setIconImage(
@@ -74,99 +74,99 @@ public class DialogoBusquedaArchivos extends JDialog {
 		etiquetasDisponibles.setBounds(30, 20, 200, 60);
 		etiquetasDisponibles.setDisplayedMnemonic(KeyEvent.VK_L);
 
-		etiquetas = new JList<String>();
-		etiquetas.setBounds(220, 30, 180, 200);
-		etiquetas.setToolTipText("Catálogo de etiquetas:.");
+		listaEtiquetas = new JList<String>();
+		listaEtiquetas.setBounds(220, 30, 180, 200);
+		listaEtiquetas.setToolTipText("Catálogo de etiquetas:.");
 
-		scrollpaneEtiquetas = new JScrollPane(etiquetas);
-		scrollpaneEtiquetas.setBounds(220, 30, 180, 200);
+		desplazamientoEtiquetas = new JScrollPane(listaEtiquetas);
+		desplazamientoEtiquetas.setBounds(220, 30, 180, 200);
 
-		listaEtiquetasModel = new DefaultListModel<>();
-		listaEtiquetasModel.addElement("Vacaciones");
-		listaEtiquetasModel.addElement("Trabajo");
-		listaEtiquetasModel.addElement("Proyecto Importante");
-		listaEtiquetasModel.addElement("Personal");
-		listaEtiquetasModel.addElement("Reunión");
-		listaEtiquetasModel.addElement("Urgente");
-		listaEtiquetasModel.addElement("Familia");
-		listaEtiquetasModel.addElement("Estudio");
-		listaEtiquetasModel.addElement("Viaje");
-		listaEtiquetasModel.addElement("Evento Social");
-		listaEtiquetasModel.addElement("Recordatorio");
-		listaEtiquetasModel.addElement("Compra");
-		listaEtiquetasModel.addElement("Aniversario");
-		listaEtiquetasModel.addElement("Ocio");
-		listaEtiquetasModel.addElement("Deportes");
-		listaEtiquetasModel.addElement("Citas");
-		listaEtiquetasModel.addElement("Tareas Domésticas");
-		listaEtiquetasModel.addElement("Amigos");
-		listaEtiquetasModel.addElement("Cine");
-		listaEtiquetasModel.addElement("Comida");
-		listaEtiquetasModel.addElement("Ejercicio");
-		listaEtiquetasModel.addElement("Música");
-		listaEtiquetasModel.addElement("Libros");
-		listaEtiquetasModel.addElement("Tecnología");
-		listaEtiquetasModel.addElement("Salud");
-		listaEtiquetasModel.addElement("Bricolaje");
+		listaModeloEtiquetas = new DefaultListModel<>();
+		listaModeloEtiquetas.addElement("Vacaciones");
+		listaModeloEtiquetas.addElement("Trabajo");
+		listaModeloEtiquetas.addElement("Proyecto Importante");
+		listaModeloEtiquetas.addElement("Personal");
+		listaModeloEtiquetas.addElement("Reunión");
+		listaModeloEtiquetas.addElement("Urgente");
+		listaModeloEtiquetas.addElement("Familia");
+		listaModeloEtiquetas.addElement("Estudio");
+		listaModeloEtiquetas.addElement("Viaje");
+		listaModeloEtiquetas.addElement("Evento Social");
+		listaModeloEtiquetas.addElement("Recordatorio");
+		listaModeloEtiquetas.addElement("Compra");
+		listaModeloEtiquetas.addElement("Aniversario");
+		listaModeloEtiquetas.addElement("Ocio");
+		listaModeloEtiquetas.addElement("Deportes");
+		listaModeloEtiquetas.addElement("Citas");
+		listaModeloEtiquetas.addElement("Tareas Domésticas");
+		listaModeloEtiquetas.addElement("Amigos");
+		listaModeloEtiquetas.addElement("Cine");
+		listaModeloEtiquetas.addElement("Comida");
+		listaModeloEtiquetas.addElement("Ejercicio");
+		listaModeloEtiquetas.addElement("Música");
+		listaModeloEtiquetas.addElement("Libros");
+		listaModeloEtiquetas.addElement("Tecnología");
+		listaModeloEtiquetas.addElement("Salud");
+		listaModeloEtiquetas.addElement("Bricolaje");
 
 		JLabel seleccionadas = new JLabel("Listado de etiquetas seleccionadas: ");
 		seleccionadas.setBounds(425, 20, 220, 60);
 		seleccionadas.setDisplayedMnemonic(KeyEvent.VK_E);
 
-		etiquetasSeleccionadas = new JList<String>();
-		etiquetasSeleccionadas.setBounds(635, 30, 180, 200);
-		etiquetasSeleccionadas.setToolTipText("Lista de etiquetas elegidas.");
+		listaEtiquetasSeleccionadas = new JList<String>();
+		listaEtiquetasSeleccionadas.setBounds(635, 30, 180, 200);
+		listaEtiquetasSeleccionadas.setToolTipText("Lista de etiquetas elegidas.");
 
-		scrollpaneEtiquetasSeleccionadas = new JScrollPane(etiquetasSeleccionadas);
-		scrollpaneEtiquetasSeleccionadas.setBounds(635, 30, 180, 200);
+		desplazamientoEtiquetasSeleccionadas = new JScrollPane(listaEtiquetasSeleccionadas);
+		desplazamientoEtiquetasSeleccionadas.setBounds(635, 30, 180, 200);
 
-		listaEtiquetasSeleccionadasModel = new DefaultListModel<>();
-		listaEtiquetasSeleccionadasModel.addElement("Trabajo");
-		listaEtiquetasSeleccionadasModel.addElement("Personal");
-		listaEtiquetasSeleccionadasModel.addElement("Proyecto importante");
-		listaEtiquetasSeleccionadasModel.addElement("Recordatorio");
-		listaEtiquetasSeleccionadasModel.addElement("Reunión");
-		listaEtiquetasSeleccionadasModel.addElement("Urgente");
-		listaEtiquetasSeleccionadasModel.addElement("Compra");
-		listaEtiquetasSeleccionadasModel.addElement("Aniversario");
-		listaEtiquetasSeleccionadasModel.addElement("Evento social");
-		listaEtiquetasSeleccionadasModel.addElement("Estudio");
-		listaEtiquetasSeleccionadasModel.addElement("Familia");
-		listaEtiquetasSeleccionadasModel.addElement("Ocio");
-		listaEtiquetasSeleccionadasModel.addElement("Vacaciones");
+		listaModeloEtiquetasSeleccionadas = new DefaultListModel<>();
+		listaModeloEtiquetasSeleccionadas.addElement("Trabajo");
+		listaModeloEtiquetasSeleccionadas.addElement("Personal");
+		listaModeloEtiquetasSeleccionadas.addElement("Proyecto importante");
+		listaModeloEtiquetasSeleccionadas.addElement("Recordatorio");
+		listaModeloEtiquetasSeleccionadas.addElement("Reunión");
+		listaModeloEtiquetasSeleccionadas.addElement("Urgente");
+		listaModeloEtiquetasSeleccionadas.addElement("Compra");
+		listaModeloEtiquetasSeleccionadas.addElement("Aniversario");
+		listaModeloEtiquetasSeleccionadas.addElement("Evento social");
+		listaModeloEtiquetasSeleccionadas.addElement("Estudio");
+		listaModeloEtiquetasSeleccionadas.addElement("Familia");
+		listaModeloEtiquetasSeleccionadas.addElement("Ocio");
+		listaModeloEtiquetasSeleccionadas.addElement("Vacaciones");
 
 		JLabel listaArchivos = new JLabel("Lista de archivos: ");
 		listaArchivos.setBounds(220, 200, 220, 150);
 		listaArchivos.setDisplayedMnemonic(KeyEvent.VK_A);
 
-		archivos = new JList<String>();
-		archivos.setBounds(350, 260, 350, 150);
-		archivos.setToolTipText("Lista de archivos encontrados.");
+		listaArchivosDisponibles = new JList<String>();
+		listaArchivosDisponibles.setBounds(350, 260, 350, 150);
+		listaArchivosDisponibles.setToolTipText("Lista de archivos encontrados.");
 
-		scrollpaneArchivos = new JScrollPane(archivos);
-		scrollpaneArchivos.setBounds(350, 260, 350, 150);
+		desplazamientoArchivos = new JScrollPane(listaArchivosDisponibles);
+		desplazamientoArchivos.setBounds(350, 260, 350, 150);
 
-		listaArchivosModel = new DefaultListModel<>();
-		listaArchivosModel.addElement("Documento1");
-		listaArchivosModel.addElement("Informe_Trabajo");
-		listaArchivosModel.addElement("Proyecto_Importante");
-		listaArchivosModel.addElement("Foto_Personal");
-		listaArchivosModel.addElement("Reunion_Notas");
-		listaArchivosModel.addElement("Urgente_Memo");
-		listaArchivosModel.addElement("Familia_Fotos");
-		listaArchivosModel.addElement("Estudio_Presentacion");
-		listaArchivosModel.addElement("Itinerario_Viaje");
-		listaArchivosModel.addElement("Evento_Social_Invitacion");
-		listaArchivosModel.addElement("Recordatorio");
-		listaArchivosModel.addElement("Lista_Compras");
-		listaArchivosModel.addElement("Aniversario_Video");
-		listaArchivosModel.addElement("Ocio_Playlist");
+		listaModeloArchivos = new DefaultListModel<>();
+		listaModeloArchivos.addElement("Documento1");
+		listaModeloArchivos.addElement("Informe_Trabajo");
+		listaModeloArchivos.addElement("Proyecto_Importante");
+		listaModeloArchivos.addElement("Foto_Personal");
+		listaModeloArchivos.addElement("Reunion_Notas");
+		listaModeloArchivos.addElement("Urgente_Memo");
+		listaModeloArchivos.addElement("Familia_Fotos");
+		listaModeloArchivos.addElement("Estudio_Presentacion");
+		listaModeloArchivos.addElement("Itinerario_Viaje");
+		listaModeloArchivos.addElement("Evento_Social_Invitacion");
+		listaModeloArchivos.addElement("Recordatorio");
+		listaModeloArchivos.addElement("Lista_Compras");
+		listaModeloArchivos.addElement("Aniversario_Video");
+		listaModeloArchivos.addElement("Ocio_Playlist");
 
 		/*
-		 * La accionBotonAgregar está asociada al botón. Cuando se ejecuta se
-		 * manda a llamar al método agregarEtiqueta().
+		 * La accionBotonAgregar está asociada al botón. Cuando se ejecuta se manda a
+		 * llamar al método agregarEtiqueta().
 		 */
-		accionBotonAgregar = new AbstractAction("Agregar",
+		accionAgregarBoton = new AbstractAction("Agregar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/agregar.png"))) {
 
 			private static final long serialVersionUID = 1L;
@@ -176,22 +176,22 @@ public class DialogoBusquedaArchivos extends JDialog {
 
 			}
 		};
-		agregar = new JButton(accionBotonAgregar);
-		accionBotonAgregar.putValue(Action.ACCELERATOR_KEY,
+		botonAgregar = new JButton(accionAgregarBoton);
+		accionAgregarBoton.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_DOWN_MASK));
-		accionBotonAgregar.putValue(Action.SHORT_DESCRIPTION,
+		accionAgregarBoton.putValue(Action.SHORT_DESCRIPTION,
 				"Incluir la etiqueta seleccionada de las opciones disponibles en las etiquetas seleccionadas.");
-		accionBotonAgregar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_G));
-		agregar.getActionMap().put("Agregar", accionBotonAgregar);
-		agregar.setHorizontalTextPosition(JButton.TRAILING);
-		agregar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonAgregar.getValue(Action.ACCELERATOR_KEY), "Agregar");
-		agregar.setBounds(450, 80, 125, 40);
+		accionAgregarBoton.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_G));
+		botonAgregar.getActionMap().put("Agregar", accionAgregarBoton);
+		botonAgregar.setHorizontalTextPosition(JButton.TRAILING);
+		botonAgregar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionAgregarBoton.getValue(Action.ACCELERATOR_KEY), "Agregar");
+		botonAgregar.setBounds(450, 80, 125, 40);
 		/*
-		 * La accionBotonQuitar está asociada al botón. Cuando se ejecuta se
-		 * manda a llamar al método quitarEtiqueta().
+		 * La accionBotonQuitar está asociada al botón. Cuando se ejecuta se manda a
+		 * llamar al método quitarEtiqueta().
 		 */
-		accionBotonQuitar = new AbstractAction("Quitar",
+		accionQuitarBoton = new AbstractAction("Quitar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/quitar.png"))) {
 
 			private static final long serialVersionUID = 1L;
@@ -201,22 +201,22 @@ public class DialogoBusquedaArchivos extends JDialog {
 
 			}
 		};
-		quitar = new JButton(accionBotonQuitar);
-		accionBotonQuitar.putValue(Action.ACCELERATOR_KEY,
+		botonQuitar = new JButton(accionQuitarBoton);
+		accionQuitarBoton.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_DOWN_MASK));
-		accionBotonQuitar.putValue(Action.SHORT_DESCRIPTION,
+		accionQuitarBoton.putValue(Action.SHORT_DESCRIPTION,
 				"Remover la etiqueta seleccionada de la lista de etiquetas seleccionadas.");
-		accionBotonQuitar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_Q));
-		quitar.getActionMap().put("Quitar", accionBotonQuitar);
-		quitar.setHorizontalTextPosition(JButton.TRAILING);
-		quitar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonQuitar.getValue(Action.ACCELERATOR_KEY), "Quitar");
-		quitar.setBounds(450, 150, 120, 40);
+		accionQuitarBoton.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_Q));
+		botonQuitar.getActionMap().put("Quitar", accionQuitarBoton);
+		botonQuitar.setHorizontalTextPosition(JButton.TRAILING);
+		botonQuitar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionQuitarBoton.getValue(Action.ACCELERATOR_KEY), "Quitar");
+		botonQuitar.setBounds(450, 150, 120, 40);
 		/*
-		 * La accionBotonBuscar está asociada al botón. Cuando se ejecuta se
-		 * manda a llamar al método buscarEtiqueta().
+		 * La accionBotonBuscar está asociada al botón. Cuando se ejecuta se manda a
+		 * llamar al método buscarEtiqueta().
 		 */
-		accionBotonBuscar = new AbstractAction("Buscar",
+		accionBuscarBoton = new AbstractAction("Buscar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/buscar.png"))) {
 
 			private static final long serialVersionUID = 1L;
@@ -226,21 +226,21 @@ public class DialogoBusquedaArchivos extends JDialog {
 
 			}
 		};
-		buscar = new JButton(accionBotonBuscar);
-		accionBotonBuscar.putValue(Action.ACCELERATOR_KEY,
+		botonBuscar = new JButton(accionBuscarBoton);
+		accionBuscarBoton.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_B, InputEvent.CTRL_DOWN_MASK));
-		accionBotonBuscar.putValue(Action.SHORT_DESCRIPTION, "Encontrar los archivos con las etiquetas seleccionadas.");
-		accionBotonBuscar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_B));
-		buscar.getActionMap().put("Buscar", accionBotonBuscar);
-		buscar.setHorizontalTextPosition(JButton.TRAILING);
-		buscar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonBuscar.getValue(Action.ACCELERATOR_KEY), "Buscar");
-		buscar.setBounds(275, 465, 120, 40);
+		accionBuscarBoton.putValue(Action.SHORT_DESCRIPTION, "Encontrar los archivos con las etiquetas seleccionadas.");
+		accionBuscarBoton.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_B));
+		botonBuscar.getActionMap().put("Buscar", accionBuscarBoton);
+		botonBuscar.setHorizontalTextPosition(JButton.TRAILING);
+		botonBuscar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionBuscarBoton.getValue(Action.ACCELERATOR_KEY), "Buscar");
+		botonBuscar.setBounds(275, 465, 120, 40);
 		/*
-		 * La accionBotonAbrirArchivo está asociada al botón. Cuando se ejecuta
-		 * se manda a llamar al método abrirArchivo().
+		 * La accionBotonAbrirArchivo está asociada al botón. Cuando se ejecuta se manda
+		 * a llamar al método abrirArchivo().
 		 */
-		accionBotonAbrirArchivo = new AbstractAction("Abrir archivo",
+		accionAbrirArchivoBoton = new AbstractAction("Abrir archivo",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/abrir.png"))) {
 
 			private static final long serialVersionUID = 1L;
@@ -250,22 +250,22 @@ public class DialogoBusquedaArchivos extends JDialog {
 
 			}
 		};
-		abrirArchivo = new JButton(accionBotonAbrirArchivo);
-		accionBotonAbrirArchivo.putValue(Action.ACCELERATOR_KEY,
+		botonAbrirArchivo = new JButton(accionAbrirArchivoBoton);
+		accionAbrirArchivoBoton.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_DOWN_MASK));
-		accionBotonAbrirArchivo.putValue(Action.SHORT_DESCRIPTION, "Acceder al archivo seleccionado.");
-		accionBotonAbrirArchivo.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_R));
-		abrirArchivo.getActionMap().put("Abrir archivo", accionBotonAbrirArchivo);
-		abrirArchivo.setHorizontalTextPosition(JButton.TRAILING);
-		abrirArchivo.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonAbrirArchivo.getValue(Action.ACCELERATOR_KEY), "Abrir archivo");
-		abrirArchivo.setBounds(425, 465, 145, 40);
+		accionAbrirArchivoBoton.putValue(Action.SHORT_DESCRIPTION, "Acceder al archivo seleccionado.");
+		accionAbrirArchivoBoton.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_R));
+		botonAbrirArchivo.getActionMap().put("Abrir archivo", accionAbrirArchivoBoton);
+		botonAbrirArchivo.setHorizontalTextPosition(JButton.TRAILING);
+		botonAbrirArchivo.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionAbrirArchivoBoton.getValue(Action.ACCELERATOR_KEY), "Abrir archivo");
+		botonAbrirArchivo.setBounds(425, 465, 145, 40);
 
 		/*
-		 * La accionBotonExportar está asociada al botón. Cuando se ejecuta se
-		 * manda a llamar al método exportarArchivo().
+		 * La accionBotonExportar está asociada al botón. Cuando se ejecuta se manda a
+		 * llamar al método exportarArchivo().
 		 */
-		accionBotonExportar = new AbstractAction("Exportar",
+		accionExportarBoton = new AbstractAction("Exportar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/exportar.png"))) {
 
 			private static final long serialVersionUID = 1L;
@@ -276,33 +276,33 @@ public class DialogoBusquedaArchivos extends JDialog {
 			}
 		};
 
-		exportar = new JButton(accionBotonExportar);
-		accionBotonExportar.putValue(Action.ACCELERATOR_KEY,
+		botonExportar = new JButton(accionExportarBoton);
+		accionExportarBoton.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_X, InputEvent.CTRL_DOWN_MASK));
-		accionBotonExportar.putValue(Action.SHORT_DESCRIPTION,
+		accionExportarBoton.putValue(Action.SHORT_DESCRIPTION,
 				"Transferir los archivos de la lista de archivos a una carpeta.");
-		accionBotonExportar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_X));
-		exportar.getActionMap().put("Exportar", accionBotonExportar);
-		exportar.setHorizontalTextPosition(JButton.TRAILING);
-		exportar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonExportar.getValue(Action.ACCELERATOR_KEY), "Exportar");
-		exportar.setBounds(600, 465, 120, 40);
+		accionExportarBoton.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_X));
+		botonExportar.getActionMap().put("Exportar", accionExportarBoton);
+		botonExportar.setHorizontalTextPosition(JButton.TRAILING);
+		botonExportar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionExportarBoton.getValue(Action.ACCELERATOR_KEY), "Exportar");
+		botonExportar.setBounds(600, 465, 120, 40);
 
 		/* Los componentes han sido agregados a la ventana. */
 		contenido.add(etiquetasDisponibles);
-		etiquetas.setModel(listaEtiquetasModel);
-		contenido.add(scrollpaneEtiquetas);
+		listaEtiquetas.setModel(listaModeloEtiquetas);
+		contenido.add(desplazamientoEtiquetas);
 		contenido.add(seleccionadas);
-		etiquetasSeleccionadas.setModel(listaEtiquetasSeleccionadasModel);
-		contenido.add(scrollpaneEtiquetasSeleccionadas);
+		listaEtiquetasSeleccionadas.setModel(listaModeloEtiquetasSeleccionadas);
+		contenido.add(desplazamientoEtiquetasSeleccionadas);
 		contenido.add(listaArchivos);
-		archivos.setModel(listaArchivosModel);
-		contenido.add(scrollpaneArchivos);
-		contenido.add(agregar);
-		contenido.add(buscar);
-		contenido.add(quitar);
-		contenido.add(abrirArchivo);
-		contenido.add(exportar);
+		listaArchivosDisponibles.setModel(listaModeloArchivos);
+		contenido.add(desplazamientoArchivos);
+		contenido.add(botonAgregar);
+		contenido.add(botonBuscar);
+		contenido.add(botonQuitar);
+		contenido.add(botonAbrirArchivo);
+		contenido.add(botonExportar);
 
 		this.add(contenido);
 

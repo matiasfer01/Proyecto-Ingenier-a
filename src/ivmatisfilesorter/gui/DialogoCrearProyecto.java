@@ -40,21 +40,21 @@ public class DialogoCrearProyecto extends JDialog {
 	 */
 	private static final long serialVersionUID = 1L;
 	/**/
-	private JTextField nombreProyecto;
-	private JTextField propietario;
-	private JDateChooser fechaDeCreacion;
-	private JTextArea descripcion;
-	private JScrollPane scrollpaneDescripcion;
-	private JButton guardar;
-	private JButton cancelar;
+	private JTextField campoNombreProyecto;
+	private JTextField campoPropietario;
+	private JDateChooser fechaCreacion;
+	private JTextArea areaDescripcion;
+	private JScrollPane desplazamientoDescripcion;
+	private JButton botonCancelar;
+	private JButton botonGuardar;
 
 	/* Acción de los botones que se están utilizando en la ventana. */
 	private Action accionBotonGuardar;
 	private Action accionBotonCancelar;
 
-	private Proyecto proyecto[];
+	private Proyecto listaProyectosProyecto[];
 
-	public DialogoCrearProyecto(JFrame parent, VentanaPrincipal ventanaPrincipal) {
+	public DialogoCrearProyecto(JFrame parent, DialogoVentanaPrincipal ventanaPrincipal) {
 		// TODO Auto-generated constructor stub
 		super(parent, "Crear Proyecto", true);
 		this.setIconImage(
@@ -62,45 +62,45 @@ public class DialogoCrearProyecto extends JDialog {
 
 		JPanel contenido = new JPanel(null);
 
-		JLabel etiquetasNombre = new JLabel("Nombre del proyecto: ");
+		JLabel etiquetasNombre = new JLabel("*Nombre del proyecto: ");
 		etiquetasNombre.setBounds(50, 30, 150, 150);
 		etiquetasNombre.setDisplayedMnemonic(KeyEvent.VK_N);
 
-		nombreProyecto = new JTextField();
-		nombreProyecto.setBounds(180, 92, 150, 30);
-		nombreProyecto.setToolTipText("Ingresar el nombre del proyecto.");
+		campoNombreProyecto = new JTextField();
+		campoNombreProyecto.setBounds(180, 92, 150, 30);
+		campoNombreProyecto.setToolTipText("Ingresar el nombre del proyecto.");
 
-		JLabel etiquetaFecha = new JLabel("*Fecha de creación: ");
+		JLabel etiquetaFecha = new JLabel("Fecha de creación: ");
 		etiquetaFecha.setBounds(500, 92, 150, 30);
 		etiquetaFecha.setDisplayedMnemonic(KeyEvent.VK_F);
 
-		fechaDeCreacion = new JDateChooser();
-		fechaDeCreacion.setBounds(650, 92, 150, 30);
+		fechaCreacion = new JDateChooser();
+		fechaCreacion.setBounds(650, 92, 150, 30);
 
-		JLabel etiquetaPropietario = new JLabel("*Propietario: ");
+		JLabel etiquetaPropietario = new JLabel("Propietario: ");
 		etiquetaPropietario.setBounds(100, 240, 150, 150);
 		etiquetaPropietario.setDisplayedMnemonic(KeyEvent.VK_P);
 
-		propietario = new JTextField();
-		propietario.setBounds(180, 300, 150, 30);
-		propietario.setToolTipText("Ingresar el nombre del propietario del proyecto.");
+		campoPropietario = new JTextField();
+		campoPropietario.setBounds(180, 300, 150, 30);
+		campoPropietario.setToolTipText("Ingresar el nombre del propietario del proyecto.");
 
-		JLabel etiquetaDescripcion = new JLabel("*Descripción: ");
+		JLabel etiquetaDescripcion = new JLabel("Descripción: ");
 		etiquetaDescripcion.setBounds(500, 240, 150, 150);
 		etiquetaDescripcion.setDisplayedMnemonic(KeyEvent.VK_D);
 
-		descripcion = new JTextArea();
-		descripcion.setBounds(600, 300, 300, 100);
-		descripcion.setLineWrap(true);
-		descripcion.setWrapStyleWord(true);
-		descripcion.setToolTipText("Agregar una breve descripción del proyecto.");
+		areaDescripcion = new JTextArea();
+		areaDescripcion.setBounds(600, 300, 300, 100);
+		areaDescripcion.setLineWrap(true);
+		areaDescripcion.setWrapStyleWord(true);
+		areaDescripcion.setToolTipText("Agregar una breve descripción del proyecto.");
 
-		scrollpaneDescripcion = new JScrollPane(descripcion);
-		scrollpaneDescripcion.setBounds(600, 300, 300, 100);
+		desplazamientoDescripcion = new JScrollPane(areaDescripcion);
+		desplazamientoDescripcion.setBounds(600, 300, 300, 100);
 
 		/*
-		 * La accionBotonGuardar está asociada al botón. Cuando se ejecuta se
-		 * manda a llamar al método guardarProyecto().
+		 * La accionBotonGuardar está asociada al botón. Cuando se ejecuta se manda a
+		 * llamar al método guardarProyecto().
 		 */
 		accionBotonGuardar = new AbstractAction("Guardar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/guardar.png"))) {
@@ -115,21 +115,21 @@ public class DialogoCrearProyecto extends JDialog {
 
 		};
 
-		guardar = new JButton(accionBotonGuardar);
+		botonGuardar = new JButton(accionBotonGuardar);
 		accionBotonGuardar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_DOWN_MASK));
 		accionBotonGuardar.putValue(Action.SHORT_DESCRIPTION, "Guardar el proyecto");
 		accionBotonGuardar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_G));
-		guardar.getActionMap().put("Guardar", accionBotonGuardar);
-		guardar.setHorizontalTextPosition(JButton.TRAILING);
-		guardar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+		botonGuardar.getActionMap().put("Guardar", accionBotonGuardar);
+		botonGuardar.setHorizontalTextPosition(JButton.TRAILING);
+		botonGuardar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
 				.put((KeyStroke) accionBotonGuardar.getValue(Action.ACCELERATOR_KEY), "Guardar");
-		guardar.setMnemonic(KeyEvent.VK_G);
-		guardar.setBounds(300, 465, 120, 40);
+		botonGuardar.setMnemonic(KeyEvent.VK_G);
+		botonGuardar.setBounds(300, 465, 120, 40);
 
 		/*
-		 * La accionBotonCancelar está asociada al botón. Cuando se ejecuta se
-		 * manda a llamar al método cancelarProyecto().
+		 * La accionBotonCancelar está asociada al botón. Cuando se ejecuta se manda a
+		 * llamar al método cancelarProyecto().
 		 */
 		accionBotonCancelar = new AbstractAction("Cancelar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/cancelar.png"))) {
@@ -141,29 +141,29 @@ public class DialogoCrearProyecto extends JDialog {
 			}
 		};
 
-		cancelar = new JButton(accionBotonCancelar);
+		botonCancelar = new JButton(accionBotonCancelar);
 		accionBotonCancelar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_DOWN_MASK));
 		accionBotonCancelar.putValue(Action.SHORT_DESCRIPTION, "Cancelar el proyecto");
 		accionBotonCancelar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_C));
-		cancelar.getActionMap().put("Cancelar", accionBotonCancelar);
-		cancelar.setHorizontalTextPosition(JButton.TRAILING);
-		cancelar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+		botonCancelar.getActionMap().put("Cancelar", accionBotonCancelar);
+		botonCancelar.setHorizontalTextPosition(JButton.TRAILING);
+		botonCancelar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
 				.put((KeyStroke) accionBotonCancelar.getValue(Action.ACCELERATOR_KEY), "Cancelar");
-		cancelar.setMnemonic(KeyEvent.VK_C);
-		cancelar.setBounds(450, 465, 125, 40);
+		botonCancelar.setMnemonic(KeyEvent.VK_C);
+		botonCancelar.setBounds(450, 465, 125, 40);
 
 		/* Los componentes han sido agregados a la ventana. */
 		contenido.add(etiquetasNombre);
 		contenido.add(etiquetaFecha);
 		contenido.add(etiquetaPropietario);
 		contenido.add(etiquetaDescripcion);
-		contenido.add(nombreProyecto);
-		contenido.add(fechaDeCreacion);
-		contenido.add(propietario);
-		contenido.add(scrollpaneDescripcion);
-		contenido.add(guardar);
-		contenido.add(cancelar);
+		contenido.add(campoNombreProyecto);
+		contenido.add(fechaCreacion);
+		contenido.add(campoPropietario);
+		contenido.add(desplazamientoDescripcion);
+		contenido.add(botonGuardar);
+		contenido.add(botonCancelar);
 
 		this.add(contenido);
 

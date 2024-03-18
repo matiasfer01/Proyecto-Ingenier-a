@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.Vector;
 
 import ivmatisfilesorter.dominio.Archivo;
-import ivmatisfilesorter.exception.BaseDatosException;
+import ivmatisfilesorter.exception.ExceptionBaseDatos;
 
 public class BaseDatos {
 	private Connection conexion;
@@ -19,29 +19,28 @@ public class BaseDatos {
 		this.url = url + archivo;
 	}
 
-	protected boolean realizarConexion() throws BaseDatosException {
+	protected boolean realizarConexion() throws ExceptionBaseDatos {
 		return false;
-		
+
 	}
 
-	protected void cerrarConexion() throws BaseDatosException{
-		
-	}
-		
+	protected void cerrarConexion() throws ExceptionBaseDatos {
 
-	protected ResultSet realizarConsulta(String consulta) throws BaseDatosException {
+	}
+
+	protected ResultSet realizarConsulta(String consulta) throws ExceptionBaseDatos {
 		return null;
-		
+
 	}
 
-	protected int realizarAccion(String accion) throws BaseDatosException {
+	protected int realizarAccion(String accion) throws ExceptionBaseDatos {
 		return 0;
-		
+
 	}
 
-	protected Vector<String> consultarTablas() throws BaseDatosException {
+	protected Vector<String> consultarTablas() throws ExceptionBaseDatos {
 		return null;
-		
+
 	}
 
 }

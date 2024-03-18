@@ -38,38 +38,38 @@ import ivmatisfilesorter.dominio.Etiqueta;
 
 public class DialogoGestionArchivos extends JDialog {
 
-	private JList<String> listaDeArchivos;
-	private JScrollPane scrollpaneArchivo;
-	private JTextField ruta;
-	private JComboBox<String> etiquetas;
+	private JList<String> listaArchivos;
 	private JList<String> listaEtiquetas;
-	private JScrollPane scrollpaneEtiquetas;
-	private DefaultListModel<String> archivoListModel = new DefaultListModel<>();
-	private DefaultListModel<String> etiquetasListModel = new DefaultListModel<>();
-	private DefaultComboBoxModel<String> etiquetasComboBoxModel = new DefaultComboBoxModel<>();
-	private JButton selecccionarArchivo;
-	private JButton agregar;
-	private JButton quitar;
-	private JButton nuevo;
-	private JButton guardar;
-	private JButton modificar;
-	private JButton eliminar;
-	private JButton cancelar;
+	private JScrollPane desplazamientoArchivo;
+	private JTextField campoRuta;
+	private JComboBox<String> comboEtiquetas;
+	private JScrollPane desplazamientoEtiquetas;
+	private DefaultListModel<String> listamodeloArchivos = new DefaultListModel<>();
+	private DefaultListModel<String> listamodeloEtiquetas = new DefaultListModel<>();
+	private DefaultComboBoxModel<String> combomodeloEtiquetas = new DefaultComboBoxModel<>();
+	private JButton botonSelecccionarArchivo;
+	private JButton botonAgregar;
+	private JButton botonQuitar;
+	private JButton botonNuevo;
+	private JButton botonGuardar;
+	private JButton botonModificar;
+	private JButton botonEliminar;
+	private JButton botonCancelar;
 	/* Acción de los botones que se están utilizando en la ventana. */
-	private Action accionBotonSeleccionar;
-	private Action accionBotonAgregar;
-	private Action accionBotonQuitar;
-	private Action accionBotonNuevo;
+	private Action accionSeleccionarBoton;
+	private Action accionAgregarBoton;
+	private Action accionQuitarBoton;
+	private Action accionCrearNuevoBoton;
 	private Action accionBotonGuardar;
-	private Action accionBotonModificar;
-	private Action accionBotonEliminar;
-	private Action accionBotonCancelar;
+	private Action accionModificarBoton;
+	private Action accionEliminarBoton;
+	private Action accionCancelarBoton;
 
-	private Archivo listaArchivo[];
+	private Archivo listaArchivosArchivo[];
 
 	private static final long serialVersionUID = 1L;
 
-	public DialogoGestionArchivos(JFrame parent, VentanaPrincipal ventanaPrincipal) {
+	public DialogoGestionArchivos(JFrame parent, DialogoVentanaPrincipal ventanaPrincipal) {
 		super(parent, "Gestión de archivos", true);
 		this.setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(getClass().getResource("/ivmatisfilesorter/imagenes/gestion-de-archivos.png")));
@@ -79,45 +79,45 @@ public class DialogoGestionArchivos extends JDialog {
 		JLabel etiquetaRuta = new JLabel("Ruta: ");
 		etiquetaRuta.setBounds(150, 10, 100, 100);
 
-		ruta = new JTextField();
-		ruta.setBounds(200, 45, 350, 30);
-		ruta.setToolTipText("Mostrar la dirección del archivo.");
-		ruta.setEditable(false);
+		campoRuta = new JTextField();
+		campoRuta.setBounds(200, 45, 350, 30);
+		campoRuta.setToolTipText("Mostrar la dirección del archivo.");
+		campoRuta.setEditable(false);
 
 		JLabel etiquetaListaArchivo = new JLabel("Lista de archivos: ");
 		etiquetaListaArchivo.setBounds(70, 120, 120, 50);
 		etiquetaListaArchivo.setDisplayedMnemonic(KeyEvent.VK_L);
 
-		listaDeArchivos = new JList<String>();
-		listaDeArchivos.setBounds(200, 130, 600, 80);
-		listaDeArchivos.setToolTipText("Catálogo de archivos, seleccione un archivo para modificarle etiquetas.");
+		listaArchivos = new JList<String>();
+		listaArchivos.setBounds(200, 130, 600, 80);
+		listaArchivos.setToolTipText("Catálogo de archivos, seleccione un archivo para modificarle etiquetas.");
 
-		scrollpaneArchivo = new JScrollPane(listaDeArchivos);
-		scrollpaneArchivo.setBounds(200, 130, 600, 80);
+		desplazamientoArchivo = new JScrollPane(listaArchivos);
+		desplazamientoArchivo.setBounds(200, 130, 600, 80);
 
-		archivoListModel = new DefaultListModel<>();
-		archivoListModel.addElement("The Legend of Zelda");
-		archivoListModel.addElement("Final Fantasy VII");
-		archivoListModel.addElement("Pokemon Red and Blue");
-		archivoListModel.addElement("Grand Theft Auto V");
-		archivoListModel.addElement("Minecraft");
-		archivoListModel.addElement("The Elder Scrolls V: Skyrim");
-		archivoListModel.addElement("Red Dead Redemption 2");
-		archivoListModel.addElement("Dark Souls");
-		archivoListModel.addElement("The Witcher 3: Wild Hunt");
-		archivoListModel.addElement("Metal Gear Solid V: The Phantom Pain");
-		archivoListModel.addElement("Uncharted 4: A Thief's End");
-		archivoListModel.addElement("Bloodborne");
-		archivoListModel.addElement("God of War");
-		archivoListModel.addElement("FIFA 22");
+		listamodeloArchivos = new DefaultListModel<>();
+		listamodeloArchivos.addElement("The Legend of Zelda");
+		listamodeloArchivos.addElement("Final Fantasy VII");
+		listamodeloArchivos.addElement("Pokemon Red and Blue");
+		listamodeloArchivos.addElement("Grand Theft Auto V");
+		listamodeloArchivos.addElement("Minecraft");
+		listamodeloArchivos.addElement("The Elder Scrolls V: Skyrim");
+		listamodeloArchivos.addElement("Red Dead Redemption 2");
+		listamodeloArchivos.addElement("Dark Souls");
+		listamodeloArchivos.addElement("The Witcher 3: Wild Hunt");
+		listamodeloArchivos.addElement("Metal Gear Solid V: The Phantom Pain");
+		listamodeloArchivos.addElement("Uncharted 4: A Thief's End");
+		listamodeloArchivos.addElement("Bloodborne");
+		listamodeloArchivos.addElement("God of War");
+		listamodeloArchivos.addElement("FIFA 22");
 
 		JLabel etiquetaEtiquetas = new JLabel("Etiquetas");
 		etiquetaEtiquetas.setBounds(150, 200, 100, 100);
 		etiquetaEtiquetas.setDisplayedMnemonic(KeyEvent.VK_E);
 
-		etiquetas = new JComboBox<>();
-		etiquetas.setBounds(250, 240, 200, 30);
-		etiquetas.setToolTipText("Seleccionar la etiqueta.");
+		comboEtiquetas = new JComboBox<>();
+		comboEtiquetas.setBounds(250, 240, 200, 30);
+		comboEtiquetas.setToolTipText("Seleccionar la etiqueta.");
 
 		JLabel campoEtiqueta = new JLabel("Lista de etiquetas: ");
 		campoEtiqueta.setBounds(150, 260, 150, 100);
@@ -127,26 +127,26 @@ public class DialogoGestionArchivos extends JDialog {
 		listaEtiquetas.setBounds(280, 305, 480, 130);
 		listaEtiquetas.setToolTipText("Lista de etiquetas seleccionadas: ");
 
-		scrollpaneEtiquetas = new JScrollPane(listaEtiquetas);
-		scrollpaneEtiquetas.setBounds(280, 305, 480, 130);
+		desplazamientoEtiquetas = new JScrollPane(listaEtiquetas);
+		desplazamientoEtiquetas.setBounds(280, 305, 480, 130);
 
-		etiquetasListModel = new DefaultListModel<>();
-		etiquetasListModel.addElement("Los hermanos");
-		etiquetasListModel.addElement("Bruce Wayne");
-		etiquetasListModel.addElement("Clark Kent");
-		etiquetasListModel.addElement("Peter Parker");
-		etiquetasListModel.addElement("Diana Prince");
-		etiquetasListModel.addElement("Tony Stark");
-		etiquetasListModel.addElement("Natasha Romanoff");
-		etiquetasListModel.addElement("Steve Rogers");
-		etiquetasListModel.addElement("Barry Allen");
-		etiquetasListModel.addElement("Thor Odinson");
+		listamodeloEtiquetas = new DefaultListModel<>();
+		listamodeloEtiquetas.addElement("Los hermanos");
+		listamodeloEtiquetas.addElement("Bruce Wayne");
+		listamodeloEtiquetas.addElement("Clark Kent");
+		listamodeloEtiquetas.addElement("Peter Parker");
+		listamodeloEtiquetas.addElement("Diana Prince");
+		listamodeloEtiquetas.addElement("Tony Stark");
+		listamodeloEtiquetas.addElement("Natasha Romanoff");
+		listamodeloEtiquetas.addElement("Steve Rogers");
+		listamodeloEtiquetas.addElement("Barry Allen");
+		listamodeloEtiquetas.addElement("Thor Odinson");
 
 		/*
-		 * La accionBotonSeleccionar está asociada al botón. Cuando se ejecuta
-		 * se manda a llamar al método seleccionarArchivo().
+		 * La accionBotonSeleccionar está asociada al botón. Cuando se ejecuta se manda
+		 * a llamar al método seleccionarArchivo().
 		 */
-		accionBotonSeleccionar = new AbstractAction("Seleccionar archivo",
+		accionSeleccionarBoton = new AbstractAction("Seleccionar archivo",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/seleccione.png"))) {
 
 			private static final long serialVersionUID = 1L;
@@ -156,24 +156,24 @@ public class DialogoGestionArchivos extends JDialog {
 
 			}
 		};
-		
-		selecccionarArchivo = new JButton(accionBotonSeleccionar);
-		accionBotonSeleccionar.putValue(Action.ACCELERATOR_KEY,
+
+		botonSelecccionarArchivo = new JButton(accionSeleccionarBoton);
+		accionSeleccionarBoton.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_DOWN_MASK));
-		accionBotonSeleccionar.putValue(Action.SHORT_DESCRIPTION, "Seleccionar un archivo.");
-		accionBotonSeleccionar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_S));
-		selecccionarArchivo.getActionMap().put("Seleccionar Archivo", accionBotonSeleccionar);
-		selecccionarArchivo.setHorizontalTextPosition(JButton.TRAILING);
-		selecccionarArchivo.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonSeleccionar.getValue(Action.ACCELERATOR_KEY), "Seleccionar Archivo");
-		selecccionarArchivo.setMnemonic(KeyEvent.VK_S);
-		selecccionarArchivo.setBounds(600, 30, 190, 50);
+		accionSeleccionarBoton.putValue(Action.SHORT_DESCRIPTION, "Seleccionar un archivo.");
+		accionSeleccionarBoton.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_S));
+		botonSelecccionarArchivo.getActionMap().put("Seleccionar Archivo", accionSeleccionarBoton);
+		botonSelecccionarArchivo.setHorizontalTextPosition(JButton.TRAILING);
+		botonSelecccionarArchivo.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionSeleccionarBoton.getValue(Action.ACCELERATOR_KEY), "Seleccionar Archivo");
+		botonSelecccionarArchivo.setMnemonic(KeyEvent.VK_S);
+		botonSelecccionarArchivo.setBounds(600, 30, 190, 50);
 
 		/*
-		 * La accionBotonAgregar está asociada al botón. Cuando se ejecuta se
-		 * manda a llamar al método agregarEtiqueta().
+		 * La accionBotonAgregar está asociada al botón. Cuando se ejecuta se manda a
+		 * llamar al método agregarEtiqueta().
 		 */
-		accionBotonAgregar = new AbstractAction("Agregar",
+		accionAgregarBoton = new AbstractAction("Agregar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/agregar.png"))) {
 
 			private static final long serialVersionUID = 1L;
@@ -183,22 +183,22 @@ public class DialogoGestionArchivos extends JDialog {
 
 			}
 		};
-		agregar = new JButton(accionBotonAgregar);
-		accionBotonAgregar.putValue(Action.ACCELERATOR_KEY,
+		botonAgregar = new JButton(accionAgregarBoton);
+		accionAgregarBoton.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_DOWN_MASK));
-		accionBotonAgregar.putValue(Action.SHORT_DESCRIPTION, "Agregar la etiqueta.");
-		accionBotonAgregar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_A));
-		agregar.getActionMap().put("Agregar", accionBotonAgregar);
-		agregar.setHorizontalTextPosition(JButton.TRAILING);
-		agregar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonAgregar.getValue(Action.ACCELERATOR_KEY), "Agregar");
-		agregar.setMnemonic(KeyEvent.VK_A);
-		agregar.setBounds(490, 230, 120, 50);
+		accionAgregarBoton.putValue(Action.SHORT_DESCRIPTION, "Agregar la etiqueta.");
+		accionAgregarBoton.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_A));
+		botonAgregar.getActionMap().put("Agregar", accionAgregarBoton);
+		botonAgregar.setHorizontalTextPosition(JButton.TRAILING);
+		botonAgregar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionAgregarBoton.getValue(Action.ACCELERATOR_KEY), "Agregar");
+		botonAgregar.setMnemonic(KeyEvent.VK_A);
+		botonAgregar.setBounds(490, 230, 120, 50);
 		/*
-		 * La accionBotonQuitar está asociada al botón. Cuando se ejecuta se
-		 * manda a llamar al método quitarEtiqueta().
+		 * La accionBotonQuitar está asociada al botón. Cuando se ejecuta se manda a
+		 * llamar al método quitarEtiqueta().
 		 */
-		accionBotonQuitar = new AbstractAction("Quitar",
+		accionQuitarBoton = new AbstractAction("Quitar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/quitar.png"))) {
 
 			private static final long serialVersionUID = 1L;
@@ -208,24 +208,24 @@ public class DialogoGestionArchivos extends JDialog {
 
 			}
 		};
-		quitar = new JButton(accionBotonQuitar);
-		accionBotonQuitar.putValue(Action.ACCELERATOR_KEY,
+		botonQuitar = new JButton(accionQuitarBoton);
+		accionQuitarBoton.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_DOWN_MASK));
-		accionBotonQuitar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_Q));
-		quitar.getActionMap().put("Quitar", accionBotonQuitar);
-		quitar.setHorizontalTextPosition(JButton.TRAILING);
-		accionBotonQuitar.putValue(Action.SHORT_DESCRIPTION, "Remover la etiqueta");
-		quitar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonQuitar.getValue(Action.ACCELERATOR_KEY), "Quitar");
-		quitar.setMnemonic(KeyEvent.VK_Q);
-		quitar.setBounds(650, 230, 120, 50);
+		accionQuitarBoton.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_Q));
+		botonQuitar.getActionMap().put("Quitar", accionQuitarBoton);
+		botonQuitar.setHorizontalTextPosition(JButton.TRAILING);
+		accionQuitarBoton.putValue(Action.SHORT_DESCRIPTION, "Remover la etiqueta");
+		botonQuitar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionQuitarBoton.getValue(Action.ACCELERATOR_KEY), "Quitar");
+		botonQuitar.setMnemonic(KeyEvent.VK_Q);
+		botonQuitar.setBounds(650, 230, 120, 50);
 		/*
-		 * La accionBotonGuardar está asociada al botón. Cuando se ejecuta se
-		 * manda a llamar al método guardarArchivo().
+		 * La accionBotonGuardar está asociada al botón. Cuando se ejecuta se manda a
+		 * llamar al método guardarArchivo().
 		 * 
 		 */
 
-		accionBotonNuevo = new AbstractAction("Nuevo",
+		accionCrearNuevoBoton = new AbstractAction("Nuevo",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/nuevo.png"))) {
 
 			private static final long serialVersionUID = 1L;
@@ -235,16 +235,16 @@ public class DialogoGestionArchivos extends JDialog {
 			}
 		};
 
-		nuevo = new JButton(accionBotonNuevo);
-		accionBotonNuevo.putValue(Action.ACCELERATOR_KEY,
+		botonNuevo = new JButton(accionCrearNuevoBoton);
+		accionCrearNuevoBoton.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_DOWN_MASK));
-		accionBotonNuevo.putValue(Action.SHORT_DESCRIPTION, "Habilitar la creación de un nuevo archivo.");
-		accionBotonNuevo.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_N));
-		nuevo.getActionMap().put("Nuevo", accionBotonNuevo);
-		nuevo.setHorizontalTextPosition(JButton.TRAILING);
-		nuevo.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonNuevo.getValue(Action.ACCELERATOR_KEY), "Nuevo");
-		nuevo.setBounds(140, 465, 120, 50);
+		accionCrearNuevoBoton.putValue(Action.SHORT_DESCRIPTION, "Habilitar la creación de un nuevo archivo.");
+		accionCrearNuevoBoton.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_N));
+		botonNuevo.getActionMap().put("Nuevo", accionCrearNuevoBoton);
+		botonNuevo.setHorizontalTextPosition(JButton.TRAILING);
+		botonNuevo.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionCrearNuevoBoton.getValue(Action.ACCELERATOR_KEY), "Nuevo");
+		botonNuevo.setBounds(140, 465, 120, 50);
 
 		accionBotonGuardar = new AbstractAction("Guardar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/guardar.png"))) {
@@ -258,20 +258,20 @@ public class DialogoGestionArchivos extends JDialog {
 
 		};
 
-		guardar = new JButton(accionBotonGuardar);
+		botonGuardar = new JButton(accionBotonGuardar);
 		accionBotonGuardar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_DOWN_MASK));
 		accionBotonGuardar.putValue(Action.SHORT_DESCRIPTION, "Guardar el archivo con las etiquetas seleccionadas.");
 		accionBotonGuardar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_G));
-		guardar.getActionMap().put("Guardar", accionBotonGuardar);
-		guardar.setHorizontalTextPosition(JButton.TRAILING);
-		guardar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+		botonGuardar.getActionMap().put("Guardar", accionBotonGuardar);
+		botonGuardar.setHorizontalTextPosition(JButton.TRAILING);
+		botonGuardar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
 				.put((KeyStroke) accionBotonGuardar.getValue(Action.ACCELERATOR_KEY), "Guardar");
-		guardar.setMnemonic(KeyEvent.VK_G);
-		guardar.setBounds(270, 465, 120, 50);
+		botonGuardar.setMnemonic(KeyEvent.VK_G);
+		botonGuardar.setBounds(270, 465, 120, 50);
 
 		/* Accion de Modificar */
-		accionBotonModificar = new AbstractAction("Modificar",
+		accionModificarBoton = new AbstractAction("Modificar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/editar.png"))) {
 
 			private static final long serialVersionUID = 1L;
@@ -283,25 +283,25 @@ public class DialogoGestionArchivos extends JDialog {
 
 		};
 
-		modificar = new JButton(accionBotonModificar);
-		accionBotonModificar.putValue(Action.ACCELERATOR_KEY,
+		botonModificar = new JButton(accionModificarBoton);
+		accionModificarBoton.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.CTRL_DOWN_MASK));
-		accionBotonModificar.putValue(Action.SHORT_DESCRIPTION,
+		accionModificarBoton.putValue(Action.SHORT_DESCRIPTION,
 				"Modificar el archivo seleccionado de la lista de archivos.");
-		accionBotonModificar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_M));
-		modificar.getActionMap().put("Modificar", accionBotonGuardar);
-		modificar.setHorizontalTextPosition(JButton.TRAILING);
-		modificar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonModificar.getValue(Action.ACCELERATOR_KEY), "Modificar");
-		modificar.setMnemonic(KeyEvent.VK_M);
-		modificar.setBounds(400, 465, 125, 50);
+		accionModificarBoton.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_M));
+		botonModificar.getActionMap().put("Modificar", accionBotonGuardar);
+		botonModificar.setHorizontalTextPosition(JButton.TRAILING);
+		botonModificar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionModificarBoton.getValue(Action.ACCELERATOR_KEY), "Modificar");
+		botonModificar.setMnemonic(KeyEvent.VK_M);
+		botonModificar.setBounds(400, 465, 125, 50);
 
 		/*
-		 * La accionBotonEliminar está asociada al botón. Cuando se ejecuta se
-		 * manda a llamar al método eliminarArchivo().
+		 * La accionBotonEliminar está asociada al botón. Cuando se ejecuta se manda a
+		 * llamar al método eliminarArchivo().
 		 */
 
-		accionBotonEliminar = new AbstractAction("Eliminar",
+		accionEliminarBoton = new AbstractAction("Eliminar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/eliminar.png"))) {
 
 			private static final long serialVersionUID = 1L;
@@ -313,24 +313,24 @@ public class DialogoGestionArchivos extends JDialog {
 
 		};
 
-		eliminar = new JButton(accionBotonEliminar);
-		accionBotonEliminar.putValue(Action.ACCELERATOR_KEY,
+		botonEliminar = new JButton(accionEliminarBoton);
+		accionEliminarBoton.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_I, InputEvent.CTRL_DOWN_MASK));
-		accionBotonEliminar.putValue(Action.SHORT_DESCRIPTION, "Eliminar archivo seleccionado de la lista de archivos");
-		accionBotonEliminar.putValue(Action.MNEMONIC_KEY, KeyEvent.VK_I);
-		eliminar.getActionMap().put("Eliminar", accionBotonEliminar);
-		eliminar.setHorizontalTextPosition(JButton.TRAILING);
-		eliminar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonEliminar.getValue(Action.ACCELERATOR_KEY), "Eliminar");
-		eliminar.setMnemonic(KeyEvent.VK_I);
-		eliminar.setBounds(535, 465, 120, 50);
+		accionEliminarBoton.putValue(Action.SHORT_DESCRIPTION, "Eliminar archivo seleccionado de la lista de archivos");
+		accionEliminarBoton.putValue(Action.MNEMONIC_KEY, KeyEvent.VK_I);
+		botonEliminar.getActionMap().put("Eliminar", accionEliminarBoton);
+		botonEliminar.setHorizontalTextPosition(JButton.TRAILING);
+		botonEliminar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionEliminarBoton.getValue(Action.ACCELERATOR_KEY), "Eliminar");
+		botonEliminar.setMnemonic(KeyEvent.VK_I);
+		botonEliminar.setBounds(535, 465, 120, 50);
 
 		/*
-		 * La accionBotonCancelar está asociada al botón. Cuando se ejecuta se
-		 * manda a llamar al método modificarArchivo().
+		 * La accionBotonCancelar está asociada al botón. Cuando se ejecuta se manda a
+		 * llamar al método modificarArchivo().
 		 */
 
-		accionBotonCancelar = new AbstractAction("Cancelar",
+		accionCancelarBoton = new AbstractAction("Cancelar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/cancelar.png"))) {
 
 			private static final long serialVersionUID = 1L;
@@ -342,37 +342,37 @@ public class DialogoGestionArchivos extends JDialog {
 
 		};
 
-		cancelar = new JButton(accionBotonCancelar);
-		accionBotonCancelar.putValue(Action.ACCELERATOR_KEY,
+		botonCancelar = new JButton(accionCancelarBoton);
+		accionCancelarBoton.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_DOWN_MASK));
-		accionBotonCancelar.putValue(Action.SHORT_DESCRIPTION, "Cancelar la edición del archivo.");
-		accionBotonCancelar.putValue(Action.MNEMONIC_KEY, KeyEvent.VK_C);
-		cancelar.getActionMap().put("Cancelar", accionBotonCancelar);
-		cancelar.setHorizontalTextPosition(JButton.TRAILING);
-		cancelar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonCancelar.getValue(Action.ACCELERATOR_KEY), "Cancelar");
-		cancelar.setMnemonic(KeyEvent.VK_C);
-		cancelar.setBounds(665, 465, 125, 50);
+		accionCancelarBoton.putValue(Action.SHORT_DESCRIPTION, "Cancelar la edición del archivo.");
+		accionCancelarBoton.putValue(Action.MNEMONIC_KEY, KeyEvent.VK_C);
+		botonCancelar.getActionMap().put("Cancelar", accionCancelarBoton);
+		botonCancelar.setHorizontalTextPosition(JButton.TRAILING);
+		botonCancelar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionCancelarBoton.getValue(Action.ACCELERATOR_KEY), "Cancelar");
+		botonCancelar.setMnemonic(KeyEvent.VK_C);
+		botonCancelar.setBounds(665, 465, 125, 50);
 
 		/* Los componentes han sido agregados a la ventana. */
 		contenido.add(etiquetaListaArchivo);
-		contenido.add(scrollpaneArchivo);
+		contenido.add(desplazamientoArchivo);
 		contenido.add(etiquetaRuta);
 		contenido.add(etiquetaEtiquetas);
-		listaDeArchivos.setModel(archivoListModel);
+		listaArchivos.setModel(listamodeloArchivos);
 		contenido.add(campoEtiqueta);
-		contenido.add(ruta);
-		contenido.add(etiquetas);
-		listaEtiquetas.setModel(etiquetasListModel);
-		contenido.add(scrollpaneEtiquetas);
-		contenido.add(selecccionarArchivo);
-		contenido.add(agregar);
-		contenido.add(nuevo);
-		contenido.add(quitar);
-		contenido.add(guardar);
-		contenido.add(modificar);
-		contenido.add(eliminar);
-		contenido.add(cancelar);
+		contenido.add(campoRuta);
+		contenido.add(comboEtiquetas);
+		listaEtiquetas.setModel(listamodeloEtiquetas);
+		contenido.add(desplazamientoEtiquetas);
+		contenido.add(botonSelecccionarArchivo);
+		contenido.add(botonAgregar);
+		contenido.add(botonNuevo);
+		contenido.add(botonQuitar);
+		contenido.add(botonGuardar);
+		contenido.add(botonModificar);
+		contenido.add(botonEliminar);
+		contenido.add(botonCancelar);
 
 		this.add(contenido);
 

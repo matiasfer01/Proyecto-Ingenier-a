@@ -2,7 +2,7 @@ package ivmatisfilesorter.dominio;
 
 import java.util.Date;
 
-import ivmatisfilesorter.exception.ProyectoException;
+import ivmatisfilesorter.exception.ExceptionProyecto;
 
 public class Proyecto extends Exception {
 
@@ -10,13 +10,13 @@ public class Proyecto extends Exception {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private String nombreProyecto;
 	private String nombrePropietario;
 	private String descripcion;
 	private Date fechaCreacion;
-	private Archivo listaArchivos;
-	private Etiqueta listaEtiquetas;
+	private Archivo listaArchivosArchivo;
+	private Etiqueta listaEtiquetasEtiqueta;
 
 	public Proyecto() {
 
@@ -26,7 +26,7 @@ public class Proyecto extends Exception {
 		return nombreProyecto;
 	}
 
-	public void setNombreProyecto(String nombreProyecto)  throws ProyectoException {
+	public void setNombreProyecto(String nombreProyecto) throws ExceptionProyecto {
 		this.nombreProyecto = nombreProyecto;
 	}
 
@@ -34,7 +34,7 @@ public class Proyecto extends Exception {
 		return nombrePropietario;
 	}
 
-	public void setNombrePropietario(String nombrePropietario)  throws ProyectoException{
+	public void setNombrePropietario(String nombrePropietario) throws ExceptionProyecto {
 		this.nombrePropietario = nombrePropietario;
 	}
 
@@ -42,7 +42,7 @@ public class Proyecto extends Exception {
 		return descripcion;
 	}
 
-	public void setDescripcion(String descripcion)  throws ProyectoException{
+	public void setDescripcion(String descripcion) throws ExceptionProyecto {
 		this.descripcion = descripcion;
 	}
 
@@ -50,7 +50,7 @@ public class Proyecto extends Exception {
 		return fechaCreacion;
 	}
 
-	public void setFechaCreacion(Date fechaCreacion)  throws ProyectoException{
+	public void setFechaCreacion(Date fechaCreacion) throws ExceptionProyecto {
 		this.fechaCreacion = fechaCreacion;
 	}
 
@@ -67,20 +67,19 @@ public class Proyecto extends Exception {
 	}
 
 	public Archivo getListaArchivos() {
-		return listaArchivos;
+		return listaArchivosArchivo;
 	}
 
 	public void setListaArchivos(Archivo listaArchivos) {
-		this.listaArchivos = listaArchivos;
+		this.listaArchivosArchivo = listaArchivos;
 	}
 
 	public Etiqueta getListaEtiquetas() {
-		return listaEtiquetas;
+		return listaEtiquetasEtiqueta;
 	}
 
 	public void setListaEtiquetas(Etiqueta listaEtiquetas) {
-		this.listaEtiquetas = listaEtiquetas;
+		this.listaEtiquetasEtiqueta = listaEtiquetas;
 	}
-	
 
 }

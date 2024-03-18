@@ -42,23 +42,23 @@ public class DialogoPropiedadesProyecto extends JDialog {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private JTextField nombreProyecto;
-	private JTextField propietario;
-	private JDateChooser fechaDeCreacion;
-	private JTextArea descripcion;
-	private JScrollPane scrollpaneDescripcion;
-	private JButton editar;
-	private JButton guardar;
-	private JButton cancelar;
-	private JButton nuevaEtiqueta;
-	private Action accionBotonEditar;
-	private Action accionBotonGuardar;
-	private Action accionBotonCancelar;
-	private Action accionBotonNuevaEtiqueta;
+	private JTextField campoNombreProyecto;
+	private JTextField campoPropietario;
+	private JDateChooser fechaCreacion;
+	private JTextArea areaDescripcion;
+	private JScrollPane desplazamientoDescripcion;
+	private JButton botonEditar;
+	private JButton botonGuardar;
+	private JButton botonCancelar;
+	private JButton botonNuevaEtiqueta;
+	private Action accionEditarBoton;
+	private Action accionGuardarBoton;
+	private Action accionCancelarBoton;
+	private Action accionCrearNuevaBoton;
 
-	private Proyecto proyecto[];
+	private Proyecto listaProyectosProyecto[];
 
-	public DialogoPropiedadesProyecto(JFrame parent, VentanaPrincipal ventanaPrincipal) {
+	public DialogoPropiedadesProyecto(JFrame parent, DialogoVentanaPrincipal ventanaPrincipal) {
 		// TODO Auto-generated constructor stub
 		super(parent, "Propiedades del proyecto", true);
 		this.setIconImage(Toolkit.getDefaultToolkit()
@@ -66,47 +66,47 @@ public class DialogoPropiedadesProyecto extends JDialog {
 
 		JPanel contenido = new JPanel(null);
 
-		JLabel etiquetasNombre = new JLabel("Nombre del proyecto*: ");
+		JLabel etiquetasNombre = new JLabel("*Nombre del proyecto*: ");
 		etiquetasNombre.setBounds(50, 30, 150, 150);
 		etiquetasNombre.setDisplayedMnemonic(KeyEvent.VK_N);
 
-		nombreProyecto = new JTextField();
-		nombreProyecto.setBounds(180, 92, 150, 30);
-		nombreProyecto.setToolTipText("Ingresar el nombre del proyecto");
+		campoNombreProyecto = new JTextField();
+		campoNombreProyecto.setBounds(180, 92, 150, 30);
+		campoNombreProyecto.setToolTipText("Ingresar el nombre del proyecto");
 
-		JLabel etiquetaFecha = new JLabel("*Fecha de creación: ");
+		JLabel etiquetaFecha = new JLabel("Fecha de creación: ");
 		etiquetaFecha.setBounds(500, 92, 150, 30);
 		etiquetaFecha.setDisplayedMnemonic(KeyEvent.VK_F);
 
-		fechaDeCreacion = new JDateChooser();
-		fechaDeCreacion.setBounds(650, 92, 150, 30);
+		fechaCreacion = new JDateChooser();
+		fechaCreacion.setBounds(650, 92, 150, 30);
 
-		JLabel etiquetaPropietario = new JLabel("*Propietario: ");
+		JLabel etiquetaPropietario = new JLabel("Propietario: ");
 		etiquetaPropietario.setBounds(100, 240, 150, 150);
 		etiquetaPropietario.setDisplayedMnemonic(KeyEvent.VK_P);
 
-		propietario = new JTextField();
-		propietario.setBounds(180, 300, 150, 30);
-		propietario.setToolTipText("Ingresar el nombre del propietario del proyecto.");
+		campoPropietario = new JTextField();
+		campoPropietario.setBounds(180, 300, 150, 30);
+		campoPropietario.setToolTipText("Ingresar el nombre del propietario del proyecto.");
 
-		JLabel etiquetaDescripcion = new JLabel("*Descripción: ");
+		JLabel etiquetaDescripcion = new JLabel("Descripción: ");
 		etiquetaDescripcion.setBounds(500, 240, 150, 150);
 		etiquetaDescripcion.setDisplayedMnemonic(KeyEvent.VK_D);
 
-		descripcion = new JTextArea();
-		descripcion.setBounds(600, 300, 300, 100);
-		descripcion.setLineWrap(true);
-		descripcion.setWrapStyleWord(true);
-		descripcion.setToolTipText("Agregar una breve descripción del proyecto. ");
+		areaDescripcion = new JTextArea();
+		areaDescripcion.setBounds(600, 300, 300, 100);
+		areaDescripcion.setLineWrap(true);
+		areaDescripcion.setWrapStyleWord(true);
+		areaDescripcion.setToolTipText("Agregar una breve descripción del proyecto. ");
 
-		scrollpaneDescripcion = new JScrollPane(descripcion);
-		scrollpaneDescripcion.setBounds(600, 300, 300, 100);
+		desplazamientoDescripcion = new JScrollPane(areaDescripcion);
+		desplazamientoDescripcion.setBounds(600, 300, 300, 100);
 
 		/*
-		 * La accionBotonEditar está asociada al botón. Cuando se ejecuta se
-		 * manda a llamar al método editarProyecto().
+		 * La accionBotonEditar está asociada al botón. Cuando se ejecuta se manda a
+		 * llamar al método editarProyecto().
 		 */
-		accionBotonEditar = new AbstractAction("Editar",
+		accionEditarBoton = new AbstractAction("Editar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/editar.png"))) {
 
 			private static final long serialVersionUID = 1L;
@@ -118,22 +118,22 @@ public class DialogoPropiedadesProyecto extends JDialog {
 
 		};
 
-		editar = new JButton(accionBotonEditar);
-		accionBotonEditar.putValue(Action.ACCELERATOR_KEY,
+		botonEditar = new JButton(accionEditarBoton);
+		accionEditarBoton.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.CTRL_DOWN_MASK));
-		accionBotonEditar.putValue(Action.SHORT_DESCRIPTION, "Editar el proyecto");
-		accionBotonEditar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_E));
-		editar.getActionMap().put("Editar", accionBotonEditar);
-		editar.setHorizontalTextPosition(JButton.TRAILING);
-		editar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonEditar.getValue(Action.ACCELERATOR_KEY), "Editar");
-		editar.setBounds(170, 465, 120, 40);
+		accionEditarBoton.putValue(Action.SHORT_DESCRIPTION, "Editar el proyecto");
+		accionEditarBoton.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_E));
+		botonEditar.getActionMap().put("Editar", accionEditarBoton);
+		botonEditar.setHorizontalTextPosition(JButton.TRAILING);
+		botonEditar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionEditarBoton.getValue(Action.ACCELERATOR_KEY), "Editar");
+		botonEditar.setBounds(170, 465, 120, 40);
 
 		/*
-		 * La accionBotonGuardar está asociada al botón. Cuando se ejecuta se
-		 * manda a llamar al método guardarProyecto().
+		 * La accionBotonGuardar está asociada al botón. Cuando se ejecuta se manda a
+		 * llamar al método guardarProyecto().
 		 */
-		accionBotonGuardar = new AbstractAction("Guardar",
+		accionGuardarBoton = new AbstractAction("Guardar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/guardar.png"))) {
 
 			private static final long serialVersionUID = 1L;
@@ -145,22 +145,22 @@ public class DialogoPropiedadesProyecto extends JDialog {
 
 		};
 
-		guardar = new JButton(accionBotonGuardar);
-		accionBotonGuardar.putValue(Action.ACCELERATOR_KEY,
+		botonGuardar = new JButton(accionGuardarBoton);
+		accionGuardarBoton.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_DOWN_MASK));
-		accionBotonGuardar.putValue(Action.SHORT_DESCRIPTION, "Guardar los cambios");
-		accionBotonGuardar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_G));
-		guardar.getActionMap().put("Guardar", accionBotonGuardar);
-		guardar.setHorizontalTextPosition(JButton.TRAILING);
-		guardar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonGuardar.getValue(Action.ACCELERATOR_KEY), "Guardar");
-		guardar.setBounds(310, 465, 150, 40);
+		accionGuardarBoton.putValue(Action.SHORT_DESCRIPTION, "Guardar los cambios");
+		accionGuardarBoton.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_G));
+		botonGuardar.getActionMap().put("Guardar", accionGuardarBoton);
+		botonGuardar.setHorizontalTextPosition(JButton.TRAILING);
+		botonGuardar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionGuardarBoton.getValue(Action.ACCELERATOR_KEY), "Guardar");
+		botonGuardar.setBounds(310, 465, 150, 40);
 
 		/*
-		 * La accionBotonCancelar está asociada al botón. Cuando se ejecuta se
-		 * manda a llamar al método cancelarProyecto().
+		 * La accionBotonCancelar está asociada al botón. Cuando se ejecuta se manda a
+		 * llamar al método cancelarProyecto().
 		 */
-		accionBotonCancelar = new AbstractAction("Cancelar",
+		accionCancelarBoton = new AbstractAction("Cancelar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/cancelar.png"))) {
 
 			private static final long serialVersionUID = 1L;
@@ -172,23 +172,23 @@ public class DialogoPropiedadesProyecto extends JDialog {
 
 		};
 
-		cancelar = new JButton(accionBotonCancelar);
-		accionBotonCancelar.putValue(Action.ACCELERATOR_KEY,
+		botonCancelar = new JButton(accionCancelarBoton);
+		accionCancelarBoton.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_DOWN_MASK));
-		accionBotonCancelar.putValue(Action.SHORT_DESCRIPTION, "Cancelar la edición del proyecto");
-		accionBotonCancelar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_C));
-		cancelar.getActionMap().put("Cancelar", accionBotonCancelar);
-		cancelar.setHorizontalTextPosition(JButton.TRAILING);
-		cancelar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonCancelar.getValue(Action.ACCELERATOR_KEY), "Cancelar");
-		cancelar.setBounds(480, 465, 150, 40);
+		accionCancelarBoton.putValue(Action.SHORT_DESCRIPTION, "Cancelar la edición del proyecto");
+		accionCancelarBoton.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_C));
+		botonCancelar.getActionMap().put("Cancelar", accionCancelarBoton);
+		botonCancelar.setHorizontalTextPosition(JButton.TRAILING);
+		botonCancelar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionCancelarBoton.getValue(Action.ACCELERATOR_KEY), "Cancelar");
+		botonCancelar.setBounds(480, 465, 150, 40);
 
 		/*
-		 * La accionBotonNuevaEtiqueta está asociada al botón. Cuando se ejecuta
-		 * se manda a llamar al método nuevaEtiqueta().
+		 * La accionBotonNuevaEtiqueta está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método nuevaEtiqueta().
 		 */
 
-		accionBotonNuevaEtiqueta = new AbstractAction("Nueva etiqueta",
+		accionCrearNuevaBoton = new AbstractAction("Nueva etiqueta",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/agregar.png"))) {
 
 			private static final long serialVersionUID = 1L;
@@ -200,33 +200,33 @@ public class DialogoPropiedadesProyecto extends JDialog {
 
 		};
 
-		nuevaEtiqueta = new JButton(accionBotonNuevaEtiqueta);
-		accionBotonNuevaEtiqueta.putValue(Action.ACCELERATOR_KEY,
+		botonNuevaEtiqueta = new JButton(accionCrearNuevaBoton);
+		accionCrearNuevaBoton.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_U, InputEvent.CTRL_DOWN_MASK));
-		accionBotonNuevaEtiqueta.putValue(Action.SHORT_DESCRIPTION, "Crear una nueva etiqueta");
-		accionBotonNuevaEtiqueta.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_U));
-		nuevaEtiqueta.getActionMap().put("Nueva etiqueta", accionBotonNuevaEtiqueta);
-		nuevaEtiqueta.setHorizontalTextPosition(JButton.TRAILING);
-		nuevaEtiqueta.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-				.put((KeyStroke) accionBotonNuevaEtiqueta.getValue(Action.ACCELERATOR_KEY), "Nueva etiqueta");
-		nuevaEtiqueta.setBounds(650, 465, 155, 40);
+		accionCrearNuevaBoton.putValue(Action.SHORT_DESCRIPTION, "Crear una nueva etiqueta");
+		accionCrearNuevaBoton.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_U));
+		botonNuevaEtiqueta.getActionMap().put("Nueva etiqueta", accionCrearNuevaBoton);
+		botonNuevaEtiqueta.setHorizontalTextPosition(JButton.TRAILING);
+		botonNuevaEtiqueta.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+				.put((KeyStroke) accionCrearNuevaBoton.getValue(Action.ACCELERATOR_KEY), "Nueva etiqueta");
+		botonNuevaEtiqueta.setBounds(650, 465, 155, 40);
 
 		/* Los componentes han sido agregados a la ventana. */
 		contenido.add(etiquetasNombre);
 		contenido.add(etiquetaFecha);
 		contenido.add(etiquetaPropietario);
 		contenido.add(etiquetaDescripcion);
-		contenido.add(nombreProyecto);
-		contenido.add(fechaDeCreacion);
-		contenido.add(propietario);
+		contenido.add(campoNombreProyecto);
+		contenido.add(fechaCreacion);
+		contenido.add(campoPropietario);
 		// contenido.add(descripcion);
-		contenido.add(scrollpaneDescripcion);
-		contenido.add(editar);
-		contenido.add(guardar);
-		contenido.add(cancelar);
-		contenido.add(nuevaEtiqueta);
+		contenido.add(desplazamientoDescripcion);
+		contenido.add(botonEditar);
+		contenido.add(botonGuardar);
+		contenido.add(botonCancelar);
+		contenido.add(botonNuevaEtiqueta);
 
-		nuevaEtiqueta.addActionListener(new ClaseAnonima());
+		botonNuevaEtiqueta.addActionListener(new ClaseAnonima());
 
 		this.add(contenido);
 
@@ -245,7 +245,7 @@ public class DialogoPropiedadesProyecto extends JDialog {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			if (e.getSource().equals(nuevaEtiqueta)) {
+			if (e.getSource().equals(botonNuevaEtiqueta)) {
 				DialogoGestionEtiquetas dialogoGestionEtiquetas = new DialogoGestionEtiquetas(null, null);
 				dialogoGestionEtiquetas.setVisible(true);
 			}
