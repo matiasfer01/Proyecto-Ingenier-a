@@ -58,6 +58,7 @@ public class VentanaPrincipal extends JFrame {
 
 	private Proyecto proyectoACrear;
 
+
 	private JMenuBar barraMenu;
 
 	public VentanaPrincipal() {
