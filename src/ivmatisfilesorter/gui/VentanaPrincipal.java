@@ -55,7 +55,7 @@ public class VentanaPrincipal extends JFrame {
 
 	private JMenuItem acercaDe;
 	private JMenuItem manualDeUsuario;
-
+	
 	private Proyecto IVONNE;
 
 	private JMenuBar barraMenu;
