@@ -19,7 +19,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
-import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -221,14 +220,10 @@ public class VentanaPrincipal extends JFrame {
 		Image imagenEscalada = imagenFondo.getImage().getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
 		fondo.setIcon(new ImageIcon(imagenEscalada));
 		this.getContentPane().add(fondo);
-		/* No se puede redimensionar */
 		this.setResizable(false);
-		/* Se destruirá cuando se cierre */
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
-
 	}
 
 	class ClaseAnonima implements ActionListener {
@@ -263,7 +258,7 @@ public class VentanaPrincipal extends JFrame {
 		private void metodoAcercaDe() {
 			ImageIcon logo = new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/logo.jpg"));
 			String mensaje = "\n Nombre de la aplicación:\n IvMatIsFileSorter \n\n Realizado por:\n Cortez Escamilla Isaac \n Hernández "
-					+ "Pérez Ivonne Estefanía \n Matías Acevedo  Luis Fernando  \n\n Correo electrónico: \n Ivmatis_filesorter@gmail.com \n\n Derechos reservados UMAR  2024";
+					+ "Pérez Ivonne Estefanía \n Matías Acevedo Luis Fernando  \n\n Correo electrónico: \n Ivmatis_filesorter@gmail.com \n\n Derechos reservados UMAR  2024";
 
 			JOptionPane.showMessageDialog(null, mensaje, "Acerca de... IvMatIsFileSorter",
 					JOptionPane.INFORMATION_MESSAGE, logo);
@@ -272,7 +267,7 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 	private void metodoManualDeUsuario() {
-		File archivo = new File("IvMatisFileSorte.pdf");
+		File archivo = new File("src/IvMatisFileSorte.pdf");
 		if (archivo.exists()) {
 			try {
 				Desktop.getDesktop().open(archivo);

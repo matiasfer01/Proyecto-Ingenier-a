@@ -59,6 +59,7 @@ public class DialogoBusquedaArchivos extends JDialog {
 	private Action accionBotonBuscar;
 	private Action accionBotonAbrirArchivo;
 	private Action accionBotonExportar;
+	
 	private Archivo listaArchivos[];
 
 	public DialogoBusquedaArchivos(JFrame parent, VentanaPrincipal ventanaPrincipal) {
@@ -315,29 +316,29 @@ public class DialogoBusquedaArchivos extends JDialog {
 
 	// Agrega etiqueta a la lista de etiquetas seleccionadas.
 	private void agregarEtiqueta() {
-		
+
 	}
 
 	// Busca los archivos dependiendo de las etiquetas que han sido
 	// seleccionadas.
 	private void buscarEtiqueta() {
-		
+
 	}
 
 	// Elimina la etiqueta que han sido seleccionadas.
 	private void quitarEtiqueta() {
-		
+
 	}
 
 	// Abre el archivo que se ha seleccionado, dependiendo de las etiquetas
 	// seleccionadas.
 	private void abrirArchivo() {
-		
+
 	}
 
 	// Envía el archivo seleccionado a un ruta o carpeta.
 	private void exportarArchivo() {
-		
+
 	}
 
 	// Agrega los valores por defecto a los componentes que lo requieran.

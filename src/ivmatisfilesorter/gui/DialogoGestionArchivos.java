@@ -83,7 +83,7 @@ public class DialogoGestionArchivos extends JDialog {
 		ruta.setBounds(200, 45, 350, 30);
 		ruta.setToolTipText("Mostrar la dirección del archivo.");
 		ruta.setEditable(false);
-		
+
 		JLabel etiquetaListaArchivo = new JLabel("Lista de archivos: ");
 		etiquetaListaArchivo.setBounds(70, 120, 120, 50);
 		etiquetaListaArchivo.setDisplayedMnemonic(KeyEvent.VK_L);
@@ -156,6 +156,7 @@ public class DialogoGestionArchivos extends JDialog {
 
 			}
 		};
+		
 		selecccionarArchivo = new JButton(accionBotonSeleccionar);
 		accionBotonSeleccionar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_DOWN_MASK));
@@ -233,7 +234,7 @@ public class DialogoGestionArchivos extends JDialog {
 				nuevoArchivo();
 			}
 		};
-		
+
 		nuevo = new JButton(accionBotonNuevo);
 		accionBotonNuevo.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_DOWN_MASK));
@@ -244,7 +245,7 @@ public class DialogoGestionArchivos extends JDialog {
 		nuevo.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
 				.put((KeyStroke) accionBotonNuevo.getValue(Action.ACCELERATOR_KEY), "Nuevo");
 		nuevo.setBounds(140, 465, 120, 50);
-		
+
 		accionBotonGuardar = new AbstractAction("Guardar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/guardar.png"))) {
 
@@ -256,7 +257,7 @@ public class DialogoGestionArchivos extends JDialog {
 			}
 
 		};
-		
+
 		guardar = new JButton(accionBotonGuardar);
 		accionBotonGuardar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_DOWN_MASK));
@@ -268,7 +269,7 @@ public class DialogoGestionArchivos extends JDialog {
 				.put((KeyStroke) accionBotonGuardar.getValue(Action.ACCELERATOR_KEY), "Guardar");
 		guardar.setMnemonic(KeyEvent.VK_G);
 		guardar.setBounds(270, 465, 120, 50);
-		
+
 		/* Accion de Modificar */
 		accionBotonModificar = new AbstractAction("Modificar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/editar.png"))) {
@@ -281,11 +282,12 @@ public class DialogoGestionArchivos extends JDialog {
 			}
 
 		};
-		
+
 		modificar = new JButton(accionBotonModificar);
 		accionBotonModificar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.CTRL_DOWN_MASK));
-		accionBotonModificar.putValue(Action.SHORT_DESCRIPTION, "Modificar el archivo seleccionado de la lista de archivos.");
+		accionBotonModificar.putValue(Action.SHORT_DESCRIPTION,
+				"Modificar el archivo seleccionado de la lista de archivos.");
 		accionBotonModificar.putValue(Action.MNEMONIC_KEY, new Integer(KeyEvent.VK_M));
 		modificar.getActionMap().put("Modificar", accionBotonGuardar);
 		modificar.setHorizontalTextPosition(JButton.TRAILING);
@@ -293,12 +295,12 @@ public class DialogoGestionArchivos extends JDialog {
 				.put((KeyStroke) accionBotonModificar.getValue(Action.ACCELERATOR_KEY), "Modificar");
 		modificar.setMnemonic(KeyEvent.VK_M);
 		modificar.setBounds(400, 465, 125, 50);
-		
+
 		/*
 		 * La accionBotonEliminar está asociada al botón. Cuando se ejecuta se
 		 * manda a llamar al método eliminarArchivo().
 		 */
-		
+
 		accionBotonEliminar = new AbstractAction("Eliminar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/eliminar.png"))) {
 
@@ -310,12 +312,11 @@ public class DialogoGestionArchivos extends JDialog {
 			}
 
 		};
-		
+
 		eliminar = new JButton(accionBotonEliminar);
 		accionBotonEliminar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_I, InputEvent.CTRL_DOWN_MASK));
-		accionBotonEliminar.putValue(Action.SHORT_DESCRIPTION,
-				"Eliminar archivo seleccionado de la lista de archivos");
+		accionBotonEliminar.putValue(Action.SHORT_DESCRIPTION, "Eliminar archivo seleccionado de la lista de archivos");
 		accionBotonEliminar.putValue(Action.MNEMONIC_KEY, KeyEvent.VK_I);
 		eliminar.getActionMap().put("Eliminar", accionBotonEliminar);
 		eliminar.setHorizontalTextPosition(JButton.TRAILING);
@@ -323,12 +324,12 @@ public class DialogoGestionArchivos extends JDialog {
 				.put((KeyStroke) accionBotonEliminar.getValue(Action.ACCELERATOR_KEY), "Eliminar");
 		eliminar.setMnemonic(KeyEvent.VK_I);
 		eliminar.setBounds(535, 465, 120, 50);
-		
+
 		/*
 		 * La accionBotonCancelar está asociada al botón. Cuando se ejecuta se
 		 * manda a llamar al método modificarArchivo().
 		 */
-		
+
 		accionBotonCancelar = new AbstractAction("Cancelar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/cancelar.png"))) {
 
@@ -340,7 +341,7 @@ public class DialogoGestionArchivos extends JDialog {
 			}
 
 		};
-		
+
 		cancelar = new JButton(accionBotonCancelar);
 		accionBotonCancelar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_DOWN_MASK));
@@ -401,27 +402,27 @@ public class DialogoGestionArchivos extends JDialog {
 
 	// Permite agregar un nuevo archivo
 	private void nuevoArchivo() {
-		
+
 	}
 
 	// Guarda el archivo con las etiquetas seleccionadas.
 	private void guardarArchivo() {
-		
+
 	}
 
 	// Modifica las etiquetas del archivo.
 	private void modificarArchivo() {
-	
+
 	}
 
 	// Elimina las etiquetas que han sido seleccionados para el archivo.
 	private void eliminarArchivo() {
-		
+
 	}
 
 	// Cancela los cambios de las etiquetas que se han realizado en el archivo.
 	private void cancelarArchivo() {
-		
+
 	}
 
 	// Agrega los valores por defecto a los componentes que lo requieran.

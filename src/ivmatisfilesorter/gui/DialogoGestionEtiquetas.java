@@ -51,6 +51,7 @@ public class DialogoGestionEtiquetas extends JDialog {
 	private Action accionBotonEliminar;
 	private Action accionBotonCancelar;
 	private DefaultListModel<String> listaEtiquetasModel = new DefaultListModel<>();
+	
 	private Etiqueta listaEtiqueta[];
 
 	public DialogoGestionEtiquetas(JFrame parent, VentanaPrincipal ventanaPrincipal) {
@@ -106,7 +107,7 @@ public class DialogoGestionEtiquetas extends JDialog {
 		 * La accionBotonNuevo está asociada al botón. Cuando se ejecuta se
 		 * manda a llamar al método nuevaEtiqueta().
 		 */
-		
+
 		accionBotonNuevo = new AbstractAction("Nuevo",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/nuevo.png"))) {
 
@@ -117,7 +118,7 @@ public class DialogoGestionEtiquetas extends JDialog {
 
 			}
 		};
-		
+
 		nuevo = new JButton(accionBotonNuevo);
 		accionBotonNuevo.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_DOWN_MASK));
@@ -128,12 +129,12 @@ public class DialogoGestionEtiquetas extends JDialog {
 		nuevo.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
 				.put((KeyStroke) accionBotonNuevo.getValue(Action.ACCELERATOR_KEY), "Nuevo");
 		nuevo.setBounds(140, 465, 120, 50);
-		
+
 		/*
 		 * La accionBotonGuardar está asociada al botón. Cuando se ejecuta se
 		 * manda a llamar al método guardarEtiqueta().
 		 */
-		
+
 		accionBotonGuardar = new AbstractAction("Guardar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/guardar.png"))) {
 
@@ -144,7 +145,7 @@ public class DialogoGestionEtiquetas extends JDialog {
 
 			}
 		};
-		
+
 		guardar = new JButton(accionBotonGuardar);
 		accionBotonGuardar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_DOWN_MASK));
@@ -155,12 +156,12 @@ public class DialogoGestionEtiquetas extends JDialog {
 		guardar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
 				.put((KeyStroke) accionBotonGuardar.getValue(Action.ACCELERATOR_KEY), "Guardar");
 		guardar.setBounds(270, 465, 120, 50);
-		
+
 		/*
 		 * La accionBotonModificar está asociada al botón. Cuando se ejecuta se
 		 * manda a llamar al método modificarEtiqueta().
 		 */
-		
+
 		accionBotonModificar = new AbstractAction("Modificar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/editar.png"))) {
 
@@ -170,7 +171,7 @@ public class DialogoGestionEtiquetas extends JDialog {
 				modificarEtiqueta();
 			}
 		};
-		
+
 		modificar = new JButton(accionBotonModificar);
 		accionBotonModificar.putValue(Action.ACCELERATOR_KEY,
 				KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.CTRL_DOWN_MASK));
@@ -258,27 +259,27 @@ public class DialogoGestionEtiquetas extends JDialog {
 
 	// Permite agregar una nueva etiqueta.
 	private void nuevaEtiqueta() {
-		
+
 	}
 
 	// Permite guargar los cambios o las etiquetas agregadas.
 	private void guardarEtiqueta() {
-		
+
 	}
 
 	// Modifica la etiqueta seleccionada.
 	private void modificarEtiqueta() {
-		
+
 	}
 
 	// Elimina la etiqueta seleccionada definitivamente.
 	private void eliminarEtiqueta() {
-		
+
 	}
 
 	// Cancela los cambios efectuados.
 	private void cancelarEtiqueta() {
-	
+
 	}
 
 	// Agrega los valores por defecto a los componentes que lo requieran.

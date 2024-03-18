@@ -16,7 +16,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
-import java.io.ObjectOutputStream.PutField;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -256,23 +255,23 @@ public class DialogoPropiedadesProyecto extends JDialog {
 
 	// Permite editar el proyecto de acuerdo a los elementos guardados.
 	private void editarProyecto() {
-		
+
 	}
 
 	// Guarda los elementos del proyecto.
 	private void guardarProyecto() {
-		
+
 	}
 
 	// Cancela el ingreso de datos del proyecto.
 	private void cancelarProyecto() {
-		
+
 	}
 
 	// Crea una nueva etiqueta, este método se enlaza hasta la clase
 	// DialogoGestionEtiquetas.
 	private void nuevaEtiqueta() {
-		
+
 	}
 
 	// Agrega los valores por defecto a los componentes que lo requieran.

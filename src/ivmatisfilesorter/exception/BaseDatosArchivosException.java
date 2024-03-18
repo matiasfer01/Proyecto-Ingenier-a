@@ -2,9 +2,6 @@ package ivmatisfilesorter.exception;
 
 public class BaseDatosArchivosException extends Exception {
 
-    /**
-     * 
-     */
     private static final long serialVersionUID = 1L;
     
     public static final String ERROR_INICIALIZAR_BD = "Error al inicializar la base de datos: ";
