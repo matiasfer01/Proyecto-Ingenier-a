@@ -56,7 +56,7 @@ public class VentanaPrincipal extends JFrame {
 	private JMenuItem acercaDe;
 	private JMenuItem manualDeUsuario;
 
-	private Proyecto IVONNE;
+	private Proyecto proyectoACrear;
 
 	private JMenuBar barraMenu;
 
@@ -306,11 +306,11 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 	private Proyecto getProyectoACrear() {
-		return IVONNE;
+		return proyectoACrear;
 	}
 
 	private void setProyectoACrear(Proyecto proyectoACrear) {
-		this.IVONNE = proyectoACrear;
+		this.proyectoACrear = proyectoACrear;
 	}
 
 }
