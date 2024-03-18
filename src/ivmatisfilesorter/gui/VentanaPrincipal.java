@@ -38,7 +38,7 @@ public class VentanaPrincipal extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/* Declaración de variables para los menús. */
+	/* Declaración de variables para los menú. */
 	private JMenu proyecto;
 	private JMenu gestionDelProyecto;
 	private JMenu ayuda;
@@ -56,7 +56,7 @@ public class VentanaPrincipal extends JFrame {
 	private JMenuItem acercaDe;
 	private JMenuItem manualDeUsuario;
 
-	private Proyecto proyectoACrear;
+	private Proyecto IVONNE;
 
 	private JMenuBar barraMenu;
 
@@ -306,11 +306,11 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 	private Proyecto getProyectoACrear() {
-		return proyectoACrear;
+		return IVONNE;
 	}
 
 	private void setProyectoACrear(Proyecto proyectoACrear) {
-		this.proyectoACrear = proyectoACrear;
+		this.IVONNE = proyectoACrear;
 	}
 
 }
