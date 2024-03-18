@@ -258,6 +258,8 @@ public class DialogoVentanaPrincipal extends JFrame {
 				metodoAcercaDe();
 			} else if (e.getSource().equals(submenuManualDeUsuario)) {
 				metodoManualDeUsuario();
+			} else if(e.getSource().equals(submenuSalir)){
+				metodoSalir();
 			}
 
 		}
@@ -274,20 +276,18 @@ public class DialogoVentanaPrincipal extends JFrame {
 	}
 
 	private void metodoManualDeUsuario() {
-		File archivo = new File("src/IvMatisFileSorte.pdf");
+		File archivo = new File("src/IvMatisFileSorter/utilerias/IvMatisFileSorter.pdf");
 		if (archivo.exists()) {
 			try {
 				Desktop.getDesktop().open(archivo);
 			} catch (Exception e) {
-				JOptionPane.showMessageDialog(this,
-						"El sistema no pudo abrir el manual, favor de contactar con soporte técnico",
-						"Error al abrir el manual", JOptionPane.ERROR_MESSAGE);
+				
 			}
-		} else {
-			JOptionPane.showMessageDialog(this,
-					"El sistema no pudo encontrar el manual, favor de contactar con soporte técnico",
-					"Error al encontrar el manual", JOptionPane.ERROR_MESSAGE);
 		}
+	}
+	
+	private void metodoSalir() {
+		System.exit(0);
 	}
 
 	// Agrega los valores por defecto a los componentes que lo requieran.
