@@ -2,6 +2,8 @@ package ivmatisfilesorter.dominio;
 
 import java.util.Date;
 
+import javax.swing.JOptionPane;
+
 import ivmatisfilesorter.exception.ExceptionProyecto;
 
 public class Proyecto extends Exception {
@@ -26,8 +28,15 @@ public class Proyecto extends Exception {
 		return nombreProyecto;
 	}
 
-	public void setNombreProyecto(String nombreProyecto) throws ExceptionProyecto {
-		this.nombreProyecto = nombreProyecto;
+	public void setNombreProyecto(String nombreProyecto) {
+		try {
+			if (nombreProyecto.trim().isEmpty()) {
+				throw new ExceptionProyecto(ExceptionProyecto.IVMATIS_EXCEPTION_NOMBRE_PROYECTO_OBLIGATORIO);
+			}
+			this.nombreProyecto = nombreProyecto;
+		} catch (ExceptionProyecto e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), e.getTitulo(), JOptionPane.WARNING_MESSAGE);
+		}
 	}
 
 	public String getNombrePropietario() {

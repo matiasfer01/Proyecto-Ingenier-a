@@ -392,12 +392,12 @@ public class DialogoGestionArchivos extends JDialog {
 
 	// Agrega la etiqueta al campo etiqueta y se agrega a la lista etiquetas.
 	private void agregarEtiqueta() {
-		System.out.println("aqui eso");
+		
 	}
 
 	// Elimina la etiqueta de la lista etiquetas y también del campo etiquetas.
 	private void quitarEtiqueta() {
-		System.out.println("aqui eso");
+		
 	}
 
 	// Permite agregar un nuevo archivo

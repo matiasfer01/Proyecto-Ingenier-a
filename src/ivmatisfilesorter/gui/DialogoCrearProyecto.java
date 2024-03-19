@@ -24,6 +24,7 @@ import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -33,6 +34,7 @@ import javax.swing.KeyStroke;
 import com.toedter.calendar.JDateChooser;
 
 import ivmatisfilesorter.dominio.Proyecto;
+import ivmatisfilesorter.exception.ExceptionProyecto;
 
 public class DialogoCrearProyecto extends JDialog {
 	/**
@@ -99,8 +101,8 @@ public class DialogoCrearProyecto extends JDialog {
 		desplazamientoDescripcion.setBounds(600, 300, 300, 100);
 
 		/*
-		 * La accionBotonGuardar está asociada al botón. Cuando se ejecuta se manda a
-		 * llamar al método guardarProyecto().
+		 * La accionBotonGuardar está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método guardarProyecto().
 		 */
 		accionBotonGuardar = new AbstractAction("Guardar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/guardar.png"))) {
@@ -128,8 +130,8 @@ public class DialogoCrearProyecto extends JDialog {
 		botonGuardar.setBounds(300, 465, 120, 40);
 
 		/*
-		 * La accionBotonCancelar está asociada al botón. Cuando se ejecuta se manda a
-		 * llamar al método cancelarProyecto().
+		 * La accionBotonCancelar está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método cancelarProyecto().
 		 */
 		accionBotonCancelar = new AbstractAction("Cancelar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/cancelar.png"))) {
@@ -177,7 +179,7 @@ public class DialogoCrearProyecto extends JDialog {
 
 	// Guarda el proyecto con los componentes agregados.
 	private void guardarProyecto() {
-
+		
 	}
 
 	// Cancela los cambios del proyecto.
