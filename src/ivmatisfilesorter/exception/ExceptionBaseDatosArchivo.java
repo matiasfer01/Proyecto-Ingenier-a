@@ -2,10 +2,10 @@ package ivmatisfilesorter.exception;
 
 /**
  * 
- * Sirve para manejo excepciones personalizadas relacionadas con base de datos
- * archivos.
+ * Sirve para el manejo de excepciones personalizadas relacionadas con base de
+ * datos archivos.
  * <p>
- * Las caracteristicas de la clases<code>ExceptionBaseDatosArchivo</code> son:
+ * Las características de la clase <code>ExceptionBaseDatosArchivo</code> son:
  * <ul>
  * <li><code>IVMATIS_EXCEPTION_ELEGIR_ARCHIVO</code> para cuando el archivo no
  * se encuentra en el sistema.</li>
@@ -13,10 +13,10 @@ package ivmatisfilesorter.exception;
  * archivos del sistema no se pueden visualizar debido a errores.</li>
  * <li><code>IVMATIS_EXCEPTION_SELECCION_ARCHIVO</code> para cuando se intenta
  * abrir un archivo sin haber seleccionado uno previamente.</li>
- * <li><code>IVMATIS_EXCEPTION_EXPORTACION_FALLIDA </code> para cuando la
+ * <li><code>IVMATIS_EXCEPTION_EXPORTACION_FALLIDA</code> para cuando la
  * exportación de archivos no se puede realizar debido a errores en el
  * sistema.</li>
- * <li><code>IVMATIS_EXCEPTION_EXPORTACION_VISUALIZACION_ETIQUETAS </code> para
+ * <li><code>IVMATIS_EXCEPTION_EXPORTACION_VISUALIZACION_ETIQUETAS</code> para
  * cuando las etiquetas del sistema no se pueden visualizar debido a
  * errores.</li>
  * </ul>
@@ -24,84 +24,100 @@ package ivmatisfilesorter.exception;
  * @version 20/03/2024
  * 
  * @author Isaac Cortez Escamilla
- * @author Luis Fernando Matias Acevedo
- * @author Ivonne Estefania Hernandez Perez
+ * @autor Luis Fernando Matias Acevedo
+ * @autor Ivonne Estefanía Hernández Pérez
  *
  */
 
 public class ExceptionBaseDatosArchivo extends Exception {
+	
 	/**
 	 * Identificador de serialización de la clase.
 	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Mensaje para cuando el archivo no se encuentra en el sistema.
+	 * Mensaje de excepción para cuando el archivo no se encuentra en el sistema.
 	 */
+	
 	public static final String[] IVMATIS_EXCEPTION_ELEGIR_ARCHIVO = {
-			"El archivo no se encuentra en el sistema," + "\n Busque el archivo", "Elegir Archivo" };
+			"El archivo no se encuentra en el sistema," + "\n Busque el archivo", "Elegir archivo" };
 
 	/**
-	 * Mensaje para cuando los archivos del sistema no se pueden visualizar
+	 * Mensaje de excepción cuando no se pueden visualizar los archivos del sistema
 	 * debido a errores.
 	 */
 
 	public static final String[] IVMATIS_EXCEPTION_VISUALIZACION_ARCHIVO = {
 			"Los archivos del sistema no se pueden visualizar debido a errores" + "\n Inténtalo más tarde.",
-			"Visualización de Archivos Interrumpida" };
+			"Visualización de archivos interrumpida" };
 
 	/**
-	 * Mensaje para cuando se intenta abrir un archivo sin haber seleccionado
-	 * uno previamente
+	 * Mensaje de excepción para cuando se intenta abrir un archivo sin haberlo
+	 * seleccionado previamente.
 	 */
 
-	public static final String[] IVMATIS_EXCEPTION_SELECCION_ARCHIVO = { "Antes de abrir el archivo, seleccióne uno .",
-			"Selecciónar archivo" };
+	public static final String[] IVMATIS_EXCEPTION_SELECCION_ARCHIVO = { "Antes de abrir el archivo, seleccione uno.",
+			"Seleccionar archivo" };
 
 	/**
-	 * Mensaje para cuando la exportación de archivos no se puede realizar
-	 * debido a errores en el sistema.
+	 * Mensaje de excepción para cuando la exportación de archivos no se puede
+	 * realizar debido a errores en el sistema.
 	 */
 
 	public static final String[] IVMATIS_EXCEPTION_EXPORTACION_FALLIDA = {
 			"La exportación de archivos no se puede realizar " + "\ndebido a errores en el sistema"
-					+ " \nInténtelo mas tarde",
+					+ " \ninténtelo de nuevo más tarde.",
 			"Exportación fallida" };
-	/*
-	 * Mensaje para cuando las etiquetas del sistema no se pueden visualizar
-	 * debido a errores.
+
+	/**
+	 * Mensaje de excepción para cuando las etiquetas del sistema no se pueden
+	 * visualizar debido a errores.
 	 */
 
 	public static final String[] IVMATIS_EXCEPTION_VISUALIZACION_ETIQUETAS = {
 			"Las etiquetas del sistema no se pueden visualizar debido a errores" + "\n Inténtalo más tarde.",
-			"Visualización de etiquetas Interrumpida" };
+			"Visualización de etiquetas interrumpida" };
+
+	/**
+	 * El título asociado con la excepción.
+	 */
 
 	public String titulo;
 
 	/**
-	 * Contructor para crear la excepciósn.
+	 * Constructor para crear una instancia de ExceptionBaseDatos con un mensaje y
+	 * un título específico.
 	 * 
-	 * @param msg
+	 * @param msg 
+	 * 			  Un arreglo de cadenas de texto que contiene el mensaje de la
+	 *            excepción y el título. Se espera que el primer elemento sea el
+	 *            mensaje de la excepción y el segundo elemento sea el título.
 	 */
+	
 	public ExceptionBaseDatosArchivo(String[] msg) {
 		super(msg[0]);
 		setTitulo(msg[1]);
 	}
 
 	/**
-	 * Obtiene el titulo asociado con la exception
+	 * Obtiene el título asociado con la excepción.
 	 * 
 	 * @return titulo
 	 */
+	
 	public String getTitulo() {
 		return titulo;
 	}
 
 	/**
-	 * Establece el titulo asocicado con la exception
+	 * Establece el título asocicado con la excepción.
 	 * 
-	 * @param titulo
+	 * @param titulo 
+	 * 				El título de la excepción.
 	 */
+	
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}

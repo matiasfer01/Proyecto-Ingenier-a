@@ -28,8 +28,22 @@ public class Proyecto extends Exception {
 		return nombreProyecto;
 	}
 
-	public void setNombreProyecto(String nombreProyecto) {
+	public void setNombreProyecto(String nombreProyecto) throws ExceptionBaseDatosProyecto {
+		if (nombreProyecto.trim().isEmpty()) {
+			throw new ExceptionBaseDatosProyecto(
+					ExceptionBaseDatosProyecto.IVMATIS_EXCEPTION_NOMBRE_PROYECTO_OBLIGATORIO);
+		}
+
+		if (verificarNombreProyectoExistente(nombreProyecto)) {
+			throw new ExceptionBaseDatosProyecto(ExceptionBaseDatosProyecto.IVMATIS_EXCEPTION_NOMBRE_PROYECTO_REPETIR);
+		}
+
 		this.nombreProyecto = nombreProyecto;
+	}
+
+	private boolean verificarNombreProyectoExistente(String nombreProyecto) {
+		
+		return false;
 	}
 
 	public String getNombrePropietario() {
