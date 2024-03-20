@@ -34,7 +34,7 @@ import javax.swing.KeyStroke;
 import com.toedter.calendar.JDateChooser;
 
 import ivmatisfilesorter.dominio.Proyecto;
-import ivmatisfilesorter.exception.ExceptionProyecto;
+import ivmatisfilesorter.exception.ExceptionBaseDatosProyecto;
 
 public class DialogoCrearProyecto extends JDialog {
 	/**

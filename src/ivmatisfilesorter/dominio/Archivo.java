@@ -1,6 +1,6 @@
 package ivmatisfilesorter.dominio;
 
-import ivmatisfilesorter.exception.ExceptionArchivo;
+import ivmatisfilesorter.exception.ExceptionBaseDatosArchivo;
 
 public class Archivo {
 	private String rutaArchivo;
@@ -15,7 +15,7 @@ public class Archivo {
 		return rutaArchivo;
 	}
 
-	public void setRutaArchivo(String rutaArchivo) throws ExceptionArchivo {
+	public void setRutaArchivo(String rutaArchivo) {
 		this.rutaArchivo = rutaArchivo;
 	}
 
@@ -23,7 +23,7 @@ public class Archivo {
 		return nombreArchivo;
 	}
 
-	public void setNombreArchivo(String nombreArchivo) throws ExceptionArchivo {
+	public void setNombreArchivo(String nombreArchivo){
 		this.nombreArchivo = nombreArchivo;
 	}
 

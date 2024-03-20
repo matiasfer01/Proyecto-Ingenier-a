@@ -4,7 +4,7 @@ import java.util.Date;
 
 import javax.swing.JOptionPane;
 
-import ivmatisfilesorter.exception.ExceptionProyecto;
+import ivmatisfilesorter.exception.ExceptionBaseDatosProyecto;
 
 public class Proyecto extends Exception {
 
@@ -29,21 +29,14 @@ public class Proyecto extends Exception {
 	}
 
 	public void setNombreProyecto(String nombreProyecto) {
-		try {
-			if (nombreProyecto.trim().isEmpty()) {
-				throw new ExceptionProyecto(ExceptionProyecto.IVMATIS_EXCEPTION_NOMBRE_PROYECTO_OBLIGATORIO);
-			}
-			this.nombreProyecto = nombreProyecto;
-		} catch (ExceptionProyecto e) {
-			JOptionPane.showMessageDialog(null, e.getMessage(), e.getTitulo(), JOptionPane.WARNING_MESSAGE);
-		}
+		this.nombreProyecto = nombreProyecto;
 	}
 
 	public String getNombrePropietario() {
 		return nombrePropietario;
 	}
 
-	public void setNombrePropietario(String nombrePropietario) throws ExceptionProyecto {
+	public void setNombrePropietario(String nombrePropietario) {
 		this.nombrePropietario = nombrePropietario;
 	}
 
@@ -51,7 +44,7 @@ public class Proyecto extends Exception {
 		return descripcion;
 	}
 
-	public void setDescripcion(String descripcion) throws ExceptionProyecto {
+	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
@@ -59,7 +52,7 @@ public class Proyecto extends Exception {
 		return fechaCreacion;
 	}
 
-	public void setFechaCreacion(Date fechaCreacion) throws ExceptionProyecto {
+	public void setFechaCreacion(Date fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
 	}
 
