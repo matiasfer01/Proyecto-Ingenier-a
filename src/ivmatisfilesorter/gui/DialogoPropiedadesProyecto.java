@@ -66,7 +66,7 @@ public class DialogoPropiedadesProyecto extends JDialog {
 
 		JPanel contenido = new JPanel(null);
 
-		JLabel etiquetasNombre = new JLabel("*Nombre del proyecto*: ");
+		JLabel etiquetasNombre = new JLabel("*Nombre del proyecto:");
 		etiquetasNombre.setBounds(50, 30, 150, 150);
 		etiquetasNombre.setDisplayedMnemonic(KeyEvent.VK_N);
 
@@ -103,8 +103,8 @@ public class DialogoPropiedadesProyecto extends JDialog {
 		desplazamientoDescripcion.setBounds(600, 300, 300, 100);
 
 		/*
-		 * La accionBotonEditar está asociada al botón. Cuando se ejecuta se manda a
-		 * llamar al método editarProyecto().
+		 * La accionBotonEditar está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método editarProyecto().
 		 */
 		accionEditarBoton = new AbstractAction("Editar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/editar.png"))) {
@@ -130,8 +130,8 @@ public class DialogoPropiedadesProyecto extends JDialog {
 		botonEditar.setBounds(170, 465, 120, 40);
 
 		/*
-		 * La accionBotonGuardar está asociada al botón. Cuando se ejecuta se manda a
-		 * llamar al método guardarProyecto().
+		 * La accionBotonGuardar está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método guardarProyecto().
 		 */
 		accionGuardarBoton = new AbstractAction("Guardar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/guardar.png"))) {
@@ -157,8 +157,8 @@ public class DialogoPropiedadesProyecto extends JDialog {
 		botonGuardar.setBounds(310, 465, 150, 40);
 
 		/*
-		 * La accionBotonCancelar está asociada al botón. Cuando se ejecuta se manda a
-		 * llamar al método cancelarProyecto().
+		 * La accionBotonCancelar está asociada al botón. Cuando se ejecuta se
+		 * manda a llamar al método cancelarProyecto().
 		 */
 		accionCancelarBoton = new AbstractAction("Cancelar",
 				new ImageIcon(getClass().getResource("/ivmatisfilesorter/imagenes/cancelar.png"))) {
@@ -184,8 +184,8 @@ public class DialogoPropiedadesProyecto extends JDialog {
 		botonCancelar.setBounds(480, 465, 150, 40);
 
 		/*
-		 * La accionBotonNuevaEtiqueta está asociada al botón. Cuando se ejecuta se
-		 * manda a llamar al método nuevaEtiqueta().
+		 * La accionBotonNuevaEtiqueta está asociada al botón. Cuando se ejecuta
+		 * se manda a llamar al método nuevaEtiqueta().
 		 */
 
 		accionCrearNuevaBoton = new AbstractAction("Nueva etiqueta",
