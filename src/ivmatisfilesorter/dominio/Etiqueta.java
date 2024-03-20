@@ -2,7 +2,7 @@ package ivmatisfilesorter.dominio;
 
 import javax.swing.JOptionPane;
 
-import ivmatisfilesorter.exception.ExceptionEtiqueta;
+import ivmatisfilesorter.exception.ExceptionBaseDatosEtiqueta;
 
 public class Etiqueta extends Exception {
 	/**
