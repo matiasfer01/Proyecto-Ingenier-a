@@ -60,9 +60,9 @@ public class Proyecto extends Exception {
 
 	/** Lista de etiquetas asociadas al proyecto. */
 	private Etiqueta listaEtiquetasEtiqueta;
-	
+
 	private JList<String> listaProyectos;
-	
+
 	private DefaultListModel<String> listaModeloProyecto = new DefaultListModel<>();
 
 	/**
@@ -97,13 +97,14 @@ public class Proyecto extends Exception {
 					ExceptionBaseDatosProyecto.IVMATIS_EXCEPTION_NOMBRE_PROYECTO_OBLIGATORIO);
 		} else {
 			for (int i = 0; i < listaModeloProyecto.getSize(); i++) {
-	            String nombProyecto = listaModeloProyecto.getElementAt(i);
-	            if (nombProyecto.equals(nombreProyecto)) {
-	                throw new ExceptionBaseDatosProyecto(ExceptionBaseDatosProyecto.IVMATIS_EXCEPTION_NOMBRE_PROYECTO_REPETIR);
-	            }
-	        }
-	        this.nombreProyecto = nombreProyecto;
-			
+				String nombProyecto = listaModeloProyecto.getElementAt(i);
+				if (nombProyecto.equals(nombreProyecto)) {
+					throw new ExceptionBaseDatosProyecto(
+							ExceptionBaseDatosProyecto.IVMATIS_EXCEPTION_NOMBRE_PROYECTO_REPETIR);
+				}
+			}
+			this.nombreProyecto = nombreProyecto;
+
 		}
 	}
 
