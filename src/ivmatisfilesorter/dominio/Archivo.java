@@ -1,16 +1,17 @@
 package ivmatisfilesorter.dominio;
+
 import ivmatisfilesorter.exception.ExceptionBaseDatosArchivo;
 
-
-
 /**
- * Sirve para representar un archivo con su ruta, nombre del archivo y lista de etiquetas asociadas.
+ * Sirve para representar un archivo con su ruta, nombre del archivo y lista de
+ * etiquetas asociadas.
  * <p>
  * Las características de la clase <code>Archivo</code> son:
  * <ul>
- *   <li><code>rutaArchivo</code> para la ruta del archivo.</li>
- *   <li><code>nombreArchivo</code>: para el nombre del archivo.</li>
- *   <li><code>listaEtiquetasEtiqueta</code>para la lista de etiquetas asociadas al archivo.</li>
+ * <li><code>rutaArchivo</code> para la ruta del archivo.</li>
+ * <li><code>nombreArchivo</code>: para el nombre del archivo.</li>
+ * <li><code>listaEtiquetasEtiqueta</code>para la lista de etiquetas asociadas
+ * al archivo.</li>
  * </ul>
  *
  * @version 21/03/2024
@@ -91,7 +92,7 @@ public class Archivo {
 	 * @return El nombre del archivo.
 	 */
 	public String getNombreArchivo() {
-		
+
 		return nombreArchivo;
 	}
 
@@ -100,17 +101,18 @@ public class Archivo {
 	 * 
 	 * @param nombreArchivo
 	 *            El nuevo nombre del archivo.
+	 * 
+	 * @throws ExceptionBaseDatosEtiqueta
+	 *             Si la lista de archivos es nula.
 	 */
-	public void setNombreArchivo(String nombreArchivo) throws ExceptionBaseDatosArchivo{
+	public void setNombreArchivo(String nombreArchivo) throws ExceptionBaseDatosArchivo {
 		nombreArchivo = nombreArchivo.trim();
 		if (nombreArchivo.isEmpty()) {
 			throw new ExceptionBaseDatosArchivo(ExceptionBaseDatosArchivo.IVMATIS_EXCEPTION_ELEGIR_ARCHIVO);
-		}
-		else {
+		} else {
 			this.nombreArchivo = nombreArchivo;
 		}
-		
-		
+
 	}
 
 	/**
