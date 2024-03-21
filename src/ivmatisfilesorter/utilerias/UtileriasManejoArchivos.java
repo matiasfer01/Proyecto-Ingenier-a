@@ -8,6 +8,7 @@ public class UtileriasManejoArchivos {
 	public static void crearArchivo() {
 
 	}
+	//copiar
 
 	public static void crearDirectorio() {
 
