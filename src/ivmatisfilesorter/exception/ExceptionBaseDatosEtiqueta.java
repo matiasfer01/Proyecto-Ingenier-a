@@ -10,10 +10,6 @@ package ivmatisfilesorter.exception;
  * puedan visualizar la lista de etiquetas.</li>
  * <li><code>IVMATIS_EXCEPTION_ETIQUETA_NULL</code> para cuando el campo de
  * etiquetas se encuentre vacío.</li>
- * <li><code>IVMATIS_EXCEPTION_DESCONEXION</code> para cuando ya se haya
- * desconectado de la base de datos.</li>
- * <li><code>IVMATIS_EXCEPTION_ERROR_EN_CONSULTA</code> para cuando ocurre un
- * error durante la recopilación de información.</li>
  * <li><code>titulo</code> para el título de las excepciones.</li>
  * </ul>
  * 
@@ -39,7 +35,7 @@ public class ExceptionBaseDatosEtiqueta extends Exception {
 	 */
 	
 	public static final String[] IVMATIS_EXCEPTION_VISUALIZACION_ETIQUETA = {
-			"Las etiquetas no se pueden visualizar debido a errores en el sistema.\n Inténtelo más tarde.",
+			"Las etiquetas no se pueden visualizar debido a errores en el sistema.\n Intente más tarde.",
 			"Visualización de etiquetas interrumpida" };
 	
 	/**

@@ -38,7 +38,7 @@ public class ExceptionBaseDatosProyecto extends Exception {
 	 */
 
 	public static final String[] IVMATIS_EXCEPTION_NOMBRE_PROYECTO_OBLIGATORIO = {
-			"El nombre del proyecto es obligatorio.", "Ingresar nombre del proyecto" };
+			"El nombre del proyecto es obligatorio.", "Ingrese el nombre del proyecto" };
 
 	/**
 	 * Mensaje de excepción para cuando se intenta usar un nombre de proyecto que ya

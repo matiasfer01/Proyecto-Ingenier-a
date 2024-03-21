@@ -1,8 +1,8 @@
 package ivmatisfilesorter.exception;
 
 /**
- * Sirve para el manejo de excepciones personalizadas relacionadas con la base de
- * datos.
+ * Sirve para el manejo de excepciones personalizadas relacionadas con la base
+ * de datos.
  * <p>
  * Las características de la clase <code>ExceptionBaseDatos</code> son:
  * <ul>
@@ -25,17 +25,17 @@ package ivmatisfilesorter.exception;
  */
 
 public class ExceptionBaseDatos extends Exception {
-	
+
 	/**
 	 * Identificador de serialización de la clase.
 	 */
-	
+
 	private static final long serialVersionUID = 1L;
 	/**
 	 * Mensaje de excepción para cuando no se encuentra la base de datos.
 	 * 
 	 */
-	
+
 	public static final String[] IVMATIS_EXCEPTION_BD_NO_ENCONTRADA = { "No se pudo localizar el sistema.",
 			"Sistema no encontrado" };
 	/**
@@ -43,41 +43,43 @@ public class ExceptionBaseDatos extends Exception {
 	 * para la conexión de la base de datos.
 	 * 
 	 */
-	
+
 	public static final String[] IVMATIS_EXCEPTION_NO_SE_ENCONTRO_DRIVER = {
-			"Los componentes necesarios para conectar \n con el sistema no han sido localizados.",
+			"Los componentes necesarios para conectar " + "\n con el sistema no han sido localizados.",
 			"Controladores no encontrados" };
 	/**
-	 * Mensaje de excepción para cuando la conexión con el sistema ya está cerrada.
+	 * Mensaje de excepción para cuando la conexión con el sistema ya está
+	 * cerrada.
 	 * 
 	 */
-	
+
 	public static final String[] IVMATIS_EXCEPTION_DESCONEXION = { "La conexión con el sistema ya está cerrada.",
 			"Conexión cerrada" };
 
 	/**
 	 * Mensaje de excepción para cuando ocurre un error durante una consulta.
 	 */
-	
+
 	public static final String[] IVMATIS_EXCEPTION_ERROR_EN_CONSULTA = {
-			"La visualización de la información no es posible debido a errores en el sistema.", "Datos inconclusos" };
+			"La visualización de la información no es posible," + " \ndebido a errores en el sistema.",
+			"Visualización interrumpida" };
 
 	/**
 	 * El título asociado con la excepción.
 	 */
-	
+
 	public String titulo;
 
 	/**
-	 * Constructor para crear una instancia de ExceptionBaseDatos con un mensaje y
-	 * un título específico.
+	 * Constructor para crear una instancia de ExceptionBaseDatos con un mensaje
+	 * y un título específico.
 	 * 
-	 * @param msg 
-	 * 			  Un arreglo de cadenas de texto que contiene el mensaje de la
+	 * @param msg
+	 *            Un arreglo de cadenas de texto que contiene el mensaje de la
 	 *            excepción y el título. Se espera que el primer elemento sea el
 	 *            mensaje de la excepción y el segundo elemento sea el título.
 	 */
-	
+
 	public ExceptionBaseDatos(String[] msg) {
 		super(msg[0]);
 		setTitulo(msg[1]);
@@ -88,7 +90,7 @@ public class ExceptionBaseDatos extends Exception {
 	 * 
 	 * @return titulo
 	 */
-	
+
 	public String getTitulo() {
 		return titulo;
 	}
@@ -96,10 +98,10 @@ public class ExceptionBaseDatos extends Exception {
 	/**
 	 * Establece el título asociado con la excepción.
 	 * 
-	 * @param titulo 
-	 * 				El título de la excepción.
+	 * @param titulo
+	 *            El título de la excepción.
 	 */
-	
+
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}

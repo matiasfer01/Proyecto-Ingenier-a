@@ -42,7 +42,7 @@ public class ExceptionBaseDatosArchivo extends Exception {
 	 */
 	
 	public static final String[] IVMATIS_EXCEPTION_ELEGIR_ARCHIVO = {
-			"El archivo no se encuentra en el sistema," + "\n Busque el archivo", "Elegir archivo" };
+			"El archivo no se encuentra en el sistema," + "\n busque el archivo", "Elegir archivo" };
 
 	/**
 	 * Mensaje de excepción cuando no se pueden visualizar los archivos del sistema
@@ -50,7 +50,7 @@ public class ExceptionBaseDatosArchivo extends Exception {
 	 */
 
 	public static final String[] IVMATIS_EXCEPTION_VISUALIZACION_ARCHIVO = {
-			"Los archivos del sistema no se pueden visualizar debido a errores" + "\n Inténtalo más tarde.",
+			"Los archivos del sistema no se pueden visualizar debido a errores." + "\n Intente más tarde.",
 			"Visualización de archivos interrumpida" };
 
 	/**
@@ -67,8 +67,8 @@ public class ExceptionBaseDatosArchivo extends Exception {
 	 */
 
 	public static final String[] IVMATIS_EXCEPTION_EXPORTACION_FALLIDA = {
-			"La exportación de archivos no se puede realizar " + "\ndebido a errores en el sistema"
-					+ " \ninténtelo de nuevo más tarde.",
+			"La exportación de archivos no se puede realizar " + "\ndebido a errores en el sistema."
+					+ " \nIntente nuevamente más tarde.",
 			"Exportación fallida" };
 
 	/**
@@ -77,7 +77,7 @@ public class ExceptionBaseDatosArchivo extends Exception {
 	 */
 
 	public static final String[] IVMATIS_EXCEPTION_VISUALIZACION_ETIQUETAS = {
-			"Las etiquetas del sistema no se pueden visualizar debido a errores" + "\n Inténtalo más tarde.",
+			"Las etiquetas del sistema no se pueden visualizar debido a errores." + "\n Intente más tarde.",
 			"Visualización de etiquetas interrumpida" };
 
 	/**
@@ -87,7 +87,7 @@ public class ExceptionBaseDatosArchivo extends Exception {
 	public String titulo;
 
 	/**
-	 * Constructor para crear una instancia de ExceptionBaseDatos con un mensaje y
+	 * Constructor para crear una instancia de ExceptionBaseDatosArchivo con un mensaje y
 	 * un título específico.
 	 * 
 	 * @param msg 
