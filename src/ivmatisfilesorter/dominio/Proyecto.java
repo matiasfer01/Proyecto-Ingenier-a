@@ -2,10 +2,40 @@ package ivmatisfilesorter.dominio;
 
 import java.util.Date;
 
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 
+import ivmatisfilesorter.exception.ExceptionBaseDatosArchivo;
 import ivmatisfilesorter.exception.ExceptionBaseDatosProyecto;
 
+/**
+ * Sirve para representar un proyecto con su nombre, propietario, descripción,
+ * fecha de creación, lista de archivos asociados con sus respectivas lista de
+ * etiquetas.
+ * <p>
+ * Las características de la clase <code>Archivo</code> son:
+ * <ul>
+ * <li><code>nombreProyecto</code> Para el nombre del proyecto.</li>
+ * <li><code>nombrePropietario</code> Para el nombre del propietario.</li>
+ * <li><code>descripcion</code> Para describir el proyecto.</li>
+ * <li><code>fechaCreacion</code> para la fecha de cración.</li>
+ * <li><code>listaArchivosArchivo</code> para la lista de archivos
+ * asociada.</li>
+ * <li><code>listaEtiquetasEtiqueta</code> para la lista de etiquetas asociadas
+ * a los archivos.</li>
+ * 
+ * </ul>
+ *
+ * @version 21/03/2024
+ * 
+ * @author Isaac Cortez Escamilla
+ * @author Luis Fernando Matias Acevedo
+ * @author Ivonne Estefanía Hernández Pérez
+ * 
+ * @see ExceptionBaseDatosArchivo
+ * @see ExceptionBaseDatosproyecto
+ */
 public class Proyecto extends Exception {
 
 	/**
@@ -13,87 +43,182 @@ public class Proyecto extends Exception {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/** Nombre del proyecto. */
 	private String nombreProyecto;
-	private String nombrePropietario;
-	private String descripcion;
-	private Date fechaCreacion;
-	private Archivo listaArchivosArchivo;
-	private Etiqueta listaEtiquetasEtiqueta;
 
+	/** Nombre del propietario del proyecto. */
+	private String nombrePropietario;
+
+	/** Descripción del proyecto. */
+	private String descripcion;
+
+	/** Fecha de creación del proyecto. */
+	private Date fechaCreacion;
+
+	/** Lista de archivos asociados al proyecto. */
+	private Archivo listaArchivosArchivo;
+
+	/** Lista de etiquetas asociadas al proyecto. */
+	private Etiqueta listaEtiquetasEtiqueta;
+	
+	private JList<String> listaProyectos;
+	
+	private DefaultListModel<String> listaModeloProyecto = new DefaultListModel<>();
+
+	/**
+	 * Constructor por defecto de la clase Proyecto.
+	 */
 	public Proyecto() {
 
 	}
 
+	/**
+	 * Obtiene el nombre del proyecto.
+	 * 
+	 * @return El nombre del proyecto.
+	 */
 	public String getNombreProyecto() {
 		return nombreProyecto;
 	}
 
+	/**
+	 * Este metodo verifica si el nombre del proyecto está vacío, se lanza una
+	 * excepción para indicar que es obligatorio proporcionar un nombre..
+	 * 
+	 * @param nombreProyecto
+	 *            El nuevo nombre del proyecto.
+	 * @throws ExceptionBaseDatosProyecto
+	 *             si el nombre del proyecto está vacío o ya existe.
+	 */
 	public void setNombreProyecto(String nombreProyecto) throws ExceptionBaseDatosProyecto {
-		if (nombreProyecto.trim().isEmpty()) {
+		nombreProyecto = nombreProyecto.trim();
+		if (nombreProyecto.isEmpty()) {
 			throw new ExceptionBaseDatosProyecto(
 					ExceptionBaseDatosProyecto.IVMATIS_EXCEPTION_NOMBRE_PROYECTO_OBLIGATORIO);
+		} else {
+			for (int i = 0; i < listaModeloProyecto.getSize(); i++) {
+	            String nombProyecto = listaModeloProyecto.getElementAt(i);
+	            if (nombProyecto.equals(nombreProyecto)) {
+	                throw new ExceptionBaseDatosProyecto(ExceptionBaseDatosProyecto.IVMATIS_EXCEPTION_NOMBRE_PROYECTO_REPETIR);
+	            }
+	        }
+	        this.nombreProyecto = nombreProyecto;
+			
 		}
-
-		if (verificarNombreProyectoExistente(nombreProyecto)) {
-			throw new ExceptionBaseDatosProyecto(ExceptionBaseDatosProyecto.IVMATIS_EXCEPTION_NOMBRE_PROYECTO_REPETIR);
-		}
-
-		this.nombreProyecto = nombreProyecto;
 	}
 
-	private boolean verificarNombreProyectoExistente(String nombreProyecto) {
-		
-		return false;
-	}
-
+	/**
+	 * Obtiene el nombre del propietario del proyecto.
+	 * 
+	 * @return El nombre del propietario del proyecto.
+	 */
 	public String getNombrePropietario() {
 		return nombrePropietario;
 	}
 
+	/**
+	 * Establece el nombre del propietario del proyecto.
+	 * 
+	 * @param nombrePropietario
+	 *            El nuevo nombre del propietario del proyecto.
+	 */
 	public void setNombrePropietario(String nombrePropietario) {
 		this.nombrePropietario = nombrePropietario;
 	}
 
+	/**
+	 * Obtiene la descripción del proyecto.
+	 * 
+	 * @return La descripción del proyecto.
+	 */
 	public String getDescripcion() {
 		return descripcion;
 	}
 
+	/**
+	 * Establece la descripción del proyecto.
+	 * 
+	 * @param descripcion
+	 *            La nueva descripción del proyecto.
+	 */
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
+	/**
+	 * Obtiene la fecha de creación del proyecto.
+	 * 
+	 * @return La fecha de creación del proyecto.
+	 */
 	public Date getFechaCreacion() {
 		return fechaCreacion;
 	}
 
+	/**
+	 * Establece la fecha de creación del proyecto.
+	 * 
+	 * @param fechaCreacion
+	 *            La nueva fecha de creación del proyecto.
+	 */
 	public void setFechaCreacion(Date fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
 	}
 
+	/**
+	 * Método para consultar el proyecto.
+	 */
 	public void consultarProyecto() {
 
 	}
 
+	/**
+	 * Método para crear el proyecto.
+	 */
 	public void crearProyecto() {
 
 	}
 
+	/**
+	 * Método para modificar el proyecto.
+	 */
 	public void modificarProyecto() {
 
 	}
 
+	/**
+	 * Obtiene la lista de archivos asociados al proyecto.
+	 * 
+	 * @return La lista de archivos asociados al proyecto.
+	 */
 	public Archivo getListaArchivos() {
 		return listaArchivosArchivo;
 	}
 
+	/**
+	 * Establece la lista de archivos asociados al proyecto.
+	 * 
+	 * @param listaArchivos
+	 *            La nueva lista de archivos asociados al proyecto.
+	 */
 	public void setListaArchivos(Archivo listaArchivos) {
 		this.listaArchivosArchivo = listaArchivos;
 	}
 
+	/**
+	 * Obtiene la lista de etiquetas asociadas al proyecto.
+	 * 
+	 * @return La lista de etiquetas asociadas al proyecto.
+	 */
 	public Etiqueta getListaEtiquetas() {
 		return listaEtiquetasEtiqueta;
 	}
 
+	/**
+	 * Establece la lista de etiquetas asociadas al proyecto.
+	 * 
+	 * @param listaEtiquetas
+	 *            La nueva lista de etiquetas asociadas al proyecto.
+	 */
 	public void setListaEtiquetas(Etiqueta listaEtiquetas) {
 		this.listaEtiquetasEtiqueta = listaEtiquetas;
 	}
