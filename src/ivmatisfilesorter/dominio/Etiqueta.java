@@ -55,7 +55,7 @@ public class Etiqueta extends Exception {
 	public void setListaArchivosArchivo(Archivo listaArchivosArchivo) {
 		try {
 			if (listaArchivosArchivo == null) {
-				throw new ExceptionBaseDatosEtiqueta(ExceptionBaseDatosEtiqueta.IVMATIS_EXCEPTION_ETIQUETA_NULL);
+				throw new ExceptionBaseDatosEtiqueta(ExceptionBaseDatosEtiqueta.IVMATIS_EXCEPTION_VISUALIZACION_ETIQUETA);
 			}
 			this.listaArchivosArchivo = listaArchivosArchivo;
 		} catch (ExceptionBaseDatosEtiqueta e) {
@@ -85,7 +85,7 @@ public class Etiqueta extends Exception {
 
 			if (etiqueta == null || etiqueta.isEmpty()) {
 				throw new ExceptionBaseDatosEtiqueta(
-						ExceptionBaseDatosEtiqueta.IVMATIS_EXCEPTION_VISUALIZACION_ETIQUETA);
+						ExceptionBaseDatosEtiqueta.IVMATIS_EXCEPTION_ETIQUETA_NULL);
 			}
 			this.etiqueta = etiqueta;
 		} catch (ExceptionBaseDatosEtiqueta e) {

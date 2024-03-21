@@ -21,7 +21,7 @@ import ivmatisfilesorter.exception.ExceptionBaseDatosArchivo;
  * @author Ivonne Estefanía Hernández Pérez
  * 
  * @see ExceptionBaseDatosArchivo
- */
+ */ 
 public class Archivo {
 	/** Ruta del archivo. */
 	private String rutaArchivo;
@@ -105,13 +105,9 @@ public class Archivo {
 	 * @throws ExceptionBaseDatosEtiqueta
 	 *             Si la lista de archivos es nula.
 	 */
-	public void setNombreArchivo(String nombreArchivo) throws ExceptionBaseDatosArchivo {
-		nombreArchivo = nombreArchivo.trim();
-		if (nombreArchivo.isEmpty()) {
-			throw new ExceptionBaseDatosArchivo(ExceptionBaseDatosArchivo.IVMATIS_EXCEPTION_ELEGIR_ARCHIVO);
-		} else {
-			this.nombreArchivo = nombreArchivo;
-		}
+	public void setNombreArchivo(String nombreArchivo) {
+		
+		this.nombreArchivo = nombreArchivo;
 
 	}
 

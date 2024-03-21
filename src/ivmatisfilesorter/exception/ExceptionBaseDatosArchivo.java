@@ -7,8 +7,6 @@ package ivmatisfilesorter.exception;
  * <p>
  * Las características de la clase <code>ExceptionBaseDatosArchivo</code> son:
  * <ul>
- * <li><code>IVMATIS_EXCEPTION_ELEGIR_ARCHIVO</code> para cuando el archivo no
- * se encuentra en el sistema.</li>
  * <li><code>IVMATIS_EXCEPTION_VISUALIZACION_ARCHIVO</code> para cuando los
  * archivos del sistema no se pueden visualizar debido a errores.</li>
  * <li><code>IVMATIS_EXCEPTION_SELECCION_ARCHIVO</code> para cuando se intenta
@@ -37,13 +35,7 @@ public class ExceptionBaseDatosArchivo extends Exception {
 	
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Mensaje de excepción para cuando el archivo no se encuentra en el sistema.
-	 */
 	
-	public static final String[] IVMATIS_EXCEPTION_ELEGIR_ARCHIVO = {
-			"El archivo no se encuentra en el sistema," + "\n busque el archivo", "Elegir archivo" };
-
 	/**
 	 * Mensaje de excepción cuando no se pueden visualizar los archivos del sistema
 	 * debido a errores.

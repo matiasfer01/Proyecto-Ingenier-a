@@ -61,9 +61,18 @@ public class Proyecto extends Exception {
 	/** Lista de etiquetas asociadas al proyecto. */
 	private Etiqueta listaEtiquetasEtiqueta;
 
+	/**
+	 * Lista de proyectos.
+	 * se utiliza para mostrar los nombres de los proyectos
+	 */
 	private JList<String> listaProyectos;
 
+	/**
+	 * Modelo de lista predeterminado que contiene los elementos que se mostrarán en la lista de proyectos.
+	 * Se utiliza para administrar los elementos que se muestran en la listaProyectos.
+	 */
 	private DefaultListModel<String> listaModeloProyecto = new DefaultListModel<>();
+
 
 	/**
 	 * Constructor por defecto de la clase Proyecto.
@@ -83,7 +92,8 @@ public class Proyecto extends Exception {
 
 	/**
 	 * Este metodo verifica si el nombre del proyecto está vacío, se lanza una
-	 * excepción para indicar que es obligatorio proporcionar un nombre..
+	 * excepción para indicar que es obligatorio proporcionar un nombre. 
+	 * De igual manera si el nombre del proyecto se encuentra repetido.
 	 * 
 	 * @param nombreProyecto
 	 *            El nuevo nombre del proyecto.
