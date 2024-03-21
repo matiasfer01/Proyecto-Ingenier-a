@@ -1,8 +1,6 @@
 package ivmatisfilesorter.dominio;
 import ivmatisfilesorter.exception.ExceptionBaseDatosArchivo;
 
-
-
 /**
  * Sirve para representar un archivo con su ruta, nombre del archivo y lista de etiquetas asociadas.
  * <p>
@@ -97,19 +95,21 @@ public class Archivo {
 
 	/**
 	 * Establece el nombre del archivo.
-	 * 
-	 * @param nombreArchivo
-	 *            El nuevo nombre del archivo.
+	 *
+	 * @param nombreArchivo el nombre del archivo a establecer
+	 * @throws ExceptionBaseDatosArchivo si ocurre un error relacionado con la base de datos del archivo:
+	 *                                   - {@link ExceptionBaseDatosArchivo#IVMATIS_EXCEPTION_ELEGIR_ARCHIVO}
+	 *                                     si el nombre del archivo proporcionado está vacío.
 	 */
-	public void setNombreArchivo(String nombreArchivo) throws ExceptionBaseDatosArchivo{
-		nombreArchivo = nombreArchivo.trim();
-		if (nombreArchivo.isEmpty()) {
-			throw new ExceptionBaseDatosArchivo(ExceptionBaseDatosArchivo.IVMATIS_EXCEPTION_ELEGIR_ARCHIVO);
-		}
-		else {
-			this.nombreArchivo = nombreArchivo;
-		}
-		
+	public void setNombreArchivo(String nombreArchivo) throws ExceptionBaseDatosArchivo {
+	    nombreArchivo = nombreArchivo.trim();
+	    if (nombreArchivo.isEmpty()) {
+	        throw new ExceptionBaseDatosArchivo(ExceptionBaseDatosArchivo.IVMATIS_EXCEPTION_ELEGIR_ARCHIVO);
+	    } else {
+	        this.nombreArchivo = nombreArchivo;
+	    }
+	}
+
 		
 	}
 
