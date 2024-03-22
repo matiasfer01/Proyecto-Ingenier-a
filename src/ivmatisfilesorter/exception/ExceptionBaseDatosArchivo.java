@@ -34,7 +34,8 @@ public class ExceptionBaseDatosArchivo extends Exception {
 	 */
 	
 	private static final long serialVersionUID = 1L;
-
+	public static final String[] IVMATIS_EXCEPTION_PROYECTO_NULL = { "El nombre del archivo no puede estar vacio.",
+	"Ingrese el nombre del archivo" };
 	
 	/**
 	 * Mensaje de excepción cuando no se pueden visualizar los archivos del sistema

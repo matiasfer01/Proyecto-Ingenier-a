@@ -93,7 +93,13 @@ public class Archivo {
 	}
 
 	public void setNombreArchivo(String nombreArchivo) {
-		this.nombreArchivo = nombreArchivo;
+		nombreArchivo = nombreArchivo.trim();
+		if (nombreArchivo.isEmpty()) {
+			throw new ExceptionBaseDatosEtiqueta(ExceptionBaseDatosEtiqueta.IVMATIS_EXCEPTION_PROYECTO_NULL.);
+		}else {
+			this.nombreArchivo = nombreArchivo;
+		}
+		
 	}
 
 	public ArrayList<Etiqueta> getListaEtiquetas() {
@@ -101,7 +107,11 @@ public class Archivo {
 	}
 
 	public void setListaEtiquetas(ArrayList<Etiqueta> listaEtiquetas) {
-		this.listaEtiquetas = listaEtiquetas;
+		if (listaEtiquetas.size() > 0) {
+	        this.listaEtiquetas = listaEtiquetas;
+	    } else {
+	    	throw new ExceptionBaseDatosEtiqueta(ExceptionBaseDatosEtiqueta.IVMATIS_EXCEPTION_ETIQUETAS_INCOMPLETA);
+	    }
 	}
 
 	@Override

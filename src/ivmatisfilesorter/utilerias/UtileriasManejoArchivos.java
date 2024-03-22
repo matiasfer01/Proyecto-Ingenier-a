@@ -1,6 +1,5 @@
 package ivmatisfilesorter.utilerias;
 
-import javax.swing.JOptionPane;
 import java.awt.Desktop;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -49,21 +48,22 @@ public class UtileriasManejoArchivos {
                 escritor.write(buffer, 0, bytesLeidos);
                 bytesLeidos = lector.read(buffer);
             }
-            
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Ocurrió un error al crear el archivo.");
+            throw new ExceptionBaseDatosArchivo(ExceptionBaseDatosArchivo.IVMATIS_EXCEPTION_EXPORTACION_FALLIDA);
+        } catch (ExceptionBaseDatosArchivo e) {
+        	JOptionPane.showMessageDialog(null, e.getMessage(), e.getTitulo(), JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    public static void crearDirectorio(String ruta) throws IOException {
+    public static void crearDirectorio(String ruta) {
         File directorio = new File(ruta);
         if (!directorio.exists()) {
             try {
                 if (!directorio.mkdir()) {
-                    throw new IOException("No se pudo crear el directorio.");
+                	 throw new ExceptionBaseDatosArchivo(ExceptionBaseDatosArchivo.IVMATIS_EXCEPTION_CREAR_DIRECTORIO);;
                 }
-            } catch (IOException e) {
-                throw new IOException("Error al intentar crear el directorio.");
+            } catch (ExceptionBaseDatosArchivo e) {
+            	JOptionPane.showMessageDialog(null, e.getMessage(), e.getTitulo(), JOptionPane.ERROR_MESSAGE);
+                
             }
         }
     }
@@ -77,10 +77,11 @@ public class UtileriasManejoArchivos {
                     desktop.open(archivo);
                 }
             } else {
-                throw new IOException("El sistema no admite la apertura de archivos.");
+            	throw new ExceptionBaseDatosArchivo(ExceptionBaseDatosArchivo.IVMATIS_EXCEPTION_APERTURA_ARCHIVO);;
             }
-        } catch (IOException e) {
-            throw new IOException("Ocurrió un error al abrir el archivo.");
+        } catch (ExceptionBaseDatosArchivo e) {
+        	JOptionPane.showMessageDialog(null, e.getMessage(), e.getTitulo(), JOptionPane.ERROR_MESSAGE);
+            
         }
     }
 }
