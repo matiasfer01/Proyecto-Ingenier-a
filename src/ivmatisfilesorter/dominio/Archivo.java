@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 import ivmatisfilesorter.exception.ExceptionBaseDatosArchivo;
 
-
-
 /**
  * Sirve para representar un archivo con su ruta, nombre del archivo y lista de
  * etiquetas asociadas.
@@ -26,6 +24,7 @@ import ivmatisfilesorter.exception.ExceptionBaseDatosArchivo;
  * 
  * @see ExceptionBaseDatosArchivo
  */
+
 public class Archivo {
 	/** Ruta del archivo. */
 	private String rutaArchivo;
@@ -83,8 +82,7 @@ public class Archivo {
 	/**
 	 * Establece la ruta del archivo.
 	 * 
-	 * @param rutaArchivo
-	 *            La nueva ruta del archivo.
+	 * @param rutaArchivo La nueva ruta del archivo.
 	 */
 	public void setRutaArchivo(String rutaArchivo) {
 		this.rutaArchivo = rutaArchivo;
@@ -95,7 +93,7 @@ public class Archivo {
 	}
 
 	public void setNombreArchivo(String nombreArchivo) {
-		this.nombreArchivo = nombreArchivo; 
+		this.nombreArchivo = nombreArchivo;
 	}
 
 	public ArrayList<Etiqueta> getListaEtiquetas() {
