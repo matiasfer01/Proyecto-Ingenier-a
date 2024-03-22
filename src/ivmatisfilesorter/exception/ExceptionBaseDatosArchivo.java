@@ -27,17 +27,14 @@ package ivmatisfilesorter.exception;
  *
  */
 
-public class ExceptionBaseDatosArchivo  {
-	
+public class ExceptionBaseDatosArchivo extends Exception {
 	
 	/**
-	 * Mensaje de excepción para cuando se encuentre vacío el campo de
-	 * etiquetas.
-	 * 
+	 * Identificador de serialización de la clase.
 	 */
 	
-	public static final String[] IVMATIS_EXCEPTION_ARCHIVO_NULL = { "El nombre delarchivo no puede estar vacío.",
-			"Nombre archivo vacío" };
+	private static final long serialVersionUID = 1L;
+
 	
 	/**
 	 * Mensaje de excepción cuando no se pueden visualizar los archivos del sistema

@@ -95,13 +95,7 @@ public class Archivo {
 	}
 
 	public void setNombreArchivo(String nombreArchivo) {
-		nombreArchivo = nombreArchivo.trim();
-		if (nombreArchivo.isEmpty()) {
-			// throw new ExceptionBaseDatosArchivo(ExceptionBaseDatosArchivo.IVMATIS_EXCEPTION_ARCHIVO_NULL);
-		} else {
-			this.nombreArchivo = nombreArchivo; // Use this to refer to the
-												// instance variable
-		}
+		this.nombreArchivo = nombreArchivo; 
 	}
 
 	public ArrayList<Etiqueta> getListaEtiquetas() {
