@@ -1,6 +1,10 @@
 package ivmatisfilesorter.dominio;
 
+import java.util.ArrayList;
+
 import ivmatisfilesorter.exception.ExceptionBaseDatosArchivo;
+
+
 
 /**
  * Sirve para representar un archivo con su ruta, nombre del archivo y lista de
@@ -21,7 +25,7 @@ import ivmatisfilesorter.exception.ExceptionBaseDatosArchivo;
  * @author Ivonne Estefanía Hernández Pérez
  * 
  * @see ExceptionBaseDatosArchivo
- */ 
+ */
 public class Archivo {
 	/** Ruta del archivo. */
 	private String rutaArchivo;
@@ -30,7 +34,7 @@ public class Archivo {
 	private String nombreArchivo;
 
 	/** Lista de etiquetas asociadas al archivo. */
-	private Etiqueta listaEtiquetasEtiqueta;
+	private ArrayList<Etiqueta> listaEtiquetas;
 
 	/**
 	 * Constructor por defecto de la clase Archivo.
@@ -82,65 +86,35 @@ public class Archivo {
 	 * @param rutaArchivo
 	 *            La nueva ruta del archivo.
 	 */
-	public void setRutaArchivo(String rutaArchivo) throws ExceptionBaseDatosArchivo {
+	public void setRutaArchivo(String rutaArchivo) {
 		this.rutaArchivo = rutaArchivo;
 	}
 
-	/**
-	 * Obtiene el nombre del archivo.
-	 * 
-	 * @return El nombre del archivo.
-	 */
 	public String getNombreArchivo() {
-
 		return nombreArchivo;
 	}
 
-	/**
-	 * Establece el nombre del archivo.
-	 * 
-	 * @param nombreArchivo
-	 *            El nuevo nombre del archivo.
-	 * 
-	 * @throws ExceptionBaseDatosEtiqueta
-	 *             Si la lista de archivos es nula.
-	 */
-	public void setNombreArchivo(String nombreArchivo) {
-		
-		this.nombreArchivo = nombreArchivo;
-
+	public void setNombreArchivo(String nombreArchivo) throws ExceptionBaseDatosArchivo {
+		nombreArchivo = nombreArchivo.trim();
+		if (nombreArchivo.isEmpty()) {
+			throw new ExceptionBaseDatosArchivo(ExceptionBaseDatosArchivo.IVMATIS_EXCEPTION_ARCHIVO_NULL);
+		} else {
+			this.nombreArchivo = nombreArchivo; // Use this to refer to the
+												// instance variable
+		}
 	}
 
-	/**
-	 * Obtiene la lista de etiquetas asociadas al archivo.
-	 * 
-	 * @return La lista de etiquetas asociadas al archivo.
-	 */
-	public Etiqueta getListaEtiquetas() {
-		return listaEtiquetasEtiqueta;
+	public ArrayList<Etiqueta> getListaEtiquetas() {
+		return listaEtiquetas;
 	}
 
-	/**
-	 * Establece la lista de etiquetas asociadas al archivo.
-	 * 
-	 * @param listaEtiquetas
-	 *            La nueva lista de etiquetas asociadas al archivo.
-	 */
-	public void setListaEtiquetas(Etiqueta listaEtiquetas) {
-		this.listaEtiquetasEtiqueta = listaEtiquetas;
+	public void setListaEtiquetas(ArrayList<Etiqueta> listaEtiquetas) {
+		this.listaEtiquetas = listaEtiquetas;
 	}
 
-	/**
-	 * Representación en cadena de caracteres de la instancia de la clase
-	 * Archivo.
-	 * 
-	 * @return Una cadena de caracteres que representa la instancia de la clase
-	 *         Archivo.
-	 */
 	@Override
 	public String toString() {
-		return "Archivo [rutaArchivo=" + rutaArchivo + ", nombreArchivo=" + nombreArchivo + ", etiqueta="
-				+ listaEtiquetasEtiqueta + ", proyecto=" + "]";
+		return nombreArchivo;
 	}
 
 }

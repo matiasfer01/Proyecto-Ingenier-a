@@ -1,10 +1,7 @@
 package ivmatisfilesorter.dominio;
 
+import java.util.ArrayList;
 import java.util.Date;
-
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
 
 import ivmatisfilesorter.exception.ExceptionBaseDatosArchivo;
 import ivmatisfilesorter.exception.ExceptionBaseDatosProyecto;
@@ -36,12 +33,7 @@ import ivmatisfilesorter.exception.ExceptionBaseDatosProyecto;
  * @see ExceptionBaseDatosArchivo
  * @see ExceptionBaseDatosproyecto
  */
-public class Proyecto extends Exception {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Proyecto {
 
 	/** Nombre del proyecto. */
 	private String nombreProyecto;
@@ -56,23 +48,10 @@ public class Proyecto extends Exception {
 	private Date fechaCreacion;
 
 	/** Lista de archivos asociados al proyecto. */
-	private Archivo listaArchivosArchivo;
+	private ArrayList<Archivo> listaArchivosProyecto;
 
 	/** Lista de etiquetas asociadas al proyecto. */
-	private Etiqueta listaEtiquetasEtiqueta;
-
-	/**
-	 * Lista de proyectos.
-	 * se utiliza para mostrar los nombres de los proyectos
-	 */
-	private JList<String> listaProyectos;
-
-	/**
-	 * Modelo de lista predeterminado que contiene los elementos que se mostrarán en la lista de proyectos.
-	 * Se utiliza para administrar los elementos que se muestran en la listaProyectos.
-	 */
-	private DefaultListModel<String> listaModeloProyecto = new DefaultListModel<>();
-
+	private ArrayList<Etiqueta> listaEtiquetasProyecto;
 
 	/**
 	 * Constructor por defecto de la clase Proyecto.
@@ -92,8 +71,8 @@ public class Proyecto extends Exception {
 
 	/**
 	 * Este metodo verifica si el nombre del proyecto está vacío, se lanza una
-	 * excepción para indicar que es obligatorio proporcionar un nombre. 
-	 * De igual manera si el nombre del proyecto se encuentra repetido.
+	 * excepción para indicar que es obligatorio proporcionar un nombre. De
+	 * igual manera si el nombre del proyecto se encuentra repetido.
 	 * 
 	 * @param nombreProyecto
 	 *            El nuevo nombre del proyecto.
@@ -106,16 +85,10 @@ public class Proyecto extends Exception {
 			throw new ExceptionBaseDatosProyecto(
 					ExceptionBaseDatosProyecto.IVMATIS_EXCEPTION_NOMBRE_PROYECTO_OBLIGATORIO);
 		} else {
-			for (int i = 0; i < listaModeloProyecto.getSize(); i++) {
-				String nombProyecto = listaModeloProyecto.getElementAt(i);
-				if (nombProyecto.equals(nombreProyecto)) {
-					throw new ExceptionBaseDatosProyecto(
-							ExceptionBaseDatosProyecto.IVMATIS_EXCEPTION_NOMBRE_PROYECTO_REPETIR);
-				}
-			}
-			this.nombreProyecto = nombreProyecto;
 
 		}
+		this.nombreProyecto = nombreProyecto;
+
 	}
 
 	/**
@@ -175,6 +148,22 @@ public class Proyecto extends Exception {
 		this.fechaCreacion = fechaCreacion;
 	}
 
+	private ArrayList<Archivo> getListaArchivosProyecto() {
+		return listaArchivosProyecto;
+	}
+
+	private ArrayList<Etiqueta> getListaEtiquetasProyecto() {
+		return listaEtiquetasProyecto;
+	}
+
+	public void setListaArchivosProyecto(ArrayList<Archivo> listaArchivosProyecto) {
+		this.listaArchivosProyecto = listaArchivosProyecto;
+	}
+
+	public void setListaEtiquetasProyecto(ArrayList<Etiqueta> listaEtiquetasProyecto) {
+		this.listaEtiquetasProyecto = listaEtiquetasProyecto;
+	}
+
 	/**
 	 * Método para consultar el proyecto.
 	 */
@@ -196,42 +185,9 @@ public class Proyecto extends Exception {
 
 	}
 
-	/**
-	 * Obtiene la lista de archivos asociados al proyecto.
-	 * 
-	 * @return La lista de archivos asociados al proyecto.
-	 */
-	public Archivo getListaArchivos() {
-		return listaArchivosArchivo;
-	}
-
-	/**
-	 * Establece la lista de archivos asociados al proyecto.
-	 * 
-	 * @param listaArchivos
-	 *            La nueva lista de archivos asociados al proyecto.
-	 */
-	public void setListaArchivos(Archivo listaArchivos) {
-		this.listaArchivosArchivo = listaArchivos;
-	}
-
-	/**
-	 * Obtiene la lista de etiquetas asociadas al proyecto.
-	 * 
-	 * @return La lista de etiquetas asociadas al proyecto.
-	 */
-	public Etiqueta getListaEtiquetas() {
-		return listaEtiquetasEtiqueta;
-	}
-
-	/**
-	 * Establece la lista de etiquetas asociadas al proyecto.
-	 * 
-	 * @param listaEtiquetas
-	 *            La nueva lista de etiquetas asociadas al proyecto.
-	 */
-	public void setListaEtiquetas(Etiqueta listaEtiquetas) {
-		this.listaEtiquetasEtiqueta = listaEtiquetas;
+	@Override
+	public String toString() {
+		return nombreProyecto;
 	}
 
 }

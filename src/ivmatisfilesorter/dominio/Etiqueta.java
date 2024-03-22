@@ -11,7 +11,6 @@ import ivmatisfilesorter.exception.ExceptionBaseDatosEtiqueta;
  * Las características de la clase <code>Etiqueta</code> son:
  * <ul>
  * <li><code>etiqueta</code> para el nombre de la etiqueta.</li>
- * <li><code>listaArchivosArchivo</code> para la lista de etiquetas.</li>
  * </ul>
  *
  * @version 21/03/2024
@@ -23,45 +22,10 @@ import ivmatisfilesorter.exception.ExceptionBaseDatosEtiqueta;
  * @see ExceptionBaseDatosEtiqueta
  * @see ExceptionBaseDatosArchivo
  */
-public class Etiqueta extends Exception {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Etiqueta {
 
 	/** Nombre de la etiqueta. */
 	private String etiqueta;
-
-	/** Lista de archivos asociados a la etiqueta. */
-	private Archivo listaArchivosArchivo;
-
-	/**
-	 * Obtiene la lista de archivos asociados a la etiqueta.
-	 * 
-	 * @return La lista de archivos asociados a la etiqueta.
-	 */
-	public Archivo getListaArchivosArchivo() {
-		return listaArchivosArchivo;
-	}
-
-	/**
-	 * Establece la lista de archivos asociados a la etiqueta.
-	 * 
-	 * @param listaArchivosArchivo
-	 *            La nueva lista de archivos asociados a la etiqueta.
-	 * @throws ExceptionBaseDatosEtiqueta
-	 *             Si la lista de archivos es nula.
-	 */
-	public void setListaArchivosArchivo(Archivo listaArchivosArchivo) {
-		try {
-			if (listaArchivosArchivo == null) {
-				throw new ExceptionBaseDatosEtiqueta(ExceptionBaseDatosEtiqueta.IVMATIS_EXCEPTION_VISUALIZACION_ETIQUETA);
-			}
-			this.listaArchivosArchivo = listaArchivosArchivo;
-		} catch (ExceptionBaseDatosEtiqueta e) {
-			JOptionPane.showMessageDialog(null, e.getMessage(), e.getTitulo(), JOptionPane.ERROR_MESSAGE);
-		}
-	}
 
 	/**
 	 * Obtiene el nombre de la etiqueta.
@@ -82,10 +46,8 @@ public class Etiqueta extends Exception {
 	 */
 	public void setEtiqueta(String etiqueta) {
 		try {
-
 			if (etiqueta == null || etiqueta.isEmpty()) {
-				throw new ExceptionBaseDatosEtiqueta(
-						ExceptionBaseDatosEtiqueta.IVMATIS_EXCEPTION_ETIQUETA_NULL);
+				throw new ExceptionBaseDatosEtiqueta(ExceptionBaseDatosEtiqueta.IVMATIS_EXCEPTION_ETIQUETA_NULL);
 			}
 			this.etiqueta = etiqueta;
 		} catch (ExceptionBaseDatosEtiqueta e) {
@@ -130,6 +92,6 @@ public class Etiqueta extends Exception {
 	 */
 	@Override
 	public String toString() {
-		return "Etiqueta [etiqueta=" + etiqueta + ", archivo=" + listaArchivosArchivo + ", proyecto=" + "]";
+		return "Etiqueta" + etiqueta;
 	}
 }
