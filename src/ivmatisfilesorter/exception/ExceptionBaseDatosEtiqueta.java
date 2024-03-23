@@ -28,9 +28,6 @@ public class ExceptionBaseDatosEtiqueta extends Exception {
 	
 	private static final long serialVersionUID = 1L;
 	
-	public static final String[] IVMATIS_EXCEPTION_ETIQUETAS_INCOMPLETA = {
-			"La lista de etiquetas debe tener al menos un elemento.",
-			"Etiquetas vacías" };
 	/**
 	 * Mensaje de excepción para cuando no se pueda visualizar la lista de
 	 * etiquetas.
