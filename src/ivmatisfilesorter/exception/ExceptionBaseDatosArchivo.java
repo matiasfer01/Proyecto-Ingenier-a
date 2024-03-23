@@ -7,8 +7,6 @@ package ivmatisfilesorter.exception;
  * <p>
  * Las características de la clase <code>ExceptionBaseDatosArchivo</code> son:
  * <ul>
- * <li><code>IVMATIS_EXCEPTION_ELEGIR_ARCHIVO</code> para cuando el archivo no
- * se encuentra en el sistema.</li>
  * <li><code>IVMATIS_EXCEPTION_VISUALIZACION_ARCHIVO</code> para cuando los
  * archivos del sistema no se pueden visualizar debido a errores.</li>
  * <li><code>IVMATIS_EXCEPTION_SELECCION_ARCHIVO</code> para cuando se intenta
@@ -30,23 +28,22 @@ package ivmatisfilesorter.exception;
  */
 
 public class ExceptionBaseDatosArchivo extends Exception {
-	
+
 	/**
 	 * Identificador de serialización de la clase.
 	 */
-	
+
 	private static final long serialVersionUID = 1L;
+	public static final String[] IVMATIS_EXCEPTION_CREACION_DIRECTORIO = {
+			"No se pudo crear el directorio." + "\n Intente nuevamente más tarde.", "Error al crear el directorio" };
+	public static final String[] IVMATIS_EXCEPTION_APERTURA_ARCHIVO = {
+			"Ocurrió un error al abrir el archivo." + "\n Intente nuevamente más tarde.", "Error al abrir el archivo" };
+	public static final String[] IVMATIS_EXCEPTION_PROYECTO_NULL = { "El nombre del archivo no puede estar vacio.",
+			"Ingrese el nombre del archivo" };
 
 	/**
-	 * Mensaje de excepción para cuando el archivo no se encuentra en el sistema.
-	 */
-	
-	public static final String[] IVMATIS_EXCEPTION_ELEGIR_ARCHIVO = {
-			"El archivo no se encuentra en el sistema," + "\n busque el archivo", "Elegir archivo" };
-
-	/**
-	 * Mensaje de excepción cuando no se pueden visualizar los archivos del sistema
-	 * debido a errores.
+	 * Mensaje de excepción cuando no se pueden visualizar los archivos del
+	 * sistema debido a errores.
 	 */
 
 	public static final String[] IVMATIS_EXCEPTION_VISUALIZACION_ARCHIVO = {
@@ -87,15 +84,15 @@ public class ExceptionBaseDatosArchivo extends Exception {
 	public String titulo;
 
 	/**
-	 * Constructor para crear una instancia de ExceptionBaseDatosArchivo con un mensaje y
-	 * un título específico.
+	 * Constructor para crear una instancia de ExceptionBaseDatosArchivo con un
+	 * mensaje y un título específico.
 	 * 
-	 * @param msg 
-	 * 			  Un arreglo de cadenas de texto que contiene el mensaje de la
+	 * @param msg
+	 *            Un arreglo de cadenas de texto que contiene el mensaje de la
 	 *            excepción y el título. Se espera que el primer elemento sea el
 	 *            mensaje de la excepción y el segundo elemento sea el título.
 	 */
-	
+
 	public ExceptionBaseDatosArchivo(String[] msg) {
 		super(msg[0]);
 		setTitulo(msg[1]);
@@ -106,7 +103,7 @@ public class ExceptionBaseDatosArchivo extends Exception {
 	 * 
 	 * @return titulo
 	 */
-	
+
 	public String getTitulo() {
 		return titulo;
 	}
@@ -114,10 +111,10 @@ public class ExceptionBaseDatosArchivo extends Exception {
 	/**
 	 * Establece el título asocicado con la excepción.
 	 * 
-	 * @param titulo 
-	 * 				El título de la excepción.
+	 * @param titulo
+	 *            El título de la excepción.
 	 */
-	
+
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}

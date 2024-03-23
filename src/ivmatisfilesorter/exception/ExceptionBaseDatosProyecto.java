@@ -39,6 +39,7 @@ public class ExceptionBaseDatosProyecto extends Exception {
 
 	public static final String[] IVMATIS_EXCEPTION_NOMBRE_PROYECTO_OBLIGATORIO = {
 			"El nombre del proyecto es obligatorio.", "Ingrese el nombre del proyecto" };
+	
 
 	/**
 	 * Mensaje de excepción para cuando se intenta usar un nombre de proyecto que ya
@@ -61,8 +62,8 @@ public class ExceptionBaseDatosProyecto extends Exception {
 	 * tipo .ivmatis.
 	 */
 
-	public static final String[] IVMATIS_EXCEPTION_ARCHIVO_NO_COMPATIBLE = {
-			"El archivo que intentas abrir no es de tipo .ivmatis.", "Archivo no compatible con el sistema" };
+	public static final String[] IVMATIS_EXCEPTION_PROYECTO_NO_COMPATIBLE = {
+			"El proyecto que intentas abrir no es de tipo .ivmatis.", "Archivo no compatible con el sistema" };
 
 	/**
 	 * El titulo asociado con la excepción.
