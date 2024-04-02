@@ -22,6 +22,7 @@ package ivmatisfilesorter.exception;
  * @author Isaac Cortez Escamilla
  * @author Luis Fernando Matias Acevedo
  * @author Ivonne Estefanía Hernández Pérez
+ * 
  */
 
 public class ExceptionBaseDatos extends Exception {
