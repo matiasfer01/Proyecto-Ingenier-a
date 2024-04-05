@@ -34,16 +34,16 @@ public class ExceptionBaseDatosProyecto extends Exception {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Mensaje de excepción para indicar que el nombre del proyecto es obligatorio.
+	 * Mensaje de excepción para indicar que el nombre del proyecto es
+	 * obligatorio.
 	 */
 
 	public static final String[] IVMATIS_EXCEPTION_NOMBRE_PROYECTO_OBLIGATORIO = {
 			"El nombre del proyecto es obligatorio.", "Ingrese el nombre del proyecto" };
-	
 
 	/**
-	 * Mensaje de excepción para cuando se intenta usar un nombre de proyecto que ya
-	 * existe.
+	 * Mensaje de excepción para cuando se intenta usar un nombre de proyecto
+	 * que ya existe.
 	 */
 
 	public static final String[] IVMATIS_EXCEPTION_NOMBRE_PROYECTO_REPETIR = { "El proyecto con ese nombre ya existe.",
@@ -62,8 +62,27 @@ public class ExceptionBaseDatosProyecto extends Exception {
 	 * tipo .ivmatis.
 	 */
 
-	public static final String[] IVMATIS_EXCEPTION_PROYECTO_NO_COMPATIBLE = {
-			"El proyecto que intentas abrir no es de tipo .ivmatis.", "Archivo no compatible con el sistema" };
+	public static final String[] IVMATIS_EXCEPTION_ARCHIVO_NO_COMPATIBLE = {
+			"El archivo que intentas abrir no es compatible con el formato .ivmatis.",
+			"El archivo no es compatible con el sistema." };
+	/** 
+	 * 
+	 */
+
+	public static final String[] IVMATIS_EXCEPTION_CONSULTAR_PROYECTO = {
+			"El proyecto no se puede consultar en el sistema. \n Reinicie el sistema.", "Consultar proyecto" };
+	/** 
+	 * 
+	 */
+
+	public static final String[] IVMATIS_EXCEPTION_CREAR_PROYECTO = {
+			"El proyecto no se puede crear por errores en el sistema.", "Falla en la creación de proyecto" };
+
+	/**
+	 * 
+	 */
+	public static final String[] IVMATIS_EXCEPTION_MODIFICAR_PROYECTO = {
+			"El proyecto no se puede modificar debido a errores del sistema.", "Modificar proyecto" };
 
 	/**
 	 * El titulo asociado con la excepción.
@@ -75,8 +94,8 @@ public class ExceptionBaseDatosProyecto extends Exception {
 	 * Constructor para crear una instancia de ExceptionBaseDatosProyecto con un
 	 * mensaje y un título específico.
 	 * 
-	 * @param msg 
-	 * 			  Un arreglo de cadenas de texto que contiene el mensaje de la
+	 * @param msg
+	 *            Un arreglo de cadenas de texto que contiene el mensaje de la
 	 *            excepción y el título. Se espera que el primer elemento sea el
 	 *            mensaje de la excepción y el segundo elemento sea el título.
 	 */
@@ -98,8 +117,8 @@ public class ExceptionBaseDatosProyecto extends Exception {
 	/**
 	 * Establece el título asociado con la excepción.
 	 * 
-	 * @param titulo 
-	 * 				El título de la excepción.
+	 * @param titulo
+	 *            El título de la excepción.
 	 */
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;

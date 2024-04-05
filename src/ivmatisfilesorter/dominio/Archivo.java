@@ -3,7 +3,7 @@ package ivmatisfilesorter.dominio;
 import java.util.ArrayList;
 
 import ivmatisfilesorter.exception.ExceptionBaseDatosArchivo;
-import ivmatisfilesorter.exception.ExceptionBaseDatosEtiqueta;
+
 
 /**
  * Sirve para representar un archivo con su ruta, nombre del archivo y lista de
@@ -47,29 +47,49 @@ public class Archivo {
 	 * Método para consultar el archivo.
 	 */
 	public void consultarArchivo() {
-
-	}
+        try {
+            throw new ExceptionBaseDatosArchivo(ExceptionBaseDatosArchivo.IVMATIS_EXCEPTION_CONSULTA_ARCHIVO);
+        } catch (ExceptionBaseDatosArchivo e) {
+            // Manejo de la excepción ExceptionBaseDatosArchivo si es necesario
+        }
+    }
 
 	/**
 	 * Método para modificar el archivo.
 	 */
 	public void modificarArchivo() {
-
+	    try {
+	        // Lógica para modificar el archivo
+	        // Si hay algún error en la modificación, lanzar la excepción correspondiente
+	        throw new ExceptionBaseDatosArchivo(ExceptionBaseDatosArchivo.IVMATIS_EXCEPTION_MODIFICAR_ARCHIVO);
+	    } catch (ExceptionBaseDatosArchivo e) {
+	        // Manejo de la excepción ExceptionBaseDatosArchivo si es necesario
+	    }
 	}
 
 	/**
 	 * Método para eliminar el archivo.
 	 */
 	public void eliminarArchivo() {
-
+	    try {
+	        // Lógica para eliminar el archivo
+	        // Si hay algún error en la eliminación, lanzar la excepción correspondiente
+	        throw new ExceptionBaseDatosArchivo(ExceptionBaseDatosArchivo.IVMATIS_EXCEPTION_ELIMINAR_ARCHIVO);
+	    } catch (ExceptionBaseDatosArchivo e) {
+	        // Manejo de la excepción ExceptionBaseDatosArchivo si es necesario
+	    }
 	}
 
 	/**
 	 * Método para crear el archivo.
 	 */
 	public void crearArchivo() {
-
-	}
+        try {
+            throw new ExceptionBaseDatosArchivo(ExceptionBaseDatosArchivo.IVMATIS_EXCEPTION_ARCHIVO_NO_ENCONTRADO);
+        } catch (ExceptionBaseDatosArchivo e) {
+            // Manejo de la excepción ExceptionBaseDatosArchivo si es necesario
+        }
+    }
 
 	/**
 	 * Obtiene la ruta del archivo.
@@ -94,10 +114,10 @@ public class Archivo {
 		return nombreArchivo;
 	}
 
-	public void setNombreArchivo(String nombreArchivo) throws ExceptionBaseDatosEtiqueta {
+	public void setNombreArchivo(String nombreArchivo) throws ExceptionBaseDatosArchivo {
 		nombreArchivo = nombreArchivo.trim();
 		if (nombreArchivo.isEmpty()) {
-			throw new ExceptionBaseDatosEtiqueta(ExceptionBaseDatosEtiqueta.IVMATIS_EXCEPTION_ETIQUETA_NULL);
+			throw new ExceptionBaseDatosArchivo(ExceptionBaseDatosArchivo.IVMATIS_EXCEPTION_NOMBRE_ARCHIVO_VACIO);
 		} else {
 			this.nombreArchivo = nombreArchivo;
 		}
@@ -108,11 +128,11 @@ public class Archivo {
 		return listaEtiquetas;
 	}
 
-	public void setListaEtiquetas(ArrayList<Etiqueta> listaEtiquetas) throws ExceptionBaseDatosEtiqueta {
+	public void setListaEtiquetas(ArrayList<Etiqueta> listaEtiquetas) throws ExceptionBaseDatosArchivo {
 		if (listaEtiquetas.size() > 0) {
 			this.listaEtiquetas = listaEtiquetas;
 		} else {
-			throw new ExceptionBaseDatosEtiqueta(ExceptionBaseDatosEtiqueta.IVMATIS_EXCEPTION_ETIQUETAS_INCOMPLETA);
+			throw new ExceptionBaseDatosArchivo(ExceptionBaseDatosArchivo.IVMATIS_EXCEPTION_ETIQUETAS_INCOMPLETA);
 		}
 	}
 

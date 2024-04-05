@@ -148,11 +148,11 @@ public class Proyecto {
 		this.fechaCreacion = fechaCreacion;
 	}
 
-	private ArrayList<Archivo> getListaArchivosProyecto() {
+	public ArrayList<Archivo> getListaArchivosProyecto() {
 		return listaArchivosProyecto;
 	}
 
-	private ArrayList<Etiqueta> getListaEtiquetasProyecto() {
+	public ArrayList<Etiqueta> getListaEtiquetasProyecto() {
 		return listaEtiquetasProyecto;
 	}
 

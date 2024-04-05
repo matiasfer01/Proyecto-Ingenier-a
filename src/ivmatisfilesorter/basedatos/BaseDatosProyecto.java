@@ -1,35 +1,27 @@
 package ivmatisfilesorter.basedatos;
 
-import java.sql.SQLException;
 import java.util.Vector;
 
+import ivmatisfilesorter.dominio.Proyecto;
 import ivmatisfilesorter.exception.ExceptionBaseDatos;
+import ivmatisfilesorter.exception.ExceptionBaseDatosArchivo;
+import ivmatisfilesorter.exception.ExceptionBaseDatosProyecto;
 
 public class BaseDatosProyecto {
-	public BaseDatosProyecto(String proyecto) throws ExceptionBaseDatos, SQLException {
+
+	public BaseDatosProyecto(String proyecto) {
 
 	}
 
-	private boolean validarBD() throws ExceptionBaseDatos, SQLException {
-		return false;
-
+	protected void crearBaseDatosProyecto() throws ExceptionBaseDatosProyecto {
+		throw new ExceptionBaseDatosProyecto(ExceptionBaseDatosProyecto.IVMATIS_EXCEPTION_CREAR_PROYECTO);
 	}
 
-	private void crearBD() throws ExceptionBaseDatos {
-
+	protected boolean insertarBaseDatosProyecto(Proyecto proyecto) throws ExceptionBaseDatos{
+		throw new ExceptionBaseDatos(ExceptionBaseDatos.IVMATIS_EXCEPTION_ERROR_EN_CONSULTA);
 	}
 
-	private void llenarBD() throws ExceptionBaseDatos {
-
-	}
-
-	public Vector<String> consultarIdProyecto() throws ExceptionBaseDatos, SQLException {
-		return null;
-
-	}
-
-	public Vector<String> consultarProyecto() throws ExceptionBaseDatos, SQLException {
-		return null;
-
+	protected boolean modificarBaseDatosProyecto(Proyecto proyecto) throws ExceptionBaseDatosProyecto {
+		throw new ExceptionBaseDatosProyecto(ExceptionBaseDatosProyecto.IVMATIS_EXCEPTION_MODIFICAR_PROYECTO);
 	}
 }

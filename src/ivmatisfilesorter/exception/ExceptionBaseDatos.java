@@ -22,7 +22,6 @@ package ivmatisfilesorter.exception;
  * @author Isaac Cortez Escamilla
  * @author Luis Fernando Matias Acevedo
  * @author Ivonne Estefanía Hernández Pérez
- * 
  */
 
 public class ExceptionBaseDatos extends Exception {
@@ -37,8 +36,15 @@ public class ExceptionBaseDatos extends Exception {
 	 * 
 	 */
 
-	public static final String[] IVMATIS_EXCEPTION_BD_NO_ENCONTRADA = { "No se pudo localizar el sistema.",
-			"Sistema no encontrado" };
+	public static final String[] IVMATIS_EXCEPTION_BD_NO_ENCONTRADA = {
+			"No se pudo encontrar la base de datos en el sistema.", "Sistema no encontrado" };
+	/**
+	 * 
+	 */
+
+	public static final String[] IVMATIS_EXCEPTION_BD_EN_ACCION = {
+			"La operación no se puede realizar debido errores del sistema", "Fallo en la operación del sistema" };
+
 	/**
 	 * Mensaje de excepción para cuando no se encuentra el controlador necesario
 	 * para la conexión de la base de datos.

@@ -34,13 +34,23 @@ public class ExceptionBaseDatosArchivo extends Exception {
 	 */
 
 	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
 	public static final String[] IVMATIS_EXCEPTION_CREACION_DIRECTORIO = {
 			"No se pudo crear el directorio." + "\n Intente nuevamente más tarde.", "Error al crear el directorio" };
+	/**
+	 * 
+	 */
 	public static final String[] IVMATIS_EXCEPTION_APERTURA_ARCHIVO = {
-			"Ocurrió un error al abrir el archivo." + "\n Intente nuevamente más tarde.", "Error al abrir el archivo" };
-	public static final String[] IVMATIS_EXCEPTION_PROYECTO_NULL = { "El nombre del archivo no puede estar vacio.",
-			"Ingrese el nombre del archivo" };
-
+			"Se produjo un error al abrir el archivo."
+					+ " Asegúrese de que el archivo no esté dañado y vuelva a intentarlo",
+			"Problema al abrir el archivo" };
+	/**
+	 * 
+	 */
+	public static final String[] IVMATIS_EXCEPTION_NOMBRE_ARCHIVO_VACIO = {
+			"El nombre del archivo no puede estar vacio.", "Ingrese el nombre del archivo" };
 	/**
 	 * Mensaje de excepción cuando no se pueden visualizar los archivos del
 	 * sistema debido a errores.
@@ -76,10 +86,55 @@ public class ExceptionBaseDatosArchivo extends Exception {
 	public static final String[] IVMATIS_EXCEPTION_VISUALIZACION_ETIQUETAS = {
 			"Las etiquetas del sistema no se pueden visualizar debido a errores." + "\n Intente más tarde.",
 			"Visualización de etiquetas interrumpida" };
+	/**
+	 * 
+	 */
+	public static final String[] IVMATIS_EXCEPTION_ARCHIVO_NO_ENCONTRADO = {
+			"El archivo especificado no se encuentra en la ruta proporcionada."
+					+ "\n Por favor, verifique la ruta e intente nuevamente.",
+			"Archivo no encontrado" };
+
+	/**
+	 * 
+	 */
+	public static final String[] IVMATIS_EXCEPTION_MODIFICAR_ARCHIVO = {
+			"No se pudo modificar el archivo." + "\n Por favor, inténtelo más tarde.",
+			"Problema en la modificación del archivo" };
+
+	/**
+	 * 
+	 */
+	public static final String[] IVMATIS_EXCEPTION_ELIMINAR_ARCHIVO = {
+			"No se pudo eliminar el archivo." + "\n Por favor, inténtelo más tarde.",
+			"Problema en la eliminación del archivo" };
+	/**
+	 * 
+	 */
+	public static final String[] IVMATIS_EXCEPTION_CONSULTA_ARCHIVO = {
+			"El archivo no se puede visualizar debido a errores en el sistema.", "Consulta del archivo" };
+	/**
+	 * 
+	 */
+	public static final String[] IVMATIS_EXCEPTION_VALIDACION_ARCHIVO = {
+			"No se pudo validar el archivo en este momento. Asegúrese de que el archivo sea válido.",
+			"Problemas de validación del archivo" };
+
+	/**
+	 * 
+	 */
+	public static final String[] IVMATIS_EXCEPTION_ETIQUETAS_INCOMPLETA = {
+			"La lista de etiquetas debe tener al menos un elemento.", "Etiquetas vacías" };
+
+	/**
+	 * 
+	 */
+	public static final String[] IVMATIS_EXCEPTION_COPIA_ARCHIVO_FALLIDA = {
+			"No se pudo copiar el archivo." + "Verifique las rutas de los archivos que desea copiar.",
+			"Falla en la copia de archivos" };
 
 	/**
 	 * El título asociado con la excepción.
-	 */
+	 **/
 
 	public String titulo;
 

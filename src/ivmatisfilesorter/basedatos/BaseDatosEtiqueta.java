@@ -1,38 +1,42 @@
 package ivmatisfilesorter.basedatos;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Vector;
+import java.util.ArrayList;
 
+import ivmatisfilesorter.dominio.Etiqueta;
 import ivmatisfilesorter.exception.ExceptionBaseDatos;
+import ivmatisfilesorter.exception.ExceptionBaseDatosEtiqueta;
+import ivmatisfilesorter.exception.ExceptionBaseDatosProyecto;
 
 public class BaseDatosEtiqueta {
 
-	public BaseDatosEtiqueta(String etiqueta) throws ExceptionBaseDatos, SQLException {
+	public BaseDatosEtiqueta(String etiqueta) {
 
 	}
 
-	private boolean validarBD() throws ExceptionBaseDatos, SQLException {
-		return false;
-
+	protected void crearBaseDatosEtiqueta() throws ExceptionBaseDatosEtiqueta {
+		throw new ExceptionBaseDatosEtiqueta(ExceptionBaseDatosEtiqueta.IVMATIS_EXCEPTION_CREAR_ETIQUETA);
 	}
 
-	private void crearBD() throws ExceptionBaseDatos {
-
+	// Se debe de crear la excepcion
+	protected boolean insertarBaseDatosEtiqueta(Etiqueta etiqueta) throws ExceptionBaseDatos {
+		throw new ExceptionBaseDatos(ExceptionBaseDatos.IVMATIS_EXCEPTION_ERROR_EN_CONSULTA);
 	}
 
-	private void llenarBD() throws ExceptionBaseDatos {
-
+	protected ArrayList<Etiqueta> consultarBaseDatosEtiqueta(Etiqueta etiqueta) throws ExceptionBaseDatosEtiqueta {
+		ArrayList<Etiqueta> etiquetas = new ArrayList<>();
+		throw new ExceptionBaseDatosEtiqueta(ExceptionBaseDatosEtiqueta.IVMATIS_EXCEPTION_CONSULTAR_ETIQUETA);
 	}
 
-	public Vector<String> consultarIdEtiqueta() throws ExceptionBaseDatos, SQLException {
-		return null;
-
+	protected boolean modificarBaseDatosEtiqueta(String nuevaEtiqueta) throws ExceptionBaseDatosEtiqueta {
+		throw new ExceptionBaseDatosEtiqueta(ExceptionBaseDatosEtiqueta.IVMATIS_EXCEPTION_MODIFICAR_ETIQUETA);
 	}
 
-	public Vector<String> consultarEtiqueta() throws ExceptionBaseDatos, SQLException {
-		return null;
+	protected boolean eliminarBaseDatosEtiqueta(Etiqueta etiqueta) throws ExceptionBaseDatosEtiqueta {
+		throw new ExceptionBaseDatosEtiqueta(ExceptionBaseDatosEtiqueta.IVMATIS_EXCEPTION_ELIMINAR_ETIQUETA);
+	}
 
+	protected boolean buscarBaseDatosEtiqueta(Etiqueta etiqueta) throws ExceptionBaseDatosEtiqueta {
+		throw new ExceptionBaseDatosEtiqueta(ExceptionBaseDatosEtiqueta.IVMATIS_EXCEPTION_ETIQUETA_REPETIDA);
 	}
 
 }

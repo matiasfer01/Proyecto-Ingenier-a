@@ -1,7 +1,4 @@
 package ivmatisfilesorter.dominio;
-
-import javax.swing.JOptionPane;
-
 import ivmatisfilesorter.exception.ExceptionBaseDatosArchivo;
 import ivmatisfilesorter.exception.ExceptionBaseDatosEtiqueta;
 
@@ -47,7 +44,7 @@ public class Etiqueta {
 	public void setEtiqueta(String etiqueta) throws ExceptionBaseDatosEtiqueta {
 		etiqueta = etiqueta.trim();
 		if (etiqueta.isEmpty()) {
-			throw new ExceptionBaseDatosEtiqueta(ExceptionBaseDatosEtiqueta.IVMATIS_EXCEPTION_ETIQUETA_NULL);
+			throw new ExceptionBaseDatosEtiqueta(ExceptionBaseDatosEtiqueta.IVMATIS_EXCEPTION_ETIQUETA_VACIA);
 		} else {
 			this.etiqueta = etiqueta;
 		}
